@@ -50,6 +50,9 @@
 "   This variable specifies the SVN executable.  If not set, it defaults to
 "   'svn' executed from the user's executable path.
 "
+" VCSCommandSVNDiffExt
+"   This variable, if set, sets the external diff program used by Subversion.
+"
 " VCSCommandSVNDiffOpt
 "   This variable, if set, determines the options passed to the svn diff
 "   command (such as 'u', 'w', or 'b').
@@ -155,6 +158,13 @@ function! s:svnFunctions.Diff(argList)
     let caption = ''
   endif
 
+  let svndiffext = VCSCommandGetOption('VCSCommandSVNDiffExt', '')
+  if svndiffext == ''
+    let diffextstring = ''
+  else
+    let diffextstring = ' --diff-cmd ' . svndiffext . ' '
+  endif
+
   let svndiffopt = VCSCommandGetOption('VCSCommandSVNDiffOpt', '')
 
   if svndiffopt == ''
@@ -163,11 +173,13 @@ function! s:svnFunctions.Diff(argList)
     let diffoptionstring = ' -x -' . svndiffopt . ' '
   endif
 
-  let resultBuffer = s:DoCommand('diff' . diffoptionstring . revOptions , 'diff', caption)
+  let resultBuffer = s:DoCommand('diff' . diffextstring . diffoptionstring . revOptions , 'diff', caption)
   if resultBuffer > 0
     set filetype=diff
   else
-    echomsg 'No differences found'
+    if svndiffext == ''
+      echomsg 'No differences found'
+    endif
   endif
   return resultBuffer
 endfunction

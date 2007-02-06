@@ -180,6 +180,8 @@ If you wish to have no options, then set it to the empty string.
 
 For SVN, this command uses the |VCSCommandSVNDiffOpt| variable to specify diff
 options.  If that variable does not exist, the SVN default is used.
+Additionally, |VCSCommandSVNDiffExt| can be used to select an external diff
+application.
 
 :VCSGotoOriginal					*:VCSGotoOriginal*
 
@@ -396,6 +398,7 @@ The following variables are available:
 |VCSCommandResultBufferNameExtension|
 |VCSCommandResultBufferNameFunction|
 |VCSCommandSplit|
+|VCSCommandSVNDiffExt|
 |VCSCommandSVNDiffOpt|
 |VCSCommandSVNExec|
 
@@ -470,6 +473,11 @@ If set to 'horizontal', the resulting windows will be on stacked on top of
 one another.  If set to 'vertical', the resulting windows will be
 side-by-side.  If not set, it defaults to 'horizontal' for all but
 VCSVimDiff windows.
+
+VCSCommandSVNDiffExt				*VCSCommandSVNDiffExt*
+
+This variable, if set, is passed to SVN via the --diff-cmd command to select
+an external application for performing the diff.
 
 VCSCommandSVNDiffOpt				*VCSCommandSVNDiffOpt*
 
