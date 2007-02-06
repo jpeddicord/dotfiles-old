@@ -1,5 +1,5 @@
 *vcscommand.txt*	vcscommand
-Copyright (c) 2006 Bob Hiestand
+Copyright (c) 2007 Bob Hiestand
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
@@ -18,8 +18,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
-
-TODO:  Change installation
 
 For instructions on installing this file, type
 	:help add-local-help
@@ -42,19 +40,20 @@ Credits:  Benji Fisher's excellent MatchIt documentation
 
 2. vcscommand Installation				*vcscommand-install*
 
-The vcscommand plugin comprises two files, vcscommand.vim and vcscommand.txt
-(this file).  In order to install the plugin, place the vcscommand.vim file
-into a plugin' directory in your runtime path (please see |add-global-plugin|
-and |'runtimepath'|.
-
-vcscommand may be customized by setting variables, creating maps, and
-specifying event handlers.  Please see |vcscommand-customize| for more
-details.
+The vcscommand plugin comprises four files, vcscommand.vim, vcssvn.vim,
+vcscvs.vim and vcscommand.txt (this file).  In order to install the plugin,
+place the vcscommand.vim, vcssvn.vim, and vcscvs.vim files into a plugin
+directory in your runtime path (please see |add-global-plugin| and
+|'runtimepath'|. 
 
 This help file can be included in the VIM help system by copying it into a
 'doc' directory in your runtime path and then executing the |:helptags|
 command, specifying the full path of the 'doc' directory.  Please see
 |add-local-help| for more details.
+
+vcscommand may be customized by setting variables, creating maps, and
+specifying event handlers.  Please see |vcscommand-customize| for more
+details.
 
 ==============================================================================
 
