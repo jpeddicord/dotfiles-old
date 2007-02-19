@@ -680,31 +680,8 @@ or ssh-agent are employed so that the user is not given the password prompt
 too often.
 
 ==============================================================================
-9. Tips							*vcscommand-tips*
 
-9.1 Split window annotation, by Michael Anderson
-
-:nmap <Leader>cN :vs<CR><C-w>h<Leader>cn:vertical res 40<CR>
-                 \ggdddd:set scb<CR>:set nowrap<CR><C-w>lgg:set scb<CR>
-                 \:set nowrap<CR>
-
-This splits the buffer vertically, puts an annotation on the left (minus the
-header) with the width set to 40. An editable/normal copy is placed on the
-right.  The two versions are scroll locked so they  move as one. and wrapping
-is turned off so that the lines line up correctly. The advantages are...
-
-1) You get a versioning on the right.
-2) You can still edit your own code.
-3) Your own code still has syntax highlighting.
-
-Note, this only works if the 'VCSCommandEdit' option is set to 'edit'.
-Additionally, this is intended for use with unedited files, as otherwise the
-annotated copy from the repository will be out-of-sync with respect to the
-edited version.
-
-==============================================================================
-
-8. Known bugs						*vcscommand-bugs*
+7. Known bugs						*vcscommand-bugs*
 
 Please let me know if you run across any.
 
