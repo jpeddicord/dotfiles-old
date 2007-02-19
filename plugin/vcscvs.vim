@@ -127,9 +127,9 @@ function! s:cvsFunctions.Identify(buffer)
   endif
 endfunction
 
-" Function: s:cvsFunctions.Add() {{{2
+" Function: s:cvsFunctions.Add(argList) {{{2
 function! s:cvsFunctions.Add(argList)
-  return s:DoCommand('add', 'add', '')
+  return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '))
 endfunction
 
 " Function: s:cvsFunctions.Annotate(argList) {{{2
@@ -173,6 +173,11 @@ function! s:cvsFunctions.Commit(argList)
     echomsg 'No commit needed.'
   endif
   return resultBuffer
+endfunction
+
+" Function: s:cvsFunctions.Delete() {{{2
+function! s:cvsFunctions.Delete(argList)
+  return s:DoCommand(join(['remove -f'] + a:argList, ' '), 'delete', join(a:argList, ' '))
 endfunction
 
 " Function: s:cvsFunctions.Diff(argList) {{{2
@@ -249,9 +254,13 @@ function! s:cvsFunctions.Log(argList)
   if len(a:argList) == 0
     let versionOption = ''
     let caption = ''
-  else
-    let versionOption=' -r' . a:argList[0]
+  elseif len(a:argList) == 1 && a:argList[0] !~ '^-'
+    let versionOption =' -r' . a:argList[0]
     let caption = a:argList[0]
+  else
+    " Multiple options, or the option starts with '-'
+    let caption = join(a:argList, ' ')
+    let versionOption = ' ' . caption
   endif
 
   let resultBuffer=s:DoCommand('log' . versionOption, 'log', caption)
@@ -285,7 +294,7 @@ endfunction
 
 " Function: s:cvsFunctions.Status(argList) {{{2
 function! s:cvsFunctions.Status(argList)
-  return s:DoCommand('status', 'status', '')
+  return s:DoCommand(join(['status'] + a:argList, ' '), 'status', join(a:argList, ' '))
 endfunction
 
 " Function: s:cvsFunctions.Update(argList) {{{2

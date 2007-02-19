@@ -100,6 +100,7 @@ vcscommand defines the following commands:
 |:VCSAdd|
 |:VCSAnnotate|
 |:VCSCommit|
+|:VCSDelete|
 |:VCSDiff|
 |:VCSGotoOriginal|
 |:VCSLog|
@@ -128,7 +129,8 @@ The following commands are specific to SVN files:
 :VCSAdd							*:VCSAdd*
 
 This command adds the current file to source control.  Please note, this does
-not commit the newly-added file.
+not commit the newly-added file.  All parameters to the command are passed to
+the underlying VCS.
 
 :VCSAnnotate						*:VCSAnnotate*
 
@@ -161,6 +163,11 @@ Alternatively, the mapping that is used to invoke :VCSCommit (by default
 <Leader>cc) can be used in the log message buffer to immediately commit.  This
 is useful if the |VCSCommandCommitOnWrite| variable is set to 0 to disable the
 normal commit-on-write behavior.
+
+:VCSDelete						*:VCSDelete*
+
+Deletes the current file and removes it from source control.  All parameters
+to the command are passed to the underlying VCS.
 
 :VCSDiff						*:VCSDiff*
 
@@ -196,13 +203,15 @@ buffers associated with the original file.
 
 This command locks the current file in order to prevent other users from
 concurrently modifying it.  The exact semantics of this command depend on the
-underlying VCS.  This does nothing in CVS.
+underlying VCS.  This does nothing in CVS.  All parameters are passed to the
+underlying VCS.
 
 :VCSLog							*:VCSLog*
 
-Displays the version history of the current file in a new scratch buffer.  Any
-options are taken as revision parameters to be passed through to the
-underlying VCS.
+Displays the version history of the current file in a new scratch buffer.  If
+there is one parameter supplied, it is taken as as a revision parameters to be
+passed through to the underlying VCS.  Otherwise, all parameters are passed to
+the underlying VCS.
 
 :VCSRevert						*:VCSRevert*
 
@@ -218,14 +227,14 @@ branch is retrieved.
 :VCSStatus						*:VCSStatus*
 
 Displays versioning information about the current file in a new scratch
-buffer.
+buffer.  All parameters are passed to the underlying VCS.
 
 
 :VCSUnlock						*:VCSUnlock*
 
 Unlocks the current file in order to allow other users from concurrently
 modifying it.  The exact semantics of this command depend on the underlying
-VCS.
+VCS.  All parameters are passed to the underlying VCS.
 
 :VCSUpdate						*:VCSUpdate*
 
@@ -296,7 +305,8 @@ This command performs "cvs watchers" on the current file.
 
 :SVNInfo						*:SVNInfo*
 
-This command performs "svn info" on the current file.
+This command performs "svn info" on the current file.  All parameters are
+passed directly to svn.
 
 4.2 Mappings						*vcscommand-mappings*
 

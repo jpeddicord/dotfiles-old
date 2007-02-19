@@ -64,6 +64,8 @@
 "                  message.  The commit can be abandoned if the log message
 "                  buffer is deleted or wiped before being written.
 "
+" VCSDelete        Deletes the current file and removes it from source control.
+"
 " VCSDiff          With no arguments, this displays the differences between
 "                  the current file and its parent version under source
 "                  control in a new scratch buffer.
@@ -143,6 +145,7 @@
 "   <Leader>ca VCSAdd
 "   <Leader>cn VCSAnnotate
 "   <Leader>cc VCSCommit
+"   <Leader>cD VCSDelete
 "   <Leader>cd VCSDiff
 "   <Leader>cg VCSGotoOriginal
 "   <Leader>cG VCSGotoOriginal!
@@ -1009,17 +1012,18 @@ endfunction
 
 " Section: Command definitions {{{1
 " Section: Primary commands {{{2
-com! -nargs=0 VCSAdd call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Add', bufnr('%'), []))
+com! -nargs=* VCSAdd call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Add', bufnr('%'), [<f-args>]))
 com! -nargs=? VCSAnnotate call s:ExecuteVCSCommand('Annotate', bufnr('%'), [<f-args>])
 com! -nargs=? -bang VCSCommit call s:VCSCommit(<q-bang>, <q-args>)
+com! -nargs=* VCSDelete call s:ExecuteVCSCommand('Delete', bufnr('%'), [<f-args>])
 com! -nargs=* VCSDiff call s:ExecuteVCSCommand('Diff', bufnr('%'), [<f-args>])
 com! -nargs=0 -bang VCSGotoOriginal call s:VCSGotoOriginal(<q-bang>)
-com! -nargs=0 VCSLock call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Lock', bufnr('%'), []))
-com! -nargs=? VCSLog call s:ExecuteVCSCommand('Log', bufnr('%'), [<f-args>])
+com! -nargs=* VCSLock call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Lock', bufnr('%'), [<f-args>]))
+com! -nargs=* VCSLog call s:ExecuteVCSCommand('Log', bufnr('%'), [<f-args>])
 com! -nargs=0 VCSRevert call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Revert', bufnr('%'), []))
 com! -nargs=? VCSReview call s:ExecuteVCSCommand('Review', bufnr('%'), [<f-args>])
-com! -nargs=0 VCSStatus call s:ExecuteVCSCommand('Status', bufnr('%'), [])
-com! -nargs=0 VCSUnlock call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Unlock', bufnr('%'), []))
+com! -nargs=* VCSStatus call s:ExecuteVCSCommand('Status', bufnr('%'), [<f-args>])
+com! -nargs=* VCSUnlock call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Unlock', bufnr('%'), [<f-args>]))
 com! -nargs=0 VCSUpdate call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Update', bufnr('%'), []))
 com! -nargs=* VCSVimDiff call s:VCSVimDiff(<f-args>)
 
@@ -1034,6 +1038,7 @@ com! VCSReload let savedPluginFiles = s:pluginFiles|aunmenu Plugin.VCS|unlet! g:
 nnoremap <silent> <Plug>VCSAdd :VCSAdd<CR>
 nnoremap <silent> <Plug>VCSAnnotate :VCSAnnotate<CR>
 nnoremap <silent> <Plug>VCSCommit :VCSCommit<CR>
+nnoremap <silent> <Plug>VCSDelete :VCSDelete<CR>
 nnoremap <silent> <Plug>VCSDiff :VCSDiff<CR>
 nnoremap <silent> <Plug>VCSGotoOriginal :VCSGotoOriginal<CR>
 nnoremap <silent> <Plug>VCSClearAndGotoOriginal :VCSGotoOriginal!<CR>
@@ -1058,6 +1063,9 @@ if !hasmapto('<Plug>VCSClearAndGotoOriginal')
 endif
 if !hasmapto('<Plug>VCSCommit')
   nmap <unique> <Leader>cc <Plug>VCSCommit
+endif
+if !hasmapto('<Plug>VCSDelete')
+  nmap <unique> <Leader>cD <Plug>VCSDelete
 endif
 if !hasmapto('<Plug>VCSDiff')
   nmap <unique> <Leader>cd <Plug>VCSDiff
@@ -1094,6 +1102,7 @@ endif
 amenu <silent> &Plugin.VCS.&Add        <Plug>VCSAdd
 amenu <silent> &Plugin.VCS.A&nnotate   <Plug>VCSAnnotate
 amenu <silent> &Plugin.VCS.&Commit     <Plug>VCSCommit
+amenu <silent> &Plugin.VCS.Delete      <Plug>VCSDelete
 amenu <silent> &Plugin.VCS.&Diff       <Plug>VCSDiff
 amenu <silent> &Plugin.VCS.&Log        <Plug>VCSLog
 amenu <silent> &Plugin.VCS.Revert      <Plug>VCSRevert
