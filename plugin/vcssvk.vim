@@ -105,6 +105,7 @@ function! s:svkFunctions.Annotate(argList)
 
   let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption) 
   if resultBuffer > 0
+    normal 1G2dd
     set filetype=SVKAnnotate
   endif
   return resultBuffer
