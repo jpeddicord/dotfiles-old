@@ -919,6 +919,9 @@ function! VCSCommandDoCommand(cmd, cmdName, statusText)
     let realFileName = fnamemodify(fileName, ':t')
   endif
 
+  " Change to the directory of the current buffer.  This is done for CVS, but
+  " is left in for other systems as it does not affect them negatively.
+
   let oldCwd = VCSCommandChangeToCurrentFileDir(fileName)
   try
     let output = system(a:cmd . ' "' . realFileName . '"')
