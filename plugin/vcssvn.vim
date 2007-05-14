@@ -46,8 +46,7 @@ endif
 
 runtime plugin/vcscommand.vim
 
-call system(VCSCommandGetOption('VCSCommandSVNExec', 'svn') . ' --version')
-if v:shell_error
+if !executable(VCSCommandGetOption('VCSCommandSVNExec', 'svn'))
   " SVN is not installed
   finish
 endif

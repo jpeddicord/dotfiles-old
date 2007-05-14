@@ -85,8 +85,7 @@ endif
 
 runtime plugin/vcscommand.vim
 
-call system(VCSCommandGetOption('VCSCommandCVSExec', 'cvs') . ' --version')
-if v:shell_error
+if !executable(VCSCommandGetOption('VCSCommandCVSExec', 'cvs'))
   " CVS is not installed
   finish
 endif
