@@ -159,8 +159,10 @@ function! s:cvsFunctions.Annotate(argList)
 
       let options = ['-r' . caption]
     else
+      " CVS defaults to pulling HEAD, regardless of current branch.
+      " Therefore, always pass desired revision.
       let caption = ''
-      let options = ['']
+      let options = ['-r' .  VCSCommandGetRevision()]
     endif
   elseif len(a:argList) == 1 && a:argList[0] !~ '^-'
     let caption = a:argList[0]
