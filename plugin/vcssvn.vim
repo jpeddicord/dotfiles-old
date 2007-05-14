@@ -158,7 +158,6 @@ function! s:svnFunctions.Diff(argList)
   endif
 
   let svnDiffOpt = VCSCommandGetOption('VCSCommandSVNDiffOpt', '')
-
   if svnDiffOpt == ''
     let diffOptions = []
   else
