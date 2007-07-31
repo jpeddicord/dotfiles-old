@@ -278,6 +278,9 @@ if v:version < 700
   finish
 endif
 
+let s:save_cpo=&cpo
+set cpo&vim
+
 " Section: Event group setup {{{1
 
 augroup VCSCommand
@@ -1218,3 +1221,5 @@ augroup END
 let loaded_VCSCommand = 2
 
 silent do VCSCommand User VCSPluginFinish
+
+let &cpo = s:save_cpo
