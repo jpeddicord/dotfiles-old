@@ -51,6 +51,8 @@
 "                  Additionally, if the current buffer is a VCSAnnotate buffer
 "                  already, the version number on the current line is used.
 "
+" VCSBlame         Alias for 'VCSAnnotate'.
+"
 " VCSCommit[!]     Commits changes to the current file to source control.
 "
 "                  If called with arguments, the arguments are the log message.
@@ -1073,6 +1075,7 @@ endfunction
 " Section: Primary commands {{{2
 com! -nargs=* VCSAdd call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Add', [<f-args>], 0))
 com! -nargs=* VCSAnnotate call s:ExecuteVCSCommand('Annotate', [<f-args>], 1)
+com! -nargs=* VCSBlame call s:ExecuteVCSCommand('Annotate', [<f-args>], 1)
 com! -nargs=? -bang VCSCommit call s:VCSCommit(<q-bang>, <q-args>)
 com! -nargs=* VCSDelete call s:ExecuteVCSCommand('Delete', [<f-args>], 1)
 com! -nargs=* VCSDiff call s:ExecuteVCSCommand('Diff', [<f-args>], 1)
