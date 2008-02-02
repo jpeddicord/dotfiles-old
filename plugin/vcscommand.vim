@@ -97,6 +97,8 @@
 " VCSLog           Displays the version history of the current file in a new
 "                  scratch buffer.
 "
+" VCSRemove        Alias for 'VCSDelete'.
+"
 " VCSRevert        Replaces the modified version of the current file with the
 "                  most recent version from the repository.
 "
@@ -1084,6 +1086,7 @@ com! -nargs=0 -bang VCSGotoOriginal call s:VCSGotoOriginal(<q-bang>)
 com! -nargs=* VCSInfo call s:ExecuteVCSCommand('Info', [<f-args>], 1)
 com! -nargs=* VCSLock call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Lock', [<f-args>], 1))
 com! -nargs=* VCSLog call s:ExecuteVCSCommand('Log', [<f-args>], 1)
+com! -nargs=* VCSRemove call s:ExecuteVCSCommand('Delete', [<f-args>], 1)
 com! -nargs=0 VCSRevert call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Revert', [], 1))
 com! -nargs=? VCSReview call s:ExecuteVCSCommand('Review', [<f-args>], 1)
 com! -nargs=* VCSStatus call s:ExecuteVCSCommand('Status', [<f-args>], 1)
