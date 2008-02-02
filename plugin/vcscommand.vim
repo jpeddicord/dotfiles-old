@@ -901,7 +901,10 @@ function! VCSCommandRegisterModule(name, path, commandMap, mappingMap)
 endfunction
 
 " Function: VCSCommandDoCommand(cmd, cmdName, statusText) {{{2
-" General skeleton for VCS function execution.
+" General skeleton for VCS function execution.  The given command is executed
+" after appending the current buffer name (or substituting it for
+" <VCSCOMMANDFILE>, if such a token is present).  The output is captured in a
+" new buffer.
 " Returns: name of the new command buffer containing the command results
 
 function! VCSCommandDoCommand(cmd, cmdName, statusText)
@@ -921,12 +924,18 @@ function! VCSCommandDoCommand(cmd, cmdName, statusText)
     let fileName = fnamemodify(path, ':t')
   endif
 
+  if match(a:cmd, '<VCSCOMMANDFILE>') > 0
+	  let fullCmd = substitute(a:cmd, '<VCSCOMMANDFILE>', fileName, 'g')
+  else
+	  let fullCmd = a:cmd . ' "' . fileName . '"'
+  endif
+
   " Change to the directory of the current buffer.  This is done for CVS, but
   " is left in for other systems as it does not affect them negatively.
 
   let oldCwd = VCSCommandChangeToCurrentFileDir(path)
   try
-    let output = system(a:cmd . ' "' . fileName . '"')
+    let output = system(fullCmd)
   finally
     call VCSCommandChdir(oldCwd)
   endtry
@@ -992,22 +1001,6 @@ function! VCSCommandGetOption(name, default)
     return g:{a:name}
   else
     return a:default
-  endif
-endfunction
-
-" Function: VCSCommandGetRevision() {{{2
-" Global function for retrieving the current buffer's revision number.
-" Returns: Revision number or an empty string if an error occurs.
-
-function! VCSCommandGetRevision()
-  if !exists('b:VCSCommandBufferInfo')
-    let b:VCSCommandBufferInfo =  s:plugins[VCSCommandGetVCSType(bufnr('%'))][1].GetBufferInfo()
-  endif
-
-  if len(b:VCSCommandBufferInfo) > 0
-    return b:VCSCommandBufferInfo[0]
-  else
-    return ''
   endif
 endfunction
 
