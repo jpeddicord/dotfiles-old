@@ -171,9 +171,16 @@ endfunction
 function! s:gitFunctions.GetBufferInfo()
 	let oldCwd = VCSCommandChangeToCurrentFileDir(resolve(bufname('%')))
 	try
-		let branch = substitute(system(VCSCommandGetOption('VCSCommandGitExec', 'git') . ' symbolic-ref HEAD'), '\n$', '', '')
-		let branch = substitute(branch, '^refs/heads/', '', '')
-		return[branch]
+		let branch = substitute(system(VCSCommandGetOption('VCSCommandGitExec', 'git') . ' symbolic-ref -q HEAD'), '\n$', '', '')
+		if v:shell_error
+			let branch = 'DETACHED'
+		else
+			let branch = substitute(branch, '^refs/heads/', '', '')
+		endif
+
+		let description = substitute(system(VCSCommandGetOption('VCSCommandGitExec', 'git') . ' describe --all'), '\n$', '', '')
+
+		return[branch, description]
 	finally
 		call VCSCommandChdir(oldCwd)
 	endtry
