@@ -245,7 +245,7 @@ function! s:cvsFunctions.Diff(argList)
     let diffOptions = ['-' . cvsDiffOpt]
   endif
 
-  let resultBuffer = s:DoCommand(join(['diff'] + diffOptions + revOptions), 'diff', caption, {})
+  let resultBuffer = s:DoCommand(join(['diff'] + diffOptions + revOptions), 'diff', caption, {'allowNonZeroExit': 1})
   if resultBuffer > 0
     set filetype=diff
   else

@@ -915,9 +915,19 @@ endfunction
 " after appending the current buffer name (or substituting it for
 " <VCSCOMMANDFILE>, if such a token is present).  The output is captured in a
 " new buffer.
+"
+" The optional 'options' Dictionary may contain the following options:
+" 	allowNonZeroExit:  if non-zero, if the underlying VCS command has a
+"		non-zero exit status, the command is still considered
+"		successfuly.  This defaults to zero.
 " Returns: name of the new command buffer containing the command results
 
 function! VCSCommandDoCommand(cmd, cmdName, statusText, options)
+	let allowNonZeroExit = 0
+	if has_key(a:options, 'allowNonZeroExit')
+		let allowNonZeroExit = a:options.allowNonZeroExit
+	endif
+
   let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
   if originalBuffer == -1 
     throw 'Original buffer no longer exists, aborting.'
@@ -954,8 +964,7 @@ function! VCSCommandDoCommand(cmd, cmdName, statusText, options)
   " of the command will be confused.
   let output = substitute(output, "\r", '', 'g')
 
-  " HACK:  CVS diff command does not return proper error codes
-  if v:shell_error && (a:cmdName != 'diff' || getbufvar(originalBuffer, 'VCSCommandVCSType') != 'CVS')
+  if v:shell_error && !allowNonZeroExit
     if strlen(output) == 0
       throw 'Version control command failed'
     else
@@ -963,6 +972,7 @@ function! VCSCommandDoCommand(cmd, cmdName, statusText, options)
       throw 'Version control command failed:  ' . output
     endif
   endif
+
   if strlen(output) == 0
     " Handle case of no output.  In this case, it is important to check the
     " file status, especially since cvs edit/unedit may change the attributes
