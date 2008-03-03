@@ -61,13 +61,13 @@ let s:gitFunctions = {}
 
 " Section: Utility functions {{{1
 
-" Function: s:DoCommand(cmd, cmdName, statusText) {{{2
+" Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the git executable to the
 " command argument.
-function! s:DoCommand(cmd, cmdName, statusText)
+function! s:DoCommand(cmd, cmdName, statusText, options)
 	if VCSCommandGetVCSType(expand('%')) == 'git'
-		let fullCmd = VCSCommandGetOption('VCSCommandGitExec', 'git') . ' ' . a:cmd
-		return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText)
+		let fullCmd = VCSCommandGetOption('VCSCommandGitExec', 'git',) . ' ' . a:cmd
+		return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
 	else
 		throw 'git VCSCommand plugin called on non-git item.'
 	endif
@@ -92,7 +92,7 @@ endfunction
 
 " Function: s:gitFunctions.Add(argList) {{{2
 function! s:gitFunctions.Add(argList)
-	return s:DoCommand(join(['add'] + ['-v'] + a:argList, ' '), 'add', join(a:argList, ' '))
+	return s:DoCommand(join(['add'] + ['-v'] + a:argList, ' '), 'add', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:gitFunctions.Annotate(argList) {{{2
@@ -110,7 +110,7 @@ function! s:gitFunctions.Annotate(argList)
 		let options = join(a:argList, ' ')
 	endif
 
-	let resultBuffer = s:DoCommand('blame ' . options . ' -- ', 'annotate', options) 
+	let resultBuffer = s:DoCommand('blame ' . options . ' -- ', 'annotate', options, {})
 	if resultBuffer > 0
 		normal 1G
 		set filetype=gitAnnotate
@@ -120,7 +120,7 @@ endfunction
 
 " Function: s:gitFunctions.Commit(argList) {{{2
 function! s:gitFunctions.Commit(argList)
-	let resultBuffer = s:DoCommand('commit -F "' . a:argList[0] . '"', 'commit', '')
+	let resultBuffer = s:DoCommand('commit -F "' . a:argList[0] . '"', 'commit', '', {})
 	if resultBuffer == 0
 		echomsg 'No commit needed.'
 	endif
@@ -132,7 +132,7 @@ endfunction
 function! s:gitFunctions.Delete(argList)
 	let options = a:argList
 	let caption = join(a:argList, ' ')
-	return s:DoCommand(join(['rm'] + options, ' '), 'delete', caption)
+	return s:DoCommand(join(['rm'] + options, ' '), 'delete', caption, {})
 endfunction
 
 " Function: s:gitFunctions.Diff(argList) {{{2
@@ -152,7 +152,7 @@ function! s:gitFunctions.Diff(argList)
 		endfor
 	endif
 
-	let resultBuffer = s:DoCommand(join(['diff'] + diffOptions + a:argList), 'diff', join(a:argList))
+	let resultBuffer = s:DoCommand(join(['diff'] + diffOptions + a:argList), 'diff', join(a:argList), {})
 	if resultBuffer > 0
 		set filetype=diff
 	else
@@ -188,7 +188,7 @@ endfunction
 
 " Function: s:gitFunctions.Log() {{{2
 function! s:gitFunctions.Log(argList)
-	let resultBuffer=s:DoCommand(join(['log'] + a:argList), 'log', join(a:argList, ' '))
+	let resultBuffer=s:DoCommand(join(['log'] + a:argList), 'log', join(a:argList, ' '), {})
 	if resultBuffer > 0
 		set filetype=gitlog
 	endif
@@ -197,7 +197,7 @@ endfunction
 
 " Function: s:gitFunctions.Revert(argList) {{{2
 function! s:gitFunctions.Revert(argList)
-	return s:DoCommand('checkout', 'revert', '')
+	return s:DoCommand('checkout', 'revert', '', {})
 endfunction
 
 " Function: s:gitFunctions.Review(argList) {{{2
@@ -217,7 +217,7 @@ function! s:gitFunctions.Review(argList)
 
 	let prefix = substitute(prefix, '\n$', '', '')
 	let blob = revision . ':' . prefix . '<VCSCOMMANDFILE>' 
-	let resultBuffer = s:DoCommand('show ' . blob, 'review', revision)
+	let resultBuffer = s:DoCommand('show ' . blob, 'review', revision, {})
 	if resultBuffer > 0
 		let &filetype=getbufvar(b:VCSCommandOriginalBuffer, '&filetype')
 	endif

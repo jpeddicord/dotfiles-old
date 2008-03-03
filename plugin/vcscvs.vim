@@ -102,13 +102,13 @@ let s:cvsFunctions = {}
 
 " Section: Utility functions {{{1
 
-" Function: s:DoCommand(cmd, cmdName, statusText) {{{2
+" Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the CVS executable to the
 " command argument.
-function! s:DoCommand(cmd, cmdName, statusText)
+function! s:DoCommand(cmd, cmdName, statusText, options)
   if VCSCommandGetVCSType(expand('%')) == 'CVS'
     let fullCmd = VCSCommandGetOption('VCSCommandCVSExec', 'cvs') . ' ' . a:cmd
-    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText)
+    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
   else
     throw 'CVS VCSCommand plugin called on non-CVS item.'
   endif
@@ -154,7 +154,7 @@ endfunction
 
 " Function: s:cvsFunctions.Add(argList) {{{2
 function! s:cvsFunctions.Add(argList)
-  return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '))
+  return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:cvsFunctions.Annotate(argList) {{{2
@@ -193,7 +193,7 @@ function! s:cvsFunctions.Annotate(argList)
     let options = a:argList
   endif
 
-  let resultBuffer = s:DoCommand(join(['-q', 'annotate'] + options), 'annotate', caption) 
+  let resultBuffer = s:DoCommand(join(['-q', 'annotate'] + options), 'annotate', caption, {})
   if resultBuffer > 0
     set filetype=CVSAnnotate
     " Remove header lines from standard error
@@ -204,7 +204,7 @@ endfunction
 
 " Function: s:cvsFunctions.Commit(argList) {{{2
 function! s:cvsFunctions.Commit(argList)
-  let resultBuffer = s:DoCommand('commit -F "' . a:argList[0] . '"', 'commit', '')
+  let resultBuffer = s:DoCommand('commit -F "' . a:argList[0] . '"', 'commit', '', {})
   if resultBuffer == 0
     echomsg 'No commit needed.'
   endif
@@ -221,7 +221,7 @@ function! s:cvsFunctions.Delete(argList)
     let options = a:argList
     let caption = join(a:argList, ' ')
   endif
-  return s:DoCommand(join(['remove'] + options, ' '), 'delete', caption)
+  return s:DoCommand(join(['remove'] + options, ' '), 'delete', caption, {})
 endfunction
 
 " Function: s:cvsFunctions.Diff(argList) {{{2
@@ -245,7 +245,7 @@ function! s:cvsFunctions.Diff(argList)
     let diffOptions = ['-' . cvsDiffOpt]
   endif
 
-  let resultBuffer = s:DoCommand(join(['diff'] + diffOptions + revOptions), 'diff', caption)
+  let resultBuffer = s:DoCommand(join(['diff'] + diffOptions + revOptions), 'diff', caption, {})
   if resultBuffer > 0
     set filetype=diff
   else
@@ -317,7 +317,7 @@ function! s:cvsFunctions.Log(argList)
     let caption = join(a:argList, ' ')
   endif
 
-  let resultBuffer=s:DoCommand(join(['log'] + options), 'log', caption)
+  let resultBuffer=s:DoCommand(join(['log'] + options), 'log', caption, {})
   if resultBuffer > 0
     set filetype=rcslog
   endif
@@ -326,7 +326,7 @@ endfunction
 
 " Function: s:cvsFunctions.Revert(argList) {{{2
 function! s:cvsFunctions.Revert(argList)
-  return s:DoCommand('update -C', 'revert', '')
+  return s:DoCommand('update -C', 'revert', '', {})
 endfunction
 
 " Function: s:cvsFunctions.Review(argList) {{{2
@@ -339,7 +339,7 @@ function! s:cvsFunctions.Review(argList)
     let versionOption = ' -r ' . versiontag . ' '
   endif
 
-  let resultBuffer = s:DoCommand('-q update -p' . versionOption, 'review', versiontag)
+  let resultBuffer = s:DoCommand('-q update -p' . versionOption, 'review', versiontag, {})
   if resultBuffer > 0
     let &filetype=getbufvar(b:VCSCommandOriginalBuffer, '&filetype')
   endif
@@ -348,29 +348,29 @@ endfunction
 
 " Function: s:cvsFunctions.Status(argList) {{{2
 function! s:cvsFunctions.Status(argList)
-  return s:DoCommand(join(['status'] + a:argList, ' '), 'status', join(a:argList, ' '))
+  return s:DoCommand(join(['status'] + a:argList, ' '), 'status', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:cvsFunctions.Update(argList) {{{2
 function! s:cvsFunctions.Update(argList)
-  return s:DoCommand('update', 'update', '')
+  return s:DoCommand('update', 'update', '', {})
 endfunction
 
 " Section: CVS-specific functions {{{1
 
 " Function: s:CVSEdit() {{{2
 function! s:CVSEdit()
-  return s:DoCommand('edit', 'cvsedit', '')
+  return s:DoCommand('edit', 'cvsedit', '', {})
 endfunction
 
 " Function: s:CVSEditors() {{{2
 function! s:CVSEditors()
-  return s:DoCommand('editors', 'cvseditors', '')
+  return s:DoCommand('editors', 'cvseditors', '', {})
 endfunction
 
 " Function: s:CVSUnedit() {{{2
 function! s:CVSUnedit()
-  return s:DoCommand('unedit', 'cvsunedit', '')
+  return s:DoCommand('unedit', 'cvsunedit', '', {})
 endfunction
 
 " Function: s:CVSWatch(onoff) {{{2
@@ -379,12 +379,12 @@ function! s:CVSWatch(onoff)
     echoerr 'Argument to CVSWatch must be one of [on|off|add|remove]'
     return -1
   end
-  return s:DoCommand('watch ' . tolower(a:onoff), 'cvswatch', '')
+  return s:DoCommand('watch ' . tolower(a:onoff), 'cvswatch', '', {})
 endfunction
 
 " Function: s:CVSWatchers() {{{2
 function! s:CVSWatchers()
-  return s:DoCommand('watchers', 'cvswatchers', '')
+  return s:DoCommand('watchers', 'cvswatchers', '', {})
 endfunction
 
 " Section: Command definitions {{{1

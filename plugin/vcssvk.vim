@@ -56,13 +56,13 @@ let s:svkFunctions = {}
 
 " Section: Utility functions {{{1
 
-" Function: s:DoCommand(cmd, cmdName, statusText) {{{2
+" Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the SVK executable to the
 " command argument.
 function! s:DoCommand(cmd, cmdName, statusText)
   if VCSCommandGetVCSType(expand('%')) == 'SVK'
     let fullCmd = VCSCommandGetOption('VCSCommandSVKExec', 'svk') . ' ' . a:cmd
-    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText)
+    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
   else
     throw 'SVK VCSCommand plugin called on non-SVK item.'
   endif
@@ -88,7 +88,7 @@ endfunction
 
 " Function: s:svkFunctions.Add() {{{2
 function! s:svkFunctions.Add(argList)
-  return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '))
+  return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:svkFunctions.Annotate(argList) {{{2
@@ -110,7 +110,7 @@ function! s:svkFunctions.Annotate(argList)
     let options = ' ' . caption
   endif
 
-  let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption) 
+  let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption, {})
   if resultBuffer > 0
     normal 1G2dd
     set filetype=SVKAnnotate
@@ -120,7 +120,7 @@ endfunction
 
 " Function: s:svkFunctions.Commit(argList) {{{2
 function! s:svkFunctions.Commit(argList)
-  let resultBuffer = s:DoCommand('commit -F "' . a:argList[0] . '"', 'commit', '')
+  let resultBuffer = s:DoCommand('commit -F "' . a:argList[0] . '"', 'commit', '', {})
   if resultBuffer == 0
     echomsg 'No commit needed.'
   endif
@@ -128,7 +128,7 @@ endfunction
 
 " Function: s:svkFunctions.Delete() {{{2
 function! s:svkFunctions.Delete(argList)
-  return s:DoCommand(join(['delete'] + a:argList, ' '), 'delete', join(a:argList, ' '))
+  return s:DoCommand(join(['delete'] + a:argList, ' '), 'delete', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:svkFunctions.Diff(argList) {{{2
@@ -145,7 +145,7 @@ function! s:svkFunctions.Diff(argList)
     let revOptions = a:argList
   endif
 
-  let resultBuffer = s:DoCommand(join(['diff'] + revOptions), 'diff', caption)
+  let resultBuffer = s:DoCommand(join(['diff'] + revOptions), 'diff', caption, {})
   if resultBuffer > 0
     set filetype=diff
   else
@@ -186,12 +186,12 @@ endfunction
 
 " Function: s:svkFunctions.Info(argList) {{{2
 function! s:svkFunctions.Info(argList)
-  return s:DoCommand(join(['info'] + a:argList, ' '), 'info', join(a:argList, ' '))
+  return s:DoCommand(join(['info'] + a:argList, ' '), 'info', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:svkFunctions.Lock(argList) {{{2
 function! s:svkFunctions.Lock(argList)
-  return s:DoCommand(join(['lock'] + a:argList, ' '), 'lock', join(a:argList, ' '))
+  return s:DoCommand(join(['lock'] + a:argList, ' '), 'lock', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:svkFunctions.Log() {{{2
@@ -208,13 +208,13 @@ function! s:svkFunctions.Log(argList)
     let caption = join(a:argList, ' ')
   endif
 
-  let resultBuffer = s:DoCommand(join(['log', '-v'] + options), 'log', caption)
+  let resultBuffer = s:DoCommand(join(['log', '-v'] + options), 'log', caption, {})
   return resultBuffer
 endfunction
 
 " Function: s:svkFunctions.Revert(argList) {{{2
 function! s:svkFunctions.Revert(argList)
-  return s:DoCommand('revert', 'revert', '')
+  return s:DoCommand('revert', 'revert', '', {})
 endfunction
 
 " Function: s:svkFunctions.Review(argList) {{{2
@@ -227,7 +227,7 @@ function! s:svkFunctions.Review(argList)
     let versionOption = ' -r ' . versiontag . ' '
   endif
 
-  let resultBuffer = s:DoCommand('cat' . versionOption, 'review', versiontag)
+  let resultBuffer = s:DoCommand('cat' . versionOption, 'review', versiontag, {})
   if resultBuffer > 0
     let &filetype=getbufvar(b:VCSCommandOriginalBuffer, '&filetype')
   endif
@@ -240,16 +240,16 @@ function! s:svkFunctions.Status(argList)
   if len(a:argList) == 0
     let options = a:argList
   endif
-  return s:DoCommand(join(['status'] + options, ' '), 'status', join(options, ' '))
+  return s:DoCommand(join(['status'] + options, ' '), 'status', join(options, ' '), {})
 endfunction
 
 " Function: s:svkFunctions.Unlock(argList) {{{2
 function! s:svkFunctions.Unlock(argList)
-  return s:DoCommand(join(['unlock'] + a:argList, ' '), 'unlock', join(a:argList, ' '))
+  return s:DoCommand(join(['unlock'] + a:argList, ' '), 'unlock', join(a:argList, ' '), {})
 endfunction
 " Function: s:svkFunctions.Update(argList) {{{2
 function! s:svkFunctions.Update(argList)
-  return s:DoCommand('update', 'update', '')
+  return s:DoCommand('update', 'update', '', {})
 endfunction
 
 " Section: Plugin Registration {{{1

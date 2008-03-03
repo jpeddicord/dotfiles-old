@@ -298,12 +298,22 @@ silent do VCSCommand User VCSPluginInit
 
 " Section: Script variable initialization {{{1
 
+" plugin-specific information:  {vcs -> [script, {command -> function}, {key -> mapping}]}
 let s:plugins = {}
+
+" temporary values of overridden configuration variables
 let s:optionOverrides = {}
+
+" state flag used to vary behavior of certain automated actions
 let s:isEditFileRunning = 0
 
+" commands needed to restore diff buffers to their original state
 unlet! s:vimDiffRestoreCmd
+
+" original buffer currently reflected in vimdiff windows
 unlet! s:vimDiffSourceBuffer
+
+" 
 unlet! s:vimDiffScratchList
 
 " Section: Utility functions {{{1
@@ -900,14 +910,14 @@ function! VCSCommandRegisterModule(name, path, commandMap, mappingMap)
   endif
 endfunction
 
-" Function: VCSCommandDoCommand(cmd, cmdName, statusText) {{{2
+" Function: VCSCommandDoCommand(cmd, cmdName, statusText, [options]) {{{2
 " General skeleton for VCS function execution.  The given command is executed
 " after appending the current buffer name (or substituting it for
 " <VCSCOMMANDFILE>, if such a token is present).  The output is captured in a
 " new buffer.
 " Returns: name of the new command buffer containing the command results
 
-function! VCSCommandDoCommand(cmd, cmdName, statusText)
+function! VCSCommandDoCommand(cmd, cmdName, statusText, options)
   let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
   if originalBuffer == -1 
     throw 'Original buffer no longer exists, aborting.'
