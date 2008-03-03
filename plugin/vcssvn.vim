@@ -47,15 +47,15 @@ if v:version < 700
   finish
 endif
 
-let s:save_cpo=&cpo
-set cpo&vim
-
 runtime plugin/vcscommand.vim
 
 if !executable(VCSCommandGetOption('VCSCommandSVNExec', 'svn'))
   " SVN is not installed
   finish
 endif
+
+let s:save_cpo=&cpo
+set cpo&vim
 
 " Section: Variable initialization {{{1
 
