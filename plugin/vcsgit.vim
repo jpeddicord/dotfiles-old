@@ -226,7 +226,7 @@ endfunction
 
 " Function: s:gitFunctions.Status(argList) {{{2
 function! s:gitFunctions.Status(argList)
-	throw "This command is not implemented for git.  If you have an idea for what it should do, please let me know."
+	return s:DoCommand(join(['status'] + a:argList), 'log', join(a:argList, {}))
 endfunction
 
 " Function: s:gitFunctions.Update(argList) {{{2
