@@ -66,7 +66,7 @@ let s:svnFunctions = {}
 " Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the SVN executable to the
 " command argument.
-function! s:DoCommand(cmd, cmdName, statusText)
+function! s:DoCommand(cmd, cmdName, statusText, options)
   if VCSCommandGetVCSType(expand('%')) == 'SVN'
     let fullCmd = VCSCommandGetOption('VCSCommandSVNExec', 'svn') . ' ' . a:cmd
     return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)

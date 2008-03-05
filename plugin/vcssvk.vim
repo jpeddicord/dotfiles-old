@@ -59,7 +59,7 @@ let s:svkFunctions = {}
 " Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the SVK executable to the
 " command argument.
-function! s:DoCommand(cmd, cmdName, statusText)
+function! s:DoCommand(cmd, cmdName, statusText, options)
   if VCSCommandGetVCSType(expand('%')) == 'SVK'
     let fullCmd = VCSCommandGetOption('VCSCommandSVKExec', 'svk') . ' ' . a:cmd
     return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
