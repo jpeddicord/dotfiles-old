@@ -226,7 +226,7 @@ endfunction
 
 " Function: s:gitFunctions.Status(argList) {{{2
 function! s:gitFunctions.Status(argList)
-	return s:DoCommand(join(['status'] + a:argList), 'log', join(a:argList), {})
+	return s:DoCommand(join(['status'] + a:argList), 'log', join(a:argList), {'allowNonZeroExit': 1})
 endfunction
 
 " Function: s:gitFunctions.Update(argList) {{{2
