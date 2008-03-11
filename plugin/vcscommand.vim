@@ -296,6 +296,11 @@ augroup END
 " Section: Plugin initialization {{{1
 silent do VCSCommand User VCSPluginInit
 
+" Section: Constants declaration {{{1
+
+let g:VCSCOMMAND_IDENTIFY_EXACT = 1
+let g:VCSCOMMAND_IDENTIFY_INEXACT = -1
+
 " Section: Script variable initialization {{{1
 
 " plugin-specific information:  {vcs -> [script, {command -> function}, {key -> mapping}]}
@@ -839,19 +844,38 @@ endfunction
 " Function: VCSCommandGetVCSType() {{{2
 " Sets the b:VCSCommandVCSType variable in the given buffer to the
 " appropriate source control system name.
+"
+" This uses the Identify extension function to test the buffer.  If the
+" Identify function returns VCSCOMMAND_IDENTIFY_EXACT, the match is considered
+" exact.  If the Identify function returns VCSCOMMAND_IDENTIFY_INEXACT, the
+" match is considered inexact, and is only applied if no exact match is found.
+" Multiple inexact matches is currently considered an error.
 
 function! VCSCommandGetVCSType(buffer)
 	let vcsType = getbufvar(a:buffer, 'VCSCommandVCSType')
 	if strlen(vcsType) > 0
 		return vcsType
 	endif
+	let matches = []
 	for vcsType in keys(s:plugins)
-		if s:plugins[vcsType][1].Identify(a:buffer)
-			call setbufvar(a:buffer, 'VCSCommandVCSType', vcsType)
-			return vcsType
+		let identified = s:plugins[vcsType][1].Identify(a:buffer)
+		if identified
+			if identified == g:VCSCOMMAND_IDENTIFY_EXACT
+				let matches = [vcsType]
+				break
+			else
+				let matches += [vcsType]
+			endif
 		endif
 	endfor
-	throw 'No suitable plugin'
+	if len(matches) == 1
+		call setbufvar(a:buffer, 'VCSCommandVCSType', matches[0])
+		return matches[0]
+	elseif len(matches) == 0
+		throw 'No suitable plugin'
+	else
+		throw 'Too many matching VCS:  ' . join(matches)
+	endif
 endfunction
 
 " Function: VCSCommandChdir(directory) {{{2
