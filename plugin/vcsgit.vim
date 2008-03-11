@@ -76,6 +76,8 @@ endfunction
 " Section: VCS function implementations {{{1
 
 " Function: s:gitFunctions.Identify(buffer) {{{2
+" This function only returns an inexact match due to the detection method used
+" by git, which simply traverses the directory structure upward.
 function! s:gitFunctions.Identify(buffer)
 	let oldCwd = VCSCommandChangeToCurrentFileDir(resolve(bufname(a:buffer)))
 	try
@@ -83,7 +85,7 @@ function! s:gitFunctions.Identify(buffer)
 		if(v:shell_error)
 			return 0
 		else
-			return 1
+			return g:VCSCOMMAND_IDENTIFY_INEXACT
 		endif
 	finally
 		call VCSCommandChdir(oldCwd)
