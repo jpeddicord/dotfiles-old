@@ -457,8 +457,8 @@ function! s:EditFile(command, originalBuffer, statusText)
 		let b:VCSCommandSourceFile = bufname(a:originalBuffer)
 		let b:VCSCommandVCSType = vcsType
 
-		set buftype=nofile
-		set noswapfile
+		setlocal buftype=nofile
+		setlocal noswapfile
 		let &filetype = vcsType . a:command
 
 		if a:statusText != ''
@@ -466,7 +466,7 @@ function! s:EditFile(command, originalBuffer, statusText)
 		endif
 
 		if VCSCommandGetOption('VCSCommandDeleteOnHide', 0)
-			set bufhidden=delete
+			setlocal bufhidden=delete
 		endif
 	finally
 		let s:isEditFileRunning -= 1
@@ -635,7 +635,7 @@ function! s:VCSCommit(bang, message)
 		endif
 
 		call s:EditFile('commitlog', originalBuffer, '')
-		set ft=vcscommit
+		setlocal ft=vcscommit
 
 		" Create a commit mapping.
 
@@ -646,14 +646,14 @@ function! s:VCSCommit(bang, message)
 		silent put ='VCS: To finish the commit, Type <leader>cc (or your own <Plug>VCSCommit mapping)'
 
 		if VCSCommandGetOption('VCSCommandCommitOnWrite', 1) == 1
-			set buftype=acwrite
+			setlocal buftype=acwrite
 			au VCSCommandCommit BufWriteCmd <buffer> call s:VCSFinishCommitWithBuffer()
 			silent put ='VCS: or write this buffer'
 		endif
 
 		silent put ='VCS: ----------------------------------------------------------------------'
 		$
-		set nomodified
+		setlocal nomodified
 	catch
 		call s:ReportError(v:exception)
 		return -1
@@ -665,7 +665,7 @@ endfunction
 " which removes all lines starting with 'VCS:'.
 
 function! s:VCSFinishCommitWithBuffer()
-	set nomodified
+	setlocal nomodified
 	let currentBuffer = bufnr('%') 
 	let logMessageList = getbufline('%', 1, '$')
 	call filter(logMessageList, 'v:val !~ ''^\s*VCS:''')
