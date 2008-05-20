@@ -451,7 +451,9 @@ function! s:EditFile(command, originalBuffer, statusText)
 				vert rightbelow split
 			endif
 		endif
-		edit `=resultBufferName`
+
+		enew
+
 		let b:VCSCommandCommand = a:command
 		let b:VCSCommandOriginalBuffer = a:originalBuffer
 		let b:VCSCommandSourceFile = bufname(a:originalBuffer)
@@ -468,10 +470,10 @@ function! s:EditFile(command, originalBuffer, statusText)
 		if VCSCommandGetOption('VCSCommandDeleteOnHide', 0)
 			setlocal bufhidden=delete
 		endif
+		silent file `=resultBufferName`
 	finally
 		let s:isEditFileRunning -= 1
 	endtry
-
 endfunction
 
 " Function: s:SetupBuffer() {{{2
