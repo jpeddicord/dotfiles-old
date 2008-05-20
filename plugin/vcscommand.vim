@@ -470,7 +470,7 @@ function! s:EditFile(command, originalBuffer, statusText)
 		if VCSCommandGetOption('VCSCommandDeleteOnHide', 0)
 			setlocal bufhidden=delete
 		endif
-		silent file `=resultBufferName`
+		silent noautocmd file `=resultBufferName`
 	finally
 		let s:isEditFileRunning -= 1
 	endtry
