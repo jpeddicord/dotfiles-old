@@ -229,7 +229,7 @@ function! s:gitFunctions.Review(argList)
 	endtry
 
 	let prefix = substitute(prefix, '\n$', '', '')
-	let blob = revision . ':' . prefix . '<VCSCOMMANDFILE>' 
+	let blob = '"' . revision . ':' . prefix . '<VCSCOMMANDFILE>"'
 	let resultBuffer = s:DoCommand('show ' . blob, 'review', revision, {})
 	if resultBuffer > 0
 		let &filetype=getbufvar(b:VCSCommandOriginalBuffer, '&filetype')
