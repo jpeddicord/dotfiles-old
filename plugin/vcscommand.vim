@@ -755,7 +755,7 @@ function! s:VCSVimDiff(...)
 				let s:vimDiffScratchList = [resultBuffer]
 				" If no split method is defined, cheat, and set it to vertical.
 				try
-					call s:OverrideOption('VCSCommandSplit', VCSCommandGetOption('VCSCommandDiffSplit', VCSCommandGetOption('VCSCommandSplit', 'vertical')))
+					call s:OverrideOption('VCSCommandSplit', VCSCommandGetOption('VCSCommandDiffSplit', VCSCommandGetOption('VCSCommandSplit', substitute(&diffopt, '.*\(horizontal\|vertical\).*', '\1', ''))))
 					let resultBuffer = s:plugins[vcsType][1].Review([a:2])
 				finally
 					call s:OverrideOption('VCSCommandSplit')
@@ -772,7 +772,7 @@ function! s:VCSVimDiff(...)
 				call s:OverrideOption('VCSCommandEdit', 'split')
 				try
 					" Force splitting behavior, otherwise why use vimdiff?
-					call s:OverrideOption('VCSCommandSplit', VCSCommandGetOption('VCSCommandDiffSplit', VCSCommandGetOption('VCSCommandSplit', 'vertical')))
+					call s:OverrideOption('VCSCommandSplit', VCSCommandGetOption('VCSCommandDiffSplit', VCSCommandGetOption('VCSCommandSplit', substitute(&diffopt, '.*\(horizontal\|vertical\).*', '\1', ''))))
 					try
 						if(a:0 == 0)
 							let resultBuffer = s:plugins[vcsType][1].Review([])
