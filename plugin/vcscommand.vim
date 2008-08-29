@@ -187,6 +187,11 @@
 "   This variable overrides the VCSCommandSplit variable, but only for buffers
 "   created with VCSVimDiff.
 "
+" VCSCommandDisableAll
+"   This variable, if set, prevents the plugin or any extensions from loading
+"   at all.  This is useful when a single runtime distribution is used on
+"   multiple systems with varying versions.
+"
 " VCSCommandDisableMappings
 "   This variable, if set to a non-zero value, prevents the default command
 "   mappings from being set.
@@ -281,6 +286,10 @@
 " loaded_VCSCommand is set to 1 when the initialization begins, and 2 when it
 " completes.  This allows various actions to only be taken by functions after
 " system initialization.
+
+if exists('VCSCommandDisableAll')
+	finish
+endif
 
 if exists('loaded_VCSCommand')
 	finish
