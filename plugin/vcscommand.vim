@@ -780,10 +780,10 @@ function! s:VCSVimDiff(...)
 				call s:WipeoutCommandBuffers(s:vimDiffSourceBuffer, 'vimdiff')
 			endif
 
-			let orientation = substitute(&diffopt, '.*\(horizontal\|vertical\).*', '\1', '')
-			if !orientation
-				let orientation = 'vertical'
-			endif
+			let orientation = &diffopt =~ 'horizontal' ? 'horizontal' : 'vertical'
+			let orientation = VCSCommandGetOption('VCSCommandSplit', orientation)
+			let orientation = VCSCommandGetOption('VCSCommandDiffSplit', orientation)
+
 			" Split and diff
 			if(a:0 == 2)
 				" Reset the vimdiff system, as 2 explicit versions were provided.
@@ -800,7 +800,7 @@ function! s:VCSVimDiff(...)
 				let s:vimDiffScratchList = [resultBuffer]
 				" If no split method is defined, cheat, and set it to vertical.
 				try
-					call s:OverrideOption('VCSCommandSplit', VCSCommandGetOption('VCSCommandDiffSplit', VCSCommandGetOption('VCSCommandSplit', orientation)))
+					call s:OverrideOption('VCSCommandSplit', orientation)
 					let resultBuffer = s:plugins[vcsType][1].Review([a:2])
 				finally
 					call s:OverrideOption('VCSCommandSplit')
@@ -817,7 +817,7 @@ function! s:VCSVimDiff(...)
 				call s:OverrideOption('VCSCommandEdit', 'split')
 				try
 					" Force splitting behavior, otherwise why use vimdiff?
-					call s:OverrideOption('VCSCommandSplit', VCSCommandGetOption('VCSCommandDiffSplit', VCSCommandGetOption('VCSCommandSplit', orientation)))
+					call s:OverrideOption('VCSCommandSplit', orientation)
 					try
 						if(a:0 == 0)
 							let resultBuffer = s:plugins[vcsType][1].Review([])
