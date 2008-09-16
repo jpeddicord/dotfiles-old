@@ -539,7 +539,8 @@ may occur.
 If set to 'horizontal', the resulting windows will be on stacked on top of
 one another.  If set to 'vertical', the resulting windows will be
 side-by-side.  If not set, it defaults to 'horizontal' for all but
-VCSVimDiff windows.
+VCSVimDiff windows.  VCSVimDiff windows default to the user's 'diffopt'
+setting, if set, otherwise 'vertical'.
 
 VCSCommandSVKExec				*VCSCommandSVKExec*
 
