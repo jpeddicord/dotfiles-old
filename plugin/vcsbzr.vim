@@ -5,7 +5,7 @@
 " Version:       VCS development
 " Maintainer:    Bob Hiestand <bob.hiestand@gmail.com>
 " License:
-" Copyright (c) 2007 Bob Hiestand
+" Copyright (c) 2009 Bob Hiestand
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
 " of this software and associated documentation files (the "Software"), to
@@ -59,10 +59,10 @@ let s:bzrFunctions = {}
 " Function: s:DoCommand(cmd, cmdName, statusText) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the BZR executable to the
 " command argument.
-function! s:DoCommand(cmd, cmdName, statusText)
+function! s:DoCommand(cmd, cmdName, statusText, options)
   if VCSCommandGetVCSType(expand('%')) == 'BZR'
     let fullCmd = VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' ' . a:cmd
-    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, {'allowNonZeroExit': 1})
+    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
   else
     throw 'BZR VCSCommand plugin called on non-BZR item.'
   endif
@@ -83,7 +83,7 @@ endfunction
 
 " Function: s:bzrFunctions.Add() {{{2
 function! s:bzrFunctions.Add(argList)
-  return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '))
+  return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:bzrFunctions.Annotate(argList) {{{2
@@ -105,7 +105,7 @@ function! s:bzrFunctions.Annotate(argList)
     let options = ' ' . caption
   endif
 
-  let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption)
+  let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption, {})
   if resultBuffer > 0
     normal 1G2dd
     set filetype=BZRAnnotate
@@ -115,7 +115,7 @@ endfunction
 
 " Function: s:bzrFunctions.Commit(argList) {{{2
 function! s:bzrFunctions.Commit(argList)
-  let resultBuffer = s:DoCommand('commit -F "' . a:argList[0] . '"', 'commit', '')
+  let resultBuffer = s:DoCommand('commit -F "' . a:argList[0] . '"', 'commit', '', {})
   if resultBuffer == 0
     echomsg 'No commit needed.'
   endif
@@ -123,7 +123,7 @@ endfunction
 
 " Function: s:bzrFunctions.Delete() {{{2
 function! s:bzrFunctions.Delete(argList)
-  return s:DoCommand(join(['rm'] + a:argList, ' '), 'rm', join(a:argList, ' '))
+  return s:DoCommand(join(['rm'] + a:argList, ' '), 'rm', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:bzrFunctions.Diff(argList) {{{2
@@ -140,7 +140,7 @@ function! s:bzrFunctions.Diff(argList)
     let revOptions = a:argList
   endif
 
-  let resultBuffer = s:DoCommand(join(['diff'] + revOptions), 'diff', caption)
+  let resultBuffer = s:DoCommand(join(['diff'] + revOptions), 'diff', caption, {'allowNonZeroExit': 1})
   if resultBuffer > 0
     set filetype=diff
   else
@@ -182,7 +182,7 @@ endfunction
 
 " Function: s:bzrFunctions.Info(argList) {{{2
 function! s:bzrFunctions.Info(argList)
-  return s:DoCommand(join(['version-info'] + a:argList, ' '), 'version-info', join(a:argList, ' '))
+  return s:DoCommand(join(['version-info'] + a:argList, ' '), 'version-info', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:bzrFunctions.Lock(argList) {{{2
@@ -204,13 +204,13 @@ function! s:bzrFunctions.Log(argList)
     let caption = join(a:argList, ' ')
   endif
 
-  let resultBuffer = s:DoCommand(join(['log', '-v'] + options), 'log', caption)
+  let resultBuffer = s:DoCommand(join(['log', '-v'] + options), 'log', caption, {})
   return resultBuffer
 endfunction
 
 " Function: s:bzrFunctions.Revert(argList) {{{2
 function! s:bzrFunctions.Revert(argList)
-  return s:DoCommand('revert', 'revert', '')
+  return s:DoCommand('revert', 'revert', '', {})
 endfunction
 
 " Function: s:bzrFunctions.Review(argList) {{{2
@@ -223,7 +223,7 @@ function! s:bzrFunctions.Review(argList)
     let versionOption = ' -r ' . versiontag . ' '
   endif
 
-  let resultBuffer = s:DoCommand('cat' . versionOption, 'review', versiontag)
+  let resultBuffer = s:DoCommand('cat' . versionOption, 'review', versiontag, {})
   if resultBuffer > 0
     let &filetype=getbufvar(b:VCSCommandOriginalBuffer, '&filetype')
   endif
@@ -236,7 +236,7 @@ function! s:bzrFunctions.Status(argList)
   if len(a:argList) == 0
     let options = a:argList
   endif
-  return s:DoCommand(join(['status'] + options, ' '), 'status', join(options, ' '))
+  return s:DoCommand(join(['status'] + options, ' '), 'status', join(options, ' '), {})
 endfunction
 
 " Function: s:bzrFunctions.Unlock(argList) {{{2
@@ -245,7 +245,7 @@ function! s:bzrFunctions.Unlock(argList)
 endfunction
 " Function: s:bzrFunctions.Update(argList) {{{2
 function! s:bzrFunctions.Update(argList)
-  return s:DoCommand('update', 'update', '')
+  return s:DoCommand('update', 'update', '', {})
 endfunction
 
 " Section: Plugin Registration {{{1
