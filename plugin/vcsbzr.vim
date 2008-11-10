@@ -62,7 +62,7 @@ let s:bzrFunctions = {}
 function! s:DoCommand(cmd, cmdName, statusText)
   if VCSCommandGetVCSType(expand('%')) == 'BZR'
     let fullCmd = VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' ' . a:cmd
-    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, {})
+    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, {'allowNonZeroExit': 1})
   else
     throw 'BZR VCSCommand plugin called on non-BZR item.'
   endif
