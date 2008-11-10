@@ -62,7 +62,7 @@ let s:bzrFunctions = {}
 function! s:DoCommand(cmd, cmdName, statusText)
   if VCSCommandGetVCSType(expand('%')) == 'BZR'
     let fullCmd = VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' ' . a:cmd
-    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText)
+    return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, {})
   else
     throw 'BZR VCSCommand plugin called on non-BZR item.'
   endif
@@ -73,12 +73,7 @@ endfunction
 " Function: s:bzrFunctions.Identify(buffer) {{{2
 function! s:bzrFunctions.Identify(buffer)
   let fileName = resolve(bufname(a:buffer))
-  if isdirectory(fileName)
-    let directoryName = fileName
-  else
-    let directoryName = fnamemodify(fileName, ':p:h')
-  endif
-  let statusText = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' info "' . directoryName . '"')
+  let statusText = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' info "' . fileName . '"')
   if(v:shell_error)
     return 0
   else
@@ -110,7 +105,7 @@ function! s:bzrFunctions.Annotate(argList)
     let options = ' ' . caption
   endif
 
-  let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption) 
+  let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption)
   if resultBuffer > 0
     normal 1G2dd
     set filetype=BZRAnnotate
@@ -134,7 +129,7 @@ endfunction
 " Function: s:bzrFunctions.Diff(argList) {{{2
 function! s:bzrFunctions.Diff(argList)
   if len(a:argList) == 0
-    let revOptions = [] 
+    let revOptions = []
     let caption = ''
   elseif len(a:argList) <= 2 && match(a:argList, '^-') == -1
     let revOptions = ['-r' . join(a:argList, '..')]
@@ -187,12 +182,12 @@ endfunction
 
 " Function: s:bzrFunctions.Info(argList) {{{2
 function! s:bzrFunctions.Info(argList)
-  return s:DoCommand(join(['info'] + a:argList, ' '), 'info', join(a:argList, ' '))
+  return s:DoCommand(join(['version-info'] + a:argList, ' '), 'version-info', join(a:argList, ' '))
 endfunction
 
 " Function: s:bzrFunctions.Lock(argList) {{{2
 function! s:bzrFunctions.Lock(argList)
-  return s:DoCommand(join(['lock'] + a:argList, ' '), 'lock', join(a:argList, ' '))
+  echomsg 'bzr lock is not necessary'
 endfunction
 
 " Function: s:bzrFunctions.Log() {{{2
@@ -246,7 +241,7 @@ endfunction
 
 " Function: s:bzrFunctions.Unlock(argList) {{{2
 function! s:bzrFunctions.Unlock(argList)
-  return s:DoCommand(join(['unlock'] + a:argList, ' '), 'unlock', join(a:argList, ' '))
+  echomsg 'bzr unlock is not necessary'
 endfunction
 " Function: s:bzrFunctions.Update(argList) {{{2
 function! s:bzrFunctions.Update(argList)
