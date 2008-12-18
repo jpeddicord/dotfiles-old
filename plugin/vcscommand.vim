@@ -250,6 +250,14 @@
 "   side-by-side.  If not set, it defaults to 'horizontal' for all but
 "   VCSVimDiff windows.
 "
+" VCSCommandVCSTypeOverride
+"   This variable allows the VCS type detection to be overridden on a
+"   path-by-path basis.  The value of this variable is expected to be a List
+"   of Lists.  Each high-level List item is a List containing two elements.
+"   The first element is a regular expression that will be matched against the
+"   full file name of a given buffer.  If it matches, the second element will
+"   be used as the VCS type.
+"
 " Event documentation {{{2
 "   For additional customization, VCSCommand.vim uses User event autocommand
 "   hooks.  Each event is in the VCSCommand group, and different patterns
