@@ -902,6 +902,15 @@ function! VCSCommandGetVCSType(buffer)
 	if strlen(vcsType) > 0
 		return vcsType
 	endif
+	if exists("g:VCSCommandVCSTypeOverride")
+		let fullpath = fnamemodify(bufname(a:buffer), ':p')
+		for [path, vcsType] in g:VCSCommandVCSTypeOverride
+			if match(fullpath, path) > -1
+				call setbufvar(a:buffer, 'VCSCommandVCSType', vcsType)
+				return vcsType
+			endif
+		endfor
+	endif
 	let matches = []
 	for vcsType in keys(s:plugins)
 		let identified = s:plugins[vcsType][1].Identify(a:buffer)
