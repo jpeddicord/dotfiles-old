@@ -425,7 +425,6 @@ for [pluginName, commandText, shortCut] in mappingInfo
 endfor
 
 " Section: Menu items {{{1
-silent! aunmenu Plugin.VCS.CVS
 amenu <silent> &Plugin.VCS.CVS.&Edit       <Plug>CVSEdit
 amenu <silent> &Plugin.VCS.CVS.Ed&itors    <Plug>CVSEditors
 amenu <silent> &Plugin.VCS.CVS.Unedi&t     <Plug>CVSUnedit
