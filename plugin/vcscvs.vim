@@ -112,7 +112,17 @@ let s:cvsFunctions = {}
 function! s:DoCommand(cmd, cmdName, statusText, options)
 	if VCSCommandGetVCSType(expand('%')) == 'CVS'
 		let fullCmd = VCSCommandGetOption('VCSCommandCVSExec', 'cvs') . ' ' . a:cmd
-		return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
+		let ret = VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
+
+		if ret > 0
+			if getline(line('$')) =~ '^cvs \w\+: closing down connection'
+				$d
+				1
+			endif
+
+		endif
+
+		return ret
 	else
 		throw 'CVS VCSCommand plugin called on non-CVS item.'
 	endif
