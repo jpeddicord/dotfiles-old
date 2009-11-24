@@ -67,12 +67,19 @@ let s:svnFunctions = {}
 
 " Section: Utility functions {{{1
 
+" Function: s:Executable() {{{2
+" Returns the executable used to invoke git suitable for use in a shell
+" command.
+function! s:Executable()
+	return shellescape(VCSCommandGetOption('VCSCommandSVNExec', 'svn'))
+endfunction
+
 " Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the SVN executable to the
 " command argument.
 function! s:DoCommand(cmd, cmdName, statusText, options)
 	if VCSCommandGetVCSType(expand('%')) == 'SVN'
-		let fullCmd = VCSCommandGetOption('VCSCommandSVNExec', 'svn') . ' ' . a:cmd
+		let fullCmd = s:Executable() . ' ' . a:cmd
 		return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
 	else
 		throw 'SVN VCSCommand plugin called on non-SVN item.'
@@ -193,7 +200,7 @@ endfunction
 function! s:svnFunctions.GetBufferInfo()
 	let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
 	let fileName = bufname(originalBuffer)
-	let statusText = system(VCSCommandGetOption('VCSCommandSVNExec', 'svn') . ' status --non-interactive -vu -- "' . fileName . '"')
+	let statusText = system(s:Executable() . ' status --non-interactive -vu -- "' . fileName . '"')
 	if(v:shell_error)
 		return []
 	endif

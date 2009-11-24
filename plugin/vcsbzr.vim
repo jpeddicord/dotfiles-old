@@ -60,12 +60,19 @@ let s:bzrFunctions = {}
 
 " Section: Utility functions {{{1
 
+" Function: s:Executable() {{{2
+" Returns the executable used to invoke bzr suitable for use in a shell
+" command.
+function! s:Executable()
+	return shellescape(VCSCommandGetOption('VCSCommandBZRExec', 'bzr'))
+endfunction
+
 " Function: s:DoCommand(cmd, cmdName, statusText) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the BZR executable to the
 " command argument.
 function! s:DoCommand(cmd, cmdName, statusText, options)
   if VCSCommandGetVCSType(expand('%')) == 'BZR'
-    let fullCmd = VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' ' . a:cmd
+    let fullCmd = s:Executable() . ' ' . a:cmd
     return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
   else
     throw 'BZR VCSCommand plugin called on non-BZR item.'
@@ -77,7 +84,7 @@ endfunction
 " Function: s:bzrFunctions.Identify(buffer) {{{2
 function! s:bzrFunctions.Identify(buffer)
   let fileName = resolve(bufname(a:buffer))
-  let statusText = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' info -- "' . fileName . '"')
+  let statusText = system(s:Executable() . ' info -- "' . fileName . '"')
   if(v:shell_error)
     return 0
   else
@@ -162,8 +169,8 @@ endfunction
 function! s:bzrFunctions.GetBufferInfo()
   let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
   let fileName = resolve(bufname(originalBuffer))
-  let statusText = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' status -S -- "' . fileName . '"')
-  let revision = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' revno -- "' . fileName . '"')
+  let statusText = system(s:Executable() . ' status -S -- "' . fileName . '"')
+  let revision = system(s:Executable() . ' revno -- "' . fileName . '"')
   if(v:shell_error)
     return []
   endif

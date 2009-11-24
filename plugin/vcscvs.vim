@@ -106,12 +106,19 @@ let s:cvsFunctions = {}
 
 " Section: Utility functions {{{1
 
+" Function: s:Executable() {{{2
+" Returns the executable used to invoke cvs suitable for use in a shell
+" command.
+function! s:Executable()
+	return shellescape(VCSCommandGetOption('VCSCommandCVSExec', 'cvs'))
+endfunction
+
 " Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the CVS executable to the
 " command argument.
 function! s:DoCommand(cmd, cmdName, statusText, options)
 	if VCSCommandGetVCSType(expand('%')) == 'CVS'
-		let fullCmd = VCSCommandGetOption('VCSCommandCVSExec', 'cvs') . ' ' . a:cmd
+		let fullCmd = s:Executable() . ' ' . a:cmd
 		let ret = VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
 
 		if ret > 0
@@ -294,7 +301,7 @@ function! s:cvsFunctions.GetBufferInfo()
 	endif
 	let oldCwd = VCSCommandChangeToCurrentFileDir(fileName)
 	try
-		let statusText=system(VCSCommandGetOption('VCSCommandCVSExec', 'cvs') . ' status -- "' . realFileName . '"')
+		let statusText=system(s:Executable() . ' status -- "' . realFileName . '"')
 		if(v:shell_error)
 			return []
 		endif

@@ -67,12 +67,19 @@ let s:hgFunctions = {}
 
 " Section: Utility functions {{{1
 
+" Function: s:Executable() {{{2
+" Returns the executable used to invoke hg suitable for use in a shell
+" command.
+function! s:Executable()
+	return shellescape(VCSCommandGetOption('VCSCommandHGExec', 'hg'))
+endfunction
+
 " Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the HG executable to the
 " command argument.
 function! s:DoCommand(cmd, cmdName, statusText, options)
 	if VCSCommandGetVCSType(expand('%')) == 'HG'
-		let fullCmd = VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' ' . a:cmd
+		let fullCmd = s:Executable() . ' ' . a:cmd
 		return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
 	else
 		throw 'HG VCSCommand plugin called on non-HG item.'
@@ -83,7 +90,7 @@ endfunction
 
 " Function: s:hgFunctions.Identify(buffer) {{{2
 function! s:hgFunctions.Identify(buffer)
-	call system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' root')
+	call system(s:Executable() . ' root')
 	if(v:shell_error)
 		return 0
 	else
@@ -188,7 +195,7 @@ endfunction
 function! s:hgFunctions.GetBufferInfo()
 	let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
 	let fileName = bufname(originalBuffer)
-	let statusText = system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' status -- "' . fileName . '"')
+	let statusText = system(s:Executable() . ' status -- "' . fileName . '"')
 	if(v:shell_error)
 		return []
 	endif
@@ -198,10 +205,10 @@ function! s:hgFunctions.GetBufferInfo()
 		return ['Unknown']
 	endif
 
-	let parentsText = system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' parents -- "' . fileName . '"')
+	let parentsText = system(s:Executable() . ' parents -- "' . fileName . '"')
 	let [revision] = matchlist(parentsText, '^changeset:\s\+\(\S\+\)\n')[1]
 
-	let logText = system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' log -- "' . fileName . '"')
+	let logText = system(s:Executable() . ' log -- "' . fileName . '"')
 	let [repository] = matchlist(logText, '^changeset:\s\+\(\S\+\)\n')[1]
 
 	if revision == ''

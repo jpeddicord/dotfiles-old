@@ -60,12 +60,19 @@ let s:svkFunctions = {}
 
 " Section: Utility functions {{{1
 
+" Function: s:Executable() {{{2
+" Returns the executable used to invoke SVK suitable for use in a shell
+" command.
+function! s:Executable()
+	return shellescape(VCSCommandGetOption('VCSCommandSVKExec', 'svk'))
+endfunction
+
 " Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
 " Wrapper to VCSCommandDoCommand to add the name of the SVK executable to the
 " command argument.
 function! s:DoCommand(cmd, cmdName, statusText, options)
 	if VCSCommandGetVCSType(expand('%')) == 'SVK'
-		let fullCmd = VCSCommandGetOption('VCSCommandSVKExec', 'svk') . ' ' . a:cmd
+		let fullCmd = s:Executable() . ' ' . a:cmd
 		return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
 	else
 		throw 'SVK VCSCommand plugin called on non-SVK item.'
@@ -82,7 +89,7 @@ function! s:svkFunctions.Identify(buffer)
 	else
 		let directoryName = fnamemodify(fileName, ':p:h')
 	endif
-	let statusText = system(VCSCommandGetOption('VCSCommandSVKExec', 'svk') . ' info -- "' . directoryName . '"')
+	let statusText = system(s:Executable() . ' info -- "' . directoryName . '"')
 	if(v:shell_error)
 		return 0
 	else
@@ -167,7 +174,7 @@ endfunction
 function! s:svkFunctions.GetBufferInfo()
 	let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
 	let fileName = resolve(bufname(originalBuffer))
-	let statusText = system(VCSCommandGetOption('VCSCommandSVKExec', 'svk') . ' status -v -- "' . fileName . '"')
+	let statusText = system(s:Executable() . ' status -v -- "' . fileName . '"')
 	if(v:shell_error)
 		return []
 	endif
