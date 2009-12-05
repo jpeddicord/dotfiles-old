@@ -248,6 +248,9 @@ function! s:bzrFunctions.Update(argList)
   return s:DoCommand('update', 'update', '', {})
 endfunction
 
+" Annotate setting {{{2
+let s:bzrFunctions.AnnotateSplitRegex = '^[^|]\+ | '
+
 " Section: Plugin Registration {{{1
 call VCSCommandRegisterModule('BZR', expand('<sfile>'), s:bzrFunctions, [])
 
