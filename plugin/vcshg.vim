@@ -188,7 +188,7 @@ endfunction
 function! s:hgFunctions.GetBufferInfo()
 	let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
 	let fileName = bufname(originalBuffer)
-	let statusText = system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' status "' . fileName . '"')
+	let statusText = system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' status -- "' . fileName . '"')
 	if(v:shell_error)
 		return []
 	endif
@@ -198,10 +198,10 @@ function! s:hgFunctions.GetBufferInfo()
 		return ['Unknown']
 	endif
 
-	let parentsText = system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' parents "' . fileName . '"')
+	let parentsText = system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' parents -- "' . fileName . '"')
 	let [revision] = matchlist(parentsText, '^changeset:\s\+\(\S\+\)\n')[1]
 
-	let logText = system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' log "' . fileName . '"')
+	let logText = system(VCSCommandGetOption('VCSCommandHGExec', 'hg') . ' log -- "' . fileName . '"')
 	let [repository] = matchlist(logText, '^changeset:\s\+\(\S\+\)\n')[1]
 
 	if revision == ''

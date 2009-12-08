@@ -77,7 +77,7 @@ endfunction
 " Function: s:bzrFunctions.Identify(buffer) {{{2
 function! s:bzrFunctions.Identify(buffer)
   let fileName = resolve(bufname(a:buffer))
-  let statusText = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' info "' . fileName . '"')
+  let statusText = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' info -- "' . fileName . '"')
   if(v:shell_error)
     return 0
   else
@@ -162,8 +162,8 @@ endfunction
 function! s:bzrFunctions.GetBufferInfo()
   let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
   let fileName = resolve(bufname(originalBuffer))
-  let statusText = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' status -S "' . fileName . '"')
-  let revision = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' revno "' . fileName . '"')
+  let statusText = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' status -S -- "' . fileName . '"')
+  let revision = system(VCSCommandGetOption('VCSCommandBZRExec', 'bzr') . ' revno -- "' . fileName . '"')
   if(v:shell_error)
     return []
   endif

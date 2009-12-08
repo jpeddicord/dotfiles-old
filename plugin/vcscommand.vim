@@ -1085,7 +1085,7 @@ function! VCSCommandDoCommand(cmd, cmdName, statusText, options)
 	if match(a:cmd, '<VCSCOMMANDFILE>') > 0
 		let fullCmd = substitute(a:cmd, '<VCSCOMMANDFILE>', fileName, 'g')
 	else
-		let fullCmd = a:cmd . ' "' . fileName . '"'
+		let fullCmd = a:cmd . ' -- "' . fileName . '"'
 	endif
 
 	" Change to the directory of the current buffer.  This is done for CVS, but
