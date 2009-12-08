@@ -263,6 +263,6 @@ endfunction
 let s:bzrFunctions.AnnotateSplitRegex = '^[^|]\+ | '
 
 " Section: Plugin Registration {{{1
-call VCSCommandRegisterModule('BZR', expand('<sfile>'), s:bzrFunctions, [])
+let s:VCSCommandUtility = VCSCommandRegisterModule('BZR', expand('<sfile>'), s:bzrFunctions, [])
 
 let &cpo = s:save_cpo

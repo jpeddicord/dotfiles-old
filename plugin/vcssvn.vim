@@ -294,6 +294,6 @@ endfunction
 let s:svnFunctions.AnnotateSplitRegex = '\s\+\S\+\s\+\S\+ '
 
 " Section: Plugin Registration {{{1
-call VCSCommandRegisterModule('SVN', expand('<sfile>'), s:svnFunctions, [])
+let s:VCSCommandUtility = VCSCommandRegisterModule('SVN', expand('<sfile>'), s:svnFunctions, [])
 
 let &cpo = s:save_cpo

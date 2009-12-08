@@ -277,6 +277,6 @@ function! s:hgFunctions.Update(argList)
 endfunction
 
 " Section: Plugin Registration {{{1
-call VCSCommandRegisterModule('HG', expand('<sfile>'), s:hgFunctions, [])
+let s:VCSCommandUtility = VCSCommandRegisterModule('HG', expand('<sfile>'), s:hgFunctions, [])
 
 let &cpo = s:save_cpo

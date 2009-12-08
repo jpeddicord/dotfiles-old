@@ -262,6 +262,6 @@ endfunction
 let s:gitFunctions.AnnotateSplitRegex = ') '
 
 " Section: Plugin Registration {{{1
-call VCSCommandRegisterModule('git', expand('<sfile>'), s:gitFunctions, [])
+let s:VCSCommandUtility = VCSCommandRegisterModule('git', expand('<sfile>'), s:gitFunctions, [])
 
 let &cpo = s:save_cpo

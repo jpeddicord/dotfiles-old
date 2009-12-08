@@ -334,6 +334,9 @@ let g:VCSCOMMAND_IDENTIFY_INEXACT = -1
 
 " Section: Script variable initialization {{{1
 
+" Hidden functions for use by extensions
+let s:VCSCommandUtility = {}
+
 " plugin-specific information:  {vcs -> [script, {command -> function}, {key -> mapping}]}
 let s:plugins = {}
 
@@ -1045,6 +1048,7 @@ function! VCSCommandRegisterModule(name, path, commandMap, mappingMap)
 			call s:CreateMapping(shortcut, expansion, a:name . " extension mapping " . shortcut)
 		endfor
 	endif
+	return s:VCSCommandUtility
 endfunction
 
 " Function: VCSCommandDoCommand(cmd, cmdName, statusText, [options]) {{{2

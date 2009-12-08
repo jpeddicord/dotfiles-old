@@ -455,6 +455,6 @@ amenu <silent> &Plugin.VCS.CVS.WatchOff    <Plug>CVSWatchOff
 amenu <silent> &Plugin.VCS.CVS.WatchRemove <Plug>CVSWatchRemove
 
 " Section: Plugin Registration {{{1
-call VCSCommandRegisterModule('CVS', expand('<sfile>'), s:cvsFunctions, s:cvsExtensionMappings)
+let s:VCSCommandUtility = VCSCommandRegisterModule('CVS', expand('<sfile>'), s:cvsFunctions, s:cvsExtensionMappings)
 
 let &cpo = s:save_cpo

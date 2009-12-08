@@ -264,6 +264,6 @@ function! s:svkFunctions.Update(argList)
 endfunction
 
 " Section: Plugin Registration {{{1
-call VCSCommandRegisterModule('SVK', expand('<sfile>'), s:svkFunctions, [])
+let s:VCSCommandUtility = VCSCommandRegisterModule('SVK', expand('<sfile>'), s:svkFunctions, [])
 
 let &cpo = s:save_cpo
