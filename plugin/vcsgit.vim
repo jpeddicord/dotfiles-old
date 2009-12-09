@@ -116,7 +116,7 @@ function! s:gitFunctions.Annotate(argList)
 		let options = join(a:argList, ' ')
 	endif
 
-	let resultBuffer = s:DoCommand('blame ' . options . ' -- ', 'annotate', options, {})
+	let resultBuffer = s:DoCommand('blame ' . options, 'annotate', options, {})
 	if resultBuffer > 0
 		normal 1G
 		set filetype=gitAnnotate
