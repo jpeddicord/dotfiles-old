@@ -32,12 +32,11 @@
 " directory and all subdirectories associated with the current buffer).  The
 " output of the commands is captured in a new scratch window.
 "
-" This plugin needs additional extension plugins, each  specific to a source
-" control system, to function.  Those plugins should be placed in a
-" subdirectory of the standard plugin directory named 'vcscommand'.  Several
-" options include the name of the version control system in the option name.
-" Such options use the placeholder text '{VCSType}', which would be replaced
-" in actual usage with 'CVS' or 'SVN', for instance.
+" This plugin needs additional extension plugins, each specific to a source
+" control system, to function.  Several options include the name of the
+" version control system in the option name.  Such options use the placeholder
+" text '{VCSType}', which would be replaced in actual usage with 'CVS' or
+" 'SVN', for instance.
 "
 " Command documentation {{{2
 "
