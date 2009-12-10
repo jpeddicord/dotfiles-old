@@ -92,7 +92,7 @@ endfunction
 function! s:gitFunctions.Identify(buffer)
 	let oldCwd = VCSCommandChangeToCurrentFileDir(resolve(bufname(a:buffer)))
 	try
-		call system(s:Executable() . ' rev-parse --is-inside-work-tree')
+		call s:VCSCommandUtility.system(s:Executable() . ' rev-parse --is-inside-work-tree')
 		if(v:shell_error)
 			return 0
 		else
@@ -184,7 +184,7 @@ endfunction
 function! s:gitFunctions.GetBufferInfo()
 	let oldCwd = VCSCommandChangeToCurrentFileDir(resolve(bufname('%')))
 	try
-		let branch = substitute(system(s:Executable() . ' symbolic-ref -q HEAD'), '\n$', '', '')
+		let branch = substitute(s:VCSCommandUtility.system(s:Executable() . ' symbolic-ref -q HEAD'), '\n$', '', '')
 		if v:shell_error
 			let branch = 'DETACHED'
 		else
@@ -197,7 +197,7 @@ function! s:gitFunctions.GetBufferInfo()
 			if method != ''
 				let method = ' --' . method
 			endif
-			let tag = substitute(system(s:Executable() . ' describe' . method), '\n$', '', '')
+			let tag = substitute(s:VCSCommandUtility.system(s:Executable() . ' describe' . method), '\n$', '', '')
 			if !v:shell_error
 				call add(info, tag)
 				break
@@ -234,7 +234,7 @@ function! s:gitFunctions.Review(argList)
 
 	let oldCwd = VCSCommandChangeToCurrentFileDir(resolve(bufname(VCSCommandGetOriginalBuffer('%'))))
 	try
-		let prefix = system(s:Executable() . ' rev-parse --show-prefix')
+		let prefix = s:VCSCommandUtility.system(s:Executable() . ' rev-parse --show-prefix')
 	finally
 		call VCSCommandChdir(oldCwd)
 	endtry

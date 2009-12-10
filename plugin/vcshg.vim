@@ -90,7 +90,7 @@ endfunction
 
 " Function: s:hgFunctions.Identify(buffer) {{{2
 function! s:hgFunctions.Identify(buffer)
-	call system(s:Executable() . ' root')
+	call s:VCSCommandUtility.system(s:Executable() . ' root')
 	if(v:shell_error)
 		return 0
 	else
@@ -195,7 +195,7 @@ endfunction
 function! s:hgFunctions.GetBufferInfo()
 	let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
 	let fileName = bufname(originalBuffer)
-	let statusText = system(s:Executable() . ' status -- "' . fileName . '"')
+	let statusText = s:VCSCommandUtility.system(s:Executable() . ' status -- "' . fileName . '"')
 	if(v:shell_error)
 		return []
 	endif
@@ -205,10 +205,10 @@ function! s:hgFunctions.GetBufferInfo()
 		return ['Unknown']
 	endif
 
-	let parentsText = system(s:Executable() . ' parents -- "' . fileName . '"')
+	let parentsText = s:VCSCommandUtility.system(s:Executable() . ' parents -- "' . fileName . '"')
 	let [revision] = matchlist(parentsText, '^changeset:\s\+\(\S\+\)\n')[1]
 
-	let logText = system(s:Executable() . ' log -- "' . fileName . '"')
+	let logText = s:VCSCommandUtility.system(s:Executable() . ' log -- "' . fileName . '"')
 	let [repository] = matchlist(logText, '^changeset:\s\+\(\S\+\)\n')[1]
 
 	if revision == ''

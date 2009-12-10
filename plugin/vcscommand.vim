@@ -365,6 +365,23 @@ function! s:ReportError(error)
 	echohl WarningMsg|echomsg 'VCSCommand:  ' . a:error|echohl None
 endfunction
 
+" Function s:VCSCommandUtility.system(...) {{{2
+" Replacement for system() function.  This version protects the quoting in the
+" command line on Windows systems.
+
+function! s:VCSCommandUtility.system(...)
+	if (has("win32") || has("win64")) && &sxq !~ '"'
+		let save_sxq = &sxq
+		set sxq=\"
+	endif
+	try
+		return call('system', a:000)
+	finally
+		if exists("save_sxq")
+			let &sxq = save_sxq
+		endif
+	endtry
+endfunction
 
 " Function: s:CreateMapping(shortcut, expansion, display) {{{2
 " Creates the given mapping by prepending the contents of
@@ -1096,7 +1113,7 @@ function! VCSCommandDoCommand(cmd, cmdName, statusText, options)
 
 	let oldCwd = VCSCommandChangeToCurrentFileDir(path)
 	try
-		let output = system(fullCmd)
+		let output = s:VCSCommandUtility.system(fullCmd)
 	finally
 		call VCSCommandChdir(oldCwd)
 	endtry

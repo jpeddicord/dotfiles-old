@@ -301,7 +301,7 @@ function! s:cvsFunctions.GetBufferInfo()
 	endif
 	let oldCwd = VCSCommandChangeToCurrentFileDir(fileName)
 	try
-		let statusText=system(s:Executable() . ' status -- "' . realFileName . '"')
+		let statusText=s:VCSCommandUtility.system(s:Executable() . ' status -- "' . realFileName . '"')
 		if(v:shell_error)
 			return []
 		endif

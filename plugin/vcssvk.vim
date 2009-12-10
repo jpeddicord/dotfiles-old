@@ -89,7 +89,7 @@ function! s:svkFunctions.Identify(buffer)
 	else
 		let directoryName = fnamemodify(fileName, ':p:h')
 	endif
-	let statusText = system(s:Executable() . ' info -- "' . directoryName . '"')
+	let statusText = s:VCSCommandUtility.system(s:Executable() . ' info -- "' . directoryName . '"')
 	if(v:shell_error)
 		return 0
 	else
@@ -174,7 +174,7 @@ endfunction
 function! s:svkFunctions.GetBufferInfo()
 	let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
 	let fileName = resolve(bufname(originalBuffer))
-	let statusText = system(s:Executable() . ' status -v -- "' . fileName . '"')
+	let statusText = s:VCSCommandUtility.system(s:Executable() . ' status -v -- "' . fileName . '"')
 	if(v:shell_error)
 		return []
 	endif
