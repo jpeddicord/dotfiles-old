@@ -90,12 +90,17 @@ endfunction
 
 " Function: s:hgFunctions.Identify(buffer) {{{2
 function! s:hgFunctions.Identify(buffer)
-	call s:VCSCommandUtility.system(s:Executable() . ' root')
-	if(v:shell_error)
-		return 0
-	else
-		return g:VCSCOMMAND_IDENTIFY_INEXACT
-	endif
+	let oldCwd = VCSCommandChangeToCurrentFileDir(resolve(bufname(a:buffer)))
+	try
+		call s:VCSCommandUtility.system(s:Executable() . ' root')
+		if(v:shell_error)
+			return 0
+		else
+			return g:VCSCOMMAND_IDENTIFY_INEXACT
+		endif
+	finally
+		call VCSCommandChdir(oldCwd)
+	endtry
 endfunction
 
 " Function: s:hgFunctions.Add() {{{2
