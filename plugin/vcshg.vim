@@ -211,10 +211,10 @@ function! s:hgFunctions.GetBufferInfo()
 	endif
 
 	let parentsText = s:VCSCommandUtility.system(s:Executable() . ' parents -- "' . fileName . '"')
-	let [revision] = matchlist(parentsText, '^changeset:\s\+\(\S\+\)\n')[1]
+	let revision = matchlist(parentsText, '^changeset:\s\+\(\S\+\)\n')[1]
 
 	let logText = s:VCSCommandUtility.system(s:Executable() . ' log -- "' . fileName . '"')
-	let [repository] = matchlist(logText, '^changeset:\s\+\(\S\+\)\n')[1]
+	let repository = matchlist(logText, '^changeset:\s\+\(\S\+\)\n')[1]
 
 	if revision == ''
 		" Error
