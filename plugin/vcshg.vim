@@ -117,11 +117,11 @@ function! s:hgFunctions.Annotate(argList)
 			let options = ' -r' . caption
 		else
 			let caption = ''
-			let options = ''
+			let options = ' -un'
 		endif
 	elseif len(a:argList) == 1 && a:argList[0] !~ '^-'
 		let caption = a:argList[0]
-		let options = ' -r' . caption
+		let options = ' -un -r' . caption
 	else
 		let caption = join(a:argList, ' ')
 		let options = ' ' . caption
