@@ -281,6 +281,9 @@ function! s:hgFunctions.Update(argList)
 	return s:DoCommand('update', 'update', '', {})
 endfunction
 
+" Annotate setting {{{2
+let s:hgFunctions.AnnotateSplitRegex = '\d\+: '
+
 " Section: Plugin Registration {{{1
 let s:VCSCommandUtility = VCSCommandRegisterModule('HG', expand('<sfile>'), s:hgFunctions, [])
 
