@@ -860,6 +860,24 @@ function! s:VCSGotoOriginal(bang)
 	endif
 endfunction
 
+function! s:VCSDiff(...)  "{{{2
+	let resultBuffer = s:ExecuteVCSCommand('Diff', a:000)
+	if resultBuffer > 0
+		let &filetype = 'diff'
+	elseif resultBuffer == 0
+		echomsg 'No differences found'
+	endif
+	return resultBuffer
+endfunction
+
+function! s:VCSReview(...)  "{{{2
+	let resultBuffer = s:ExecuteVCSCommand('Review', a:000)
+	if resultBuffer > 0
+		let &filetype = getbufvar(b:VCSCommandOriginalBuffer, '&filetype')
+	endif
+	return resultBuffer
+endfunction
+
 " Function: s:VCSVimDiff(...) {{{2
 function! s:VCSVimDiff(...)
 	try
@@ -1257,14 +1275,14 @@ com! -nargs=* -bang VCSAnnotate call s:VCSAnnotate(<q-bang>, <f-args>)
 com! -nargs=* -bang VCSBlame call s:VCSAnnotate(<q-bang>, <f-args>)
 com! -nargs=? -bang VCSCommit call s:VCSCommit(<q-bang>, <q-args>)
 com! -nargs=* VCSDelete call s:ExecuteVCSCommand('Delete', [<f-args>])
-com! -nargs=* VCSDiff call s:ExecuteVCSCommand('Diff', [<f-args>])
+com! -nargs=* VCSDiff call s:VCSDiff(<f-args>)
 com! -nargs=0 -bang VCSGotoOriginal call s:VCSGotoOriginal(<q-bang>)
 com! -nargs=* VCSInfo call s:ExecuteVCSCommand('Info', [<f-args>])
 com! -nargs=* VCSLock call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Lock', [<f-args>]))
 com! -nargs=* VCSLog call s:ExecuteVCSCommand('Log', [<f-args>])
 com! -nargs=* VCSRemove call s:ExecuteVCSCommand('Delete', [<f-args>])
 com! -nargs=0 VCSRevert call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Revert', []))
-com! -nargs=? VCSReview call s:ExecuteVCSCommand('Review', [<f-args>])
+com! -nargs=? VCSReview call s:VCSReview(<f-args>)
 com! -nargs=* VCSStatus call s:ExecuteVCSCommand('Status', [<f-args>])
 com! -nargs=* VCSUnlock call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Unlock', [<f-args>]))
 com! -nargs=0 VCSUpdate call s:MarkOrigBufferForSetup(s:ExecuteVCSCommand('Update', []))
