@@ -123,11 +123,7 @@ function! s:gitFunctions.Annotate(argList)
 		let options = join(a:argList, ' ')
 	endif
 
-	let resultBuffer = s:DoCommand('blame ' . options, 'annotate', options, {})
-	if resultBuffer > 0
-		normal 1G
-	endif
-	return resultBuffer
+	return s:DoCommand('blame ' . options, 'annotate', options, {})
 endfunction
 
 " Function: s:gitFunctions.Commit(argList) {{{2
