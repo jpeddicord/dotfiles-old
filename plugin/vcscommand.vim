@@ -819,22 +819,16 @@ endfunction
 
 " Function: s:VCSFinishCommit(logMessageList, originalBuffer) {{{2
 function! s:VCSFinishCommit(logMessageList, originalBuffer)
-	let shellSlashBak = &shellslash
+	let messageFileName = tempname()
+	call writefile(a:logMessageList, messageFileName)
 	try
-		set shellslash
-		let messageFileName = tempname()
-		call writefile(a:logMessageList, messageFileName)
-		try
-			let resultBuffer = s:ExecuteVCSCommand('Commit', [messageFileName])
-			if resultBuffer < 0
-				return resultBuffer
-			endif
-			return s:MarkOrigBufferForSetup(resultBuffer)
-		finally
-			call delete(messageFileName)
-		endtry
+		let resultBuffer = s:ExecuteVCSCommand('Commit', [messageFileName])
+		if resultBuffer < 0
+			return resultBuffer
+		endif
+		return s:MarkOrigBufferForSetup(resultBuffer)
 	finally
-		let &shellslash = shellSlashBak
+		call delete(messageFileName)
 	endtry
 endfunction
 
