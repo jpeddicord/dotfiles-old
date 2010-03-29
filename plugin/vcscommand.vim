@@ -794,6 +794,7 @@ function! s:VCSCommit(bang, message)
 		silent put ='VCS: ----------------------------------------------------------------------'
 		$
 		setlocal nomodified
+		silent do VCSCommand User VCSBufferCreated
 	catch
 		call s:ReportError(v:exception)
 		return -1
