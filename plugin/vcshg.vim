@@ -252,7 +252,7 @@ endfunction
 
 " Function: s:hgFunctions.Status(argList) {{{2
 function! s:hgFunctions.Status(argList)
-	let options = ['-u', '-v']
+	let options = ['-A', '-v']
 	if len(a:argList) != 0
 		let options = a:argList
 	endif
