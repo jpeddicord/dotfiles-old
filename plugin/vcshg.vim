@@ -132,10 +132,7 @@ endfunction
 
 " Function: s:hgFunctions.Commit(argList) {{{2
 function! s:hgFunctions.Commit(argList)
-	let resultBuffer = s:DoCommand('commit -l "' . a:argList[0] . '"', 'commit', '', {})
-	if resultBuffer == 0
-		echomsg 'No commit needed.'
-	endif
+	return s:DoCommand('commit -v -l "' . a:argList[0] . '"', 'commit', '', {})
 endfunction
 
 " Function: s:hgFunctions.Delete() {{{2
