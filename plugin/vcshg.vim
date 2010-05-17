@@ -105,7 +105,7 @@ endfunction
 
 " Function: s:hgFunctions.Add() {{{2
 function! s:hgFunctions.Add(argList)
-	return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '), {})
+	return s:DoCommand(join(['add -v'] + a:argList, ' '), 'add', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:hgFunctions.Annotate(argList) {{{2
