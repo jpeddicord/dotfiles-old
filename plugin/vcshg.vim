@@ -131,7 +131,11 @@ endfunction
 
 " Function: s:hgFunctions.Commit(argList) {{{2
 function! s:hgFunctions.Commit(argList)
-	return s:DoCommand('commit -v -l "' . a:argList[0] . '"', 'commit', '', {})
+	try
+		return s:DoCommand('commit -v -l "' . a:argList[0] . '"', 'commit', '', {})
+	catch /Version control command failed.*nothing changed/
+		echomsg 'No commit needed.'
+	endtry
 endfunction
 
 " Function: s:hgFunctions.Delete() {{{2
