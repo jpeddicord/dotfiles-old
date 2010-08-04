@@ -200,6 +200,10 @@
 "   This variable, if set to a non-zero value, prevents the default command
 "   mappings from being set.
 "
+" VCSCommandDisableMenu
+"   This variable, if set to a non-zero value, prevents the default command
+"   menu from being set.
+"
 " VCSCommandDisableExtensionMappings
 "   This variable, if set to a non-zero value, prevents the default command
 "   mappings from being set for commands specific to an individual VCS.
@@ -225,6 +229,12 @@
 "   This variable, if set, overrides the default mapping prefix ('<Leader>c').
 "   This allows customization of the mapping space used by the vcscommand
 "   shortcuts.
+"
+" VCSCommandMenuRoot
+"   This variable, if set, overrides the default menu root 'Plugin'
+"
+" VCSCommandMenuPriority
+"   This variable, if set, overrides the default menu priority '' (empty)
 "
 " VCSCommandResultBufferNameExtension
 "   This variable, if set to a non-blank value, is appended to the name of the
@@ -1279,7 +1289,7 @@ com! VCSCommandDisableBufferSetup call VCSCommandDisableBufferSetup()
 com! VCSCommandEnableBufferSetup call VCSCommandEnableBufferSetup()
 
 " Allow reloading VCSCommand.vim
-com! VCSReload let savedPlugins = s:plugins|let s:plugins = {}|aunmenu Plugin.VCS|unlet! g:loaded_VCSCommand|runtime plugin/vcscommand.vim|for plugin in values(savedPlugins)|execute 'source' plugin[0]|endfor|unlet savedPlugins
+com! VCSReload let savedPlugins = s:plugins|let s:plugins = {}|execute 'aunmenu '.VCSCommandGetOption('VCSCommandMenuRoot', '&Plugin').'.VCS' |unlet! g:loaded_VCSCommand|runtime plugin/vcscommand.vim|for plugin in values(savedPlugins)|execute 'source' plugin[0]|endfor|unlet savedPlugins
 
 " Section: Plugin command mappings {{{1
 nnoremap <silent> <Plug>VCSAdd :VCSAdd<CR>
@@ -1329,18 +1339,23 @@ if !VCSCommandGetOption('VCSCommandDisableMappings', 0)
 endif
 
 " Section: Menu items {{{1
-amenu <silent> &Plugin.VCS.&Add        <Plug>VCSAdd
-amenu <silent> &Plugin.VCS.A&nnotate   <Plug>VCSAnnotate
-amenu <silent> &Plugin.VCS.&Commit     <Plug>VCSCommit
-amenu <silent> &Plugin.VCS.Delete      <Plug>VCSDelete
-amenu <silent> &Plugin.VCS.&Diff       <Plug>VCSDiff
-amenu <silent> &Plugin.VCS.&Info       <Plug>VCSInfo
-amenu <silent> &Plugin.VCS.&Log        <Plug>VCSLog
-amenu <silent> &Plugin.VCS.Revert      <Plug>VCSRevert
-amenu <silent> &Plugin.VCS.&Review     <Plug>VCSReview
-amenu <silent> &Plugin.VCS.&Status     <Plug>VCSStatus
-amenu <silent> &Plugin.VCS.&Update     <Plug>VCSUpdate
-amenu <silent> &Plugin.VCS.&VimDiff    <Plug>VCSVimDiff
+if !VCSCommandGetOption('VCSCommandDisableMenu', 0)
+    let s:menuRoot = VCSCommandGetOption('VCSCommandMenuRoot', '&Plugin')
+    let s:menuPriority = VCSCommandGetOption('VCSCommandMenuPriority', '')
+
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Add        <Plug>VCSAdd'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.A&nnotate   <Plug>VCSAnnotate'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Commit     <Plug>VCSCommit'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.Delete      <Plug>VCSDelete'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Diff       <Plug>VCSDiff'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Info       <Plug>VCSInfo'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Log        <Plug>VCSLog'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.Revert      <Plug>VCSRevert'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Review     <Plug>VCSReview'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Status     <Plug>VCSStatus'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Update     <Plug>VCSUpdate'
+    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&VimDiff    <Plug>VCSVimDiff'
+endif
 
 " Section: Autocommands to restore vimdiff state {{{1
 augroup VimDiffRestore
