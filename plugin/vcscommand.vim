@@ -346,15 +346,6 @@ let s:optionOverrides = {}
 " state flag used to vary behavior of certain automated actions
 let s:isEditFileRunning = 0
 
-" commands needed to restore diff buffers to their original state
-unlet! s:vimDiffRestoreCmd
-
-" original buffer currently reflected in vimdiff windows
-unlet! s:vimDiffSourceBuffer
-
-"
-unlet! s:vimDiffScratchList
-
 " Section: Utility functions {{{1
 
 " Function: s:ReportError(mapping) {{{2
@@ -642,30 +633,30 @@ endfunction
 function! s:VimDiffRestore(vimDiffBuff)
 	let s:isEditFileRunning += 1
 	try
-		if exists('s:vimDiffSourceBuffer')
-			if a:vimDiffBuff == s:vimDiffSourceBuffer
+		if exists('t:vcsCommandVimDiffSourceBuffer')
+			if a:vimDiffBuff == t:vcsCommandVimDiffSourceBuffer
 				" Original file is being removed.
-				unlet! s:vimDiffSourceBuffer
-				unlet! s:vimDiffRestoreCmd
-				unlet! s:vimDiffScratchList
+				unlet! t:vcsCommandVimDiffSourceBuffer
+				unlet! t:vcsCommandVimDiffRestoreCmd
+				unlet! t:vcsCommandVimDiffScratchList
 			else
-				let index = index(s:vimDiffScratchList, a:vimDiffBuff)
+				let index = index(t:vcsCommandVimDiffScratchList, a:vimDiffBuff)
 				if index >= 0
-					call remove(s:vimDiffScratchList, index)
-					if len(s:vimDiffScratchList) == 0
-						if exists('s:vimDiffRestoreCmd')
+					call remove(t:vcsCommandVimDiffScratchList, index)
+					if len(t:vcsCommandVimDiffScratchList) == 0
+						if exists('t:vcsCommandVimDiffRestoreCmd')
 							" All scratch buffers are gone, reset the original.
 							" Only restore if the source buffer is still in Diff mode
 
-							let sourceWinNR = bufwinnr(s:vimDiffSourceBuffer)
+							let sourceWinNR = bufwinnr(t:vcsCommandVimDiffSourceBuffer)
 							if sourceWinNR != -1
 								" The buffer is visible in at least one window
 								let currentWinNR = winnr()
 								while winbufnr(sourceWinNR) != -1
-									if winbufnr(sourceWinNR) == s:vimDiffSourceBuffer
+									if winbufnr(sourceWinNR) == t:vcsCommandVimDiffSourceBuffer
 										execute sourceWinNR . 'wincmd w'
 										if getwinvar(0, '&diff')
-											execute s:vimDiffRestoreCmd
+											execute t:vcsCommandVimDiffRestoreCmd
 										endif
 									endif
 									let sourceWinNR = sourceWinNR + 1
@@ -675,18 +666,18 @@ function! s:VimDiffRestore(vimDiffBuff)
 								" The buffer is hidden.  It must be visible in order to set the
 								" diff option.
 								let currentBufNR = bufnr('')
-								execute 'hide buffer' s:vimDiffSourceBuffer
+								execute 'hide buffer' t:vcsCommandVimDiffSourceBuffer
 								if getwinvar(0, '&diff')
-									execute s:vimDiffRestoreCmd
+									execute t:vcsCommandVimDiffRestoreCmd
 								endif
 								execute 'hide buffer' currentBufNR
 							endif
 
-							unlet s:vimDiffRestoreCmd
+							unlet t:vcsCommandVimDiffRestoreCmd
 						endif
 						" All buffers are gone.
-						unlet s:vimDiffSourceBuffer
-						unlet s:vimDiffScratchList
+						unlet t:vcsCommandVimDiffSourceBuffer
+						unlet t:vcsCommandVimDiffScratchList
 					endif
 				endif
 			endif
@@ -886,9 +877,9 @@ function! s:VCSVimDiff(...)
 			" If there's already a VimDiff'ed window, restore it.
 			" There may only be one VCSVimDiff original window at a time.
 
-			if exists('s:vimDiffSourceBuffer') && s:vimDiffSourceBuffer != originalBuffer
+			if exists('t:vcsCommandVimDiffSourceBuffer') && t:vcsCommandVimDiffSourceBuffer != originalBuffer
 				" Clear the existing vimdiff setup by removing the result buffers.
-				call s:WipeoutCommandBuffers(s:vimDiffSourceBuffer, 'vimdiff')
+				call s:WipeoutCommandBuffers(t:vcsCommandVimDiffSourceBuffer, 'vimdiff')
 			endif
 
 			let orientation = &diffopt =~ 'horizontal' ? 'horizontal' : 'vertical'
@@ -898,8 +889,8 @@ function! s:VCSVimDiff(...)
 			" Split and diff
 			if(a:0 == 2)
 				" Reset the vimdiff system, as 2 explicit versions were provided.
-				if exists('s:vimDiffSourceBuffer')
-					call s:WipeoutCommandBuffers(s:vimDiffSourceBuffer, 'vimdiff')
+				if exists('t:vcsCommandVimDiffSourceBuffer')
+					call s:WipeoutCommandBuffers(t:vcsCommandVimDiffSourceBuffer, 'vimdiff')
 				endif
 				let resultBuffer = s:VCSReview(a:1)
 				if resultBuffer < 0
@@ -908,7 +899,7 @@ function! s:VCSVimDiff(...)
 				endif
 				let b:VCSCommandCommand = 'vimdiff'
 				diffthis
-				let s:vimDiffScratchList = [resultBuffer]
+				let t:vcsCommandVimDiffScratchList = [resultBuffer]
 				" If no split method is defined, cheat, and set it to vertical.
 				try
 					call s:OverrideOption('VCSCommandSplit', orientation)
@@ -922,7 +913,7 @@ function! s:VCSVimDiff(...)
 				endif
 				let b:VCSCommandCommand = 'vimdiff'
 				diffthis
-				let s:vimDiffScratchList += [resultBuffer]
+				let t:vcsCommandVimDiffScratchList += [resultBuffer]
 			else
 				" Add new buffer
 				call s:OverrideOption('VCSCommandEdit', 'split')
@@ -948,16 +939,16 @@ function! s:VCSVimDiff(...)
 				let b:VCSCommandCommand = 'vimdiff'
 				diffthis
 
-				if !exists('s:vimDiffSourceBuffer')
+				if !exists('t:vcsCommandVimDiffSourceBuffer')
 					" New instance of vimdiff.
-					let s:vimDiffScratchList = [resultBuffer]
+					let t:vcsCommandVimDiffScratchList = [resultBuffer]
 
 					" This could have been invoked on a VCS result buffer, not the
 					" original buffer.
 					wincmd W
 					execute 'buffer' originalBuffer
 					" Store info for later original buffer restore
-					let s:vimDiffRestoreCmd =
+					let t:vcsCommandVimDiffRestoreCmd =
 								\    'call setbufvar('.originalBuffer.', ''&diff'', '.getbufvar(originalBuffer, '&diff').')'
 								\ . '|call setbufvar('.originalBuffer.', ''&foldcolumn'', '.getbufvar(originalBuffer, '&foldcolumn').')'
 								\ . '|call setbufvar('.originalBuffer.', ''&foldenable'', '.getbufvar(originalBuffer, '&foldenable').')'
@@ -970,11 +961,11 @@ function! s:VCSVimDiff(...)
 					wincmd w
 				else
 					" Adding a window to an existing vimdiff
-					let s:vimDiffScratchList += [resultBuffer]
+					let t:vcsCommandVimDiffScratchList += [resultBuffer]
 				endif
 			endif
 
-			let s:vimDiffSourceBuffer = originalBuffer
+			let t:vcsCommandVimDiffSourceBuffer = originalBuffer
 
 			" Avoid executing the modeline in the current buffer after the autocommand.
 
