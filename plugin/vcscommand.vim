@@ -200,13 +200,13 @@
 "   This variable, if set to a non-zero value, prevents the default command
 "   mappings from being set.
 "
-" VCSCommandDisableMenu
-"   This variable, if set to a non-zero value, prevents the default command
-"   menu from being set.
-"
 " VCSCommandDisableExtensionMappings
 "   This variable, if set to a non-zero value, prevents the default command
 "   mappings from being set for commands specific to an individual VCS.
+"
+" VCSCommandDisableMenu
+"   This variable, if set to a non-zero value, prevents the default command
+"   menu from being set.
 "
 " VCSCommandEdit
 "   This variable controls whether to split the current window to display a
@@ -230,11 +230,11 @@
 "   This allows customization of the mapping space used by the vcscommand
 "   shortcuts.
 "
-" VCSCommandMenuRoot
-"   This variable, if set, overrides the default menu root 'Plugin.VCS'
-"
 " VCSCommandMenuPriority
 "   This variable, if set, overrides the default menu priority '' (empty)
+"
+" VCSCommandMenuRoot
+"   This variable, if set, overrides the default menu root 'Plugin.VCS'
 "
 " VCSCommandResultBufferNameExtension
 "   This variable, if set to a non-blank value, is appended to the name of the
