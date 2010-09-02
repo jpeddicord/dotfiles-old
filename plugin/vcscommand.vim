@@ -231,7 +231,7 @@
 "   shortcuts.
 "
 " VCSCommandMenuRoot
-"   This variable, if set, overrides the default menu root 'Plugin'
+"   This variable, if set, overrides the default menu root 'Plugin.VCS'
 "
 " VCSCommandMenuPriority
 "   This variable, if set, overrides the default menu priority '' (empty)
@@ -366,7 +366,7 @@ function! s:ReportError(error)
 	echohl WarningMsg|echomsg 'VCSCommand:  ' . a:error|echohl None
 endfunction
 
-" Function s:VCSCommandUtility.system(...) {{{2
+" Function: s:VCSCommandUtility.system(...) {{{2
 " Replacement for system() function.  This version protects the quoting in the
 " command line on Windows systems.
 
@@ -382,6 +382,23 @@ function! s:VCSCommandUtility.system(...)
 			let &sxq = save_sxq
 		endif
 	endtry
+endfunction
+
+" Function: s:VCSCommandUtility.addMenuItem(shortcut, command) {{{2
+" Adds the given menu item.
+
+function! s:VCSCommandUtility.addMenuItem(shortcut, command)
+	if s:menuEnabled
+	    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.'.a:shortcut.' '.a:command
+	endif
+endfunction
+
+" Function: s:ClearMenu() {{{2
+" Removes all VCSCommand menu items
+function! s:ClearMenu()
+	if s:menuEnabled
+		execute 'aunmenu' s:menuRoot
+	endif
 endfunction
 
 " Function: s:CreateMapping(shortcut, expansion, display) {{{2
@@ -1289,7 +1306,7 @@ com! VCSCommandDisableBufferSetup call VCSCommandDisableBufferSetup()
 com! VCSCommandEnableBufferSetup call VCSCommandEnableBufferSetup()
 
 " Allow reloading VCSCommand.vim
-com! VCSReload let savedPlugins = s:plugins|let s:plugins = {}|execute 'aunmenu '.VCSCommandGetOption('VCSCommandMenuRoot', '&Plugin').'.VCS' |unlet! g:loaded_VCSCommand|runtime plugin/vcscommand.vim|for plugin in values(savedPlugins)|execute 'source' plugin[0]|endfor|unlet savedPlugins
+com! VCSReload let savedPlugins = s:plugins|let s:plugins = {}|call s:ClearMenu()|unlet! g:loaded_VCSCommand|runtime plugin/vcscommand.vim|for plugin in values(savedPlugins)|execute 'source' plugin[0]|endfor|unlet savedPlugins
 
 " Section: Plugin command mappings {{{1
 nnoremap <silent> <Plug>VCSAdd :VCSAdd<CR>
@@ -1333,29 +1350,36 @@ let s:defaultMappings = [
 			\]
 
 if !VCSCommandGetOption('VCSCommandDisableMappings', 0)
-	for [shortcut, vcsFunction] in VCSCommandGetOption('VCSCommandMappings', s:defaultMappings)
-		call s:CreateMapping(shortcut, '<Plug>' . vcsFunction, '''' . vcsFunction . '''')
+	for [s:shortcut, s:vcsFunction] in VCSCommandGetOption('VCSCommandMappings', s:defaultMappings)
+		call s:CreateMapping(s:shortcut, '<Plug>' . s:vcsFunction, '''' . s:vcsFunction . '''')
 	endfor
+	unlet s:shortcut s:vcsFunction
 endif
+unlet s:defaultMappings
 
 " Section: Menu items {{{1
-if !VCSCommandGetOption('VCSCommandDisableMenu', 0)
-    let s:menuRoot = VCSCommandGetOption('VCSCommandMenuRoot', '&Plugin')
-    let s:menuPriority = VCSCommandGetOption('VCSCommandMenuPriority', '')
 
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Add        <Plug>VCSAdd'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.A&nnotate   <Plug>VCSAnnotate'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Commit     <Plug>VCSCommit'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.Delete      <Plug>VCSDelete'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Diff       <Plug>VCSDiff'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Info       <Plug>VCSInfo'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Log        <Plug>VCSLog'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.Revert      <Plug>VCSRevert'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Review     <Plug>VCSReview'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Status     <Plug>VCSStatus'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&Update     <Plug>VCSUpdate'
-    exe 'amenu <silent> '.s:menuPriority.' '.s:menuRoot.'.VCS.&VimDiff    <Plug>VCSVimDiff'
-endif
+let s:menuEnabled = !VCSCommandGetOption('VCSCommandDisableMenu', 0)
+let s:menuRoot = VCSCommandGetOption('VCSCommandMenuRoot', '&Plugin.VCS')
+let s:menuPriority = VCSCommandGetOption('VCSCommandMenuPriority', '')
+
+for [s:shortcut, s:command] in [
+			\['&Add', '<Plug>VCSAdd'],
+			\['A&nnotate', '<Plug>VCSAnnotate'],
+			\['&Commit', '<Plug>VCSCommit'],
+			\['Delete', '<Plug>VCSDelete'],
+			\['&Diff', '<Plug>VCSDiff'],
+			\['&Info', '<Plug>VCSInfo'],
+			\['&Log', '<Plug>VCSLog'],
+			\['Revert', '<Plug>VCSRevert'],
+			\['&Review', '<Plug>VCSReview'],
+			\['&Status', '<Plug>VCSStatus'],
+			\['&Update', '<Plug>VCSUpdate'],
+			\['&VimDiff', '<Plug>VCSVimDiff']
+			\]
+	call s:VCSCommandUtility.addMenuItem(s:shortcut, s:command)
+endfor
+unlet s:shortcut s:command
 
 " Section: Autocommands to restore vimdiff state {{{1
 augroup VimDiffRestore
