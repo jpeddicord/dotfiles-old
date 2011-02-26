@@ -36,7 +36,7 @@ alias cc="ssh -p 2328 -L 9090:localhost:9090 codechunk.net"
 alias irc="ssh -t -p 2328 jacobirc@codechunk.net screen -drUAS irc"
 alias lish="ssh jpeddicord@fremont290.linode.com"
 alias n800="ssh user@n800.local"
-alias phonehome="ssh -D 9090 -p 8022 peddicord.us.to"
+alias phonehome="ssh -D 9090 -p 8022 Peddicord@peddicord.us.to"
 alias stdsun="ssh peddicor@stdsun.cse.ohio-state.edu"
 alias stdlogin="ssh peddicor@stdlogin.cse.ohio-state.edu"
 # ls
@@ -60,5 +60,4 @@ alias waf='$(pwd)/waf'
 export DEBFULLNAME='Jacob Peddicord'
 export DEBEMAIL='jpeddicord@ubuntu.com'
 
-export UBUNTU_MENUPROXY=0
 
