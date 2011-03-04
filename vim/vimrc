@@ -1,3 +1,8 @@
+" load packages
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+" editing options
 set nocompatible
 set tabstop=4
 set shiftwidth=4
@@ -25,6 +30,3 @@ syntax on
 if match($TERM, "screen")!=-1
     set term=xterm
 endif
-
-" load packages
-call pathogen#runtime_append_all_bundles() 
