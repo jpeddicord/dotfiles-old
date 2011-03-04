@@ -30,3 +30,8 @@ syntax on
 if match($TERM, "screen")!=-1
     set term=xterm
 endif
+
+" color scheme
+set t_Co=256
+colorscheme dante
+
