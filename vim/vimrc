@@ -35,3 +35,13 @@ endif
 set t_Co=256
 colorscheme dante
 
+" custom bindings
+let mapleader=','
+
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
