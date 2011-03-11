@@ -27,7 +27,7 @@ filetype indent on
 syntax on
 
 " screen fix
-if match($TERM, "screen")!=-1
+if match($TERM, "screen") != -1
     set term=xterm
 endif
 
