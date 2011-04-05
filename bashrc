@@ -53,7 +53,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias dpkg-downgrade="sudo dpkg --force-downgrade -i"
 alias sgdm="sudo service gdm"
-alias minecraft-forward="ssh -p 2328 gamesrv@codechunk.net -R :25565:127.0.0.1:25565"
+alias minecraft-forward="ssh -N -p 2328 gamesrv@codechunk.net -R :25565:127.0.0.1:25565"
 alias waf='$(pwd)/waf'
 
 ### environment
