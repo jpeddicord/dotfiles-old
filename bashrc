@@ -59,5 +59,5 @@ alias waf='$(pwd)/waf'
 ### environment
 export DEBFULLNAME='Jacob Peddicord'
 export DEBEMAIL='jpeddicord@ubuntu.com'
-
+export EDITOR='vim'
 
