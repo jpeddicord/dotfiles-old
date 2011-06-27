@@ -53,6 +53,6 @@ if exists(":Tabularize")
 endif
 
 map <M-Left> :tabprevious<CR>
-imap <M-Left> <Esc>:tabprevious<CR>a
+imap <M-Left> <C-O>:tabprevious<CR>
 map <M-Right> :tabnext<CR>
-imap <M-Right> <Esc>:tabnext<CR>a
+imap <M-Right> <C-O>:tabnext<CR>
