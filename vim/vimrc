@@ -56,3 +56,6 @@ map <M-Left> :tabprevious<CR>
 imap <M-Left> <C-O>:tabprevious<CR>
 map <M-Right> :tabnext<CR>
 imap <M-Right> <C-O>:tabnext<CR>
+
+cnoreabbrev W w
+cnoreabbrev Q q
