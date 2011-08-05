@@ -8,6 +8,8 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+export TERM=screen-256color
+
 # title
 case "$TERM" in
 xterm*|rxvt*)
@@ -35,7 +37,6 @@ PS1="${BLUE}\u${GREEN}@${BLUE}\h${BBLUE}: ${BGREEN}\w ${BRED}\$ ${NORMAL}"
 alias cc="ssh -p 2328 -L 9090:localhost:9090 codechunk.net"
 alias irc="ssh -t -p 2328 jacobirc@codechunk.net screen -drUAS irc"
 alias lish="ssh jpeddicord@fremont290.linode.com"
-alias n800="ssh user@n800.local"
 alias phonehome="ssh -D 9090 -p 8022 Peddicord@peddicord.us.to"
 alias stdsun="ssh peddicor@stdsun.cse.ohio-state.edu"
 alias stdlogin="ssh peddicor@stdlogin.cse.ohio-state.edu"
@@ -51,8 +52,6 @@ alias svi='svim'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias dpkg-downgrade="sudo dpkg --force-downgrade -i"
-alias sgdm="sudo service gdm"
 alias minecraft-forward="ssh -N -p 2328 gamesrv@codechunk.net -R :25565:127.0.0.1:25565"
 alias waf='$(pwd)/waf'
 

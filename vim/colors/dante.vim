@@ -13,47 +13,45 @@ endif
 let g:colors_name = "dante"
 
 " General colors
-hi Normal	ctermfg=white guifg=peachpuff3 guibg=black
-hi Directory	term=bold ctermfg=blue guifg=royalblue
-hi ErrorMsg	term=standout ctermfg=white ctermbg=red guifg=white guibg=red3
-hi NonText	term=bold ctermfg=darkgray guibg=gray3 guifg=gray20
-hi SpecialKey	term=bold ctermfg=darkgray guifg=gray30
-hi LineNr	term=underline ctermfg=darkgray guifg=ivory4 guibg=gray4
-hi IncSearch	term=reverse cterm=reverse gui=reverse,bold guifg=darkgoldenrod2
-hi Search	term=reverse ctermfg=black ctermbg=yellow guifg=gray10 guibg=gold2
-hi Visual	term=bold,reverse cterm=bold,reverse ctermfg=gray ctermbg=black gui=bold,reverse guifg=gray40 guibg=black
-hi VisualNOS	term=bold,underline cterm=bold,underline gui=bold,underline
-hi MoreMsg	term=bold ctermfg=green gui=bold guifg=olivedrab1
-hi ModeMsg	term=bold cterm=bold gui=bold
-hi Question	term=standout ctermfg=green gui=bold guifg=olivedrab1
-hi WarningMsg	term=standout ctermfg=red gui=bold guifg=red3
-hi WildMenu	term=standout ctermfg=black ctermbg=yellow guifg=black guibg=gold2
-hi Folded	term=standout ctermfg=blue ctermbg=white guifg=royalblue1 guibg=white
-hi FoldColumn	term=standout ctermfg=blue ctermbg=white guifg=royalblue3 guibg=white
-hi DiffAdd	term=bold ctermbg=blue guibg=royalblue2
-hi DiffChange	term=bold ctermbg=darkmagenta guibg=maroon
-hi DiffDelete	term=bold cterm=bold ctermfg=lightblue ctermbg=cyan gui=bold guifg=lightblue guibg=cyan4
-hi DiffText	term=reverse cterm=bold ctermbg=red gui=bold guibg=red3
-hi Cursor	guifg=bg guibg=fg
-hi lCursor	guifg=bg guibg=fg
-hi StatusLine	term=reverse cterm=reverse gui=reverse guifg=gray60
-hi StatusLineNC	term=reverse cterm=reverse gui=reverse guifg=gray40
-hi VertSplit	term=reverse cterm=reverse gui=bold,reverse guifg=gray40
-hi Title	term=bold ctermfg=magenta gui=bold guifg=aquamarine
+hi Normal	ctermfg=white
+hi Directory	term=bold ctermfg=blue
+hi ErrorMsg	term=standout ctermfg=white ctermbg=red
+hi NonText	term=bold ctermfg=darkgray
+hi SpecialKey	term=bold ctermfg=darkgray
+hi LineNr	term=underline ctermfg=darkgray 
+hi IncSearch	term=reverse cterm=reverse
+hi Search	term=reverse ctermfg=black ctermbg=yellow
+hi Visual	term=bold,reverse cterm=bold,reverse ctermfg=gray ctermbg=black
+hi VisualNOS	term=bold,underline cterm=bold,underline
+hi MoreMsg	term=bold ctermfg=green
+hi ModeMsg	term=bold cterm=bold
+hi Question	term=standout ctermfg=green
+hi WarningMsg	term=standout ctermfg=red
+hi WildMenu	term=standout ctermfg=black ctermbg=yellow
+hi Folded	term=standout ctermfg=blue ctermbg=white
+hi FoldColumn	term=standout ctermfg=blue ctermbg=white
+hi DiffAdd	term=bold ctermbg=blue
+hi DiffChange	term=bold ctermbg=darkmagenta
+hi DiffDelete	term=bold cterm=bold ctermfg=lightblue ctermbg=cyan
+hi DiffText	term=reverse cterm=bold ctermbg=red
+hi StatusLine	term=reverse cterm=reverse
+hi StatusLineNC	term=reverse cterm=reverse
+hi VertSplit	term=reverse cterm=reverse
+hi Title	term=bold ctermfg=magenta
 
 " syntax hi colors
-hi Comment	term=bold ctermfg=darkcyan guifg=cyan4
-hi PreProc	term=underline ctermfg=darkblue guifg=dodgerblue4
-hi Constant	term=underline ctermfg=darkred guifg=firebrick3
-hi Type		term=underline ctermfg=darkgreen gui=none guifg=chartreuse3
-hi Statement	term=bold ctermfg=darkyellow gui=none guifg=gold3
-hi Identifier	term=underline ctermfg=darkgreen guifg=darkolivegreen4
-hi Ignore	term=bold ctermfg=darkgray guifg=gray45
-hi Special	term=underline ctermfg=brown guifg=sienna
-hi Error	term=reverse ctermfg=gray ctermbg=red guifg=gray guibg=red3
-hi Todo		term=standout ctermfg=black ctermbg=yellow gui=bold guifg=gray10 guibg=yellow4
-hi Underlined	term=underline cterm=underline ctermfg=darkblue gui=underline guifg=slateblue
-hi Number	term=underline ctermfg=darkred guifg=red2
+hi Comment	term=bold ctermfg=darkcyan
+hi PreProc	term=underline ctermfg=darkblue
+hi Constant	term=underline ctermfg=red
+hi Type		term=underline ctermfg=darkgreen
+hi Statement	term=bold ctermfg=darkyellow
+hi Identifier	term=underline ctermfg=darkgreen
+hi Ignore	term=bold ctermfg=darkgray
+hi Special	term=underline ctermfg=brown
+hi Error	term=reverse ctermfg=gray ctermbg=red
+hi Todo		term=standout ctermfg=black ctermbg=yellow
+hi Underlined	term=underline cterm=underline ctermfg=darkblue
+hi Number	term=underline ctermfg=darkred
 " syntax hi links
 hi link String		Constant
 hi link Character	Constant
