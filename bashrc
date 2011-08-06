@@ -8,7 +8,7 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-export TERM=screen-256color
+export TERM='xterm-256color'
 
 # title
 case "$TERM" in
