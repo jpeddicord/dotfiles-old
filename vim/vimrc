@@ -38,9 +38,7 @@ highlight Pmenu ctermbg=darkgray ctermfg=white
 highlight PmenuSel ctermbg=blue ctermfg=black
 
 " completions
-au FileType cs set omnifunc=syntaxcomplete#Complete
 let g:SuperTabDefaultCompletionType="context"
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " custom bindings
 let mapleader=','
