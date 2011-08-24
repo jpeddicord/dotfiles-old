@@ -1,8 +1,6 @@
 [ -z "$PS1" ] && return
 
-# settings
-export HISTCONTROL=ignoredups
-shopt -s checkwinsize
+# system settings
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
@@ -11,7 +9,7 @@ fi
 # turn on 256 colors if not inside screen
 [[ "$TERM" == screen* ]] || export TERM='xterm-256color'
 
-# title
+# terminal title
 case "$TERM" in
 xterm*|rxvt*)
     PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
@@ -19,6 +17,16 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+# window size
+shopt -s checkwinsize
+
+# history control
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # colors
 export COLORFGBG='default;default'
