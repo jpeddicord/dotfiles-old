@@ -21,6 +21,8 @@ set mouse=a
 set ttymouse=xterm2
 set title
 set scrolloff=3
+set wildmode=longest,list,full
+set wildmenu
 filetype on
 filetype plugin on
 filetype indent on

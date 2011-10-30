@@ -10,11 +10,8 @@
 	path = vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
 	ignore = dirty
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
-	ignore = dirty
-[submodule "vim/bundle/vimtodo"]
-	path = vim/bundle/vimtodo
-	url = git://github.com/mivok/vimtodo.git
-	ignore = dirty
+[submodule "vim/bundle/clang_complete"]
+	path = vim/bundle/clang_complete
+	url = git://github.com/Rip-Rip/clang_complete.git
+    ignore = dirty
+
