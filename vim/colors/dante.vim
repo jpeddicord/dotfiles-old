@@ -30,7 +30,7 @@ hi Question	term=standout ctermfg=green
 hi WarningMsg	term=standout ctermfg=red
 hi WildMenu	term=standout ctermfg=black ctermbg=yellow
 hi Folded	term=standout ctermfg=blue ctermbg=237
-hi FoldColumn	term=standout ctermfg=blue ctermbg=white
+hi FoldColumn	term=standout ctermfg=blue ctermbg=237
 hi DiffAdd	term=bold ctermbg=blue
 hi DiffChange	term=bold ctermbg=darkmagenta
 hi DiffDelete	term=bold cterm=bold ctermfg=lightblue ctermbg=cyan
