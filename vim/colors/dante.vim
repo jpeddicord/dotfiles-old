@@ -3,6 +3,7 @@
 " Created: "Thu, 23 May 2002 00:12:20 -0300 (caciano)"
 " Updated: "Sat, 24 Aug 2002 14:04:21 -0300 (caciano)"
 " Copyright (C) 2002, Caciano Machado <caciano@inf.ufrgs.br>
+" Modifications by Jacob Peddicord <jacob@peddicord.net>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme Option:
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -28,7 +29,7 @@ hi ModeMsg	term=bold cterm=bold
 hi Question	term=standout ctermfg=green
 hi WarningMsg	term=standout ctermfg=red
 hi WildMenu	term=standout ctermfg=black ctermbg=yellow
-hi Folded	term=standout ctermfg=blue ctermbg=white
+hi Folded	term=standout ctermfg=blue ctermbg=237
 hi FoldColumn	term=standout ctermfg=blue ctermbg=white
 hi DiffAdd	term=bold ctermbg=blue
 hi DiffChange	term=bold ctermbg=darkmagenta
@@ -41,17 +42,16 @@ hi Title	term=bold ctermfg=magenta
 
 " syntax hi colors
 hi Comment	term=bold ctermfg=darkcyan
-hi PreProc	term=underline ctermfg=darkblue
-hi Constant	term=underline ctermfg=red
+hi PreProc	term=underline ctermfg=39
+hi Constant	term=underline ctermfg=196
 hi Type		term=underline ctermfg=darkgreen
-hi Statement	term=bold ctermfg=darkyellow
+hi Statement	term=bold ctermfg=172
 hi Identifier	term=underline ctermfg=darkgreen
 hi Ignore	term=bold ctermfg=darkgray
 hi Special	term=underline ctermfg=brown
 hi Error	term=reverse ctermfg=gray ctermbg=red
 hi Todo		term=standout ctermfg=black ctermbg=yellow
-hi Underlined	term=underline cterm=underline ctermfg=darkblue
-hi Number	term=underline ctermfg=darkred
+hi Underlined	term=underline cterm=underline ctermfg=39
 " syntax hi links
 hi link String		Constant
 hi link Character	Constant
