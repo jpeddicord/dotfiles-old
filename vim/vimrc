@@ -1,9 +1,21 @@
-" load packages
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" bundles
+Bundle 'a.vim'
+Bundle 'JavaScript-Indent'
+Bundle 'surround.vim'
+Bundle 'Tabular'
+Bundle 'vcscommand.vim'
+Bundle 'Vimtodo'
+Bundle 'xterm-color-table.vim'
 
 " editing options
-set nocompatible
+filetype plugin indent on
+syntax on
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -23,10 +35,6 @@ set title
 set scrolloff=3
 set wildmode=longest,list,full
 set wildmenu
-filetype on
-filetype plugin on
-filetype indent on
-syntax on
 
 " screen fix
 if match($TERM, "screen") != -1
@@ -36,8 +44,6 @@ endif
 " color scheme
 set t_Co=256
 colorscheme dante
-highlight Pmenu ctermbg=darkgray ctermfg=white
-highlight PmenuSel ctermbg=blue ctermfg=black
 
 " completions
 let g:SuperTabDefaultCompletionType="context"
