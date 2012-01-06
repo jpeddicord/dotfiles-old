@@ -1,0 +1,8 @@
+ServerAliveInterval 200
+GSSAPIAuthentication no
+
+host *
+    controlmaster auto
+    controlpath ~/.ssh/ssh-%r@%h:%p
+
+
