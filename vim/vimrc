@@ -36,11 +36,6 @@ set scrolloff=3
 set wildmode=longest,list,full
 set wildmenu
 
-" screen fix
-if match($TERM, "screen") != -1
-    set term=xterm
-endif
-
 " color scheme
 set t_Co=256
 colorscheme dante
