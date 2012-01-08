@@ -53,10 +53,10 @@ if exists(":Tabularize")
     vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
-map <M-Left> :tabprevious<CR>
-imap <M-Left> <C-O>:tabprevious<CR>
-map <M-Right> :tabnext<CR>
-imap <M-Right> <C-O>:tabnext<CR>
+map [1;3D :tabprevious<CR>
+imap [1;3D <C-O>:tabprevious<CR>
+map [1;3C :tabnext<CR>
+imap [1;3C <C-O>:tabnext<CR>
 
 cnoreabbrev W w
 cnoreabbrev Q q
