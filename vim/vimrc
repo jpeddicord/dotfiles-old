@@ -11,11 +11,12 @@ Bundle 'surround.vim'
 Bundle 'Tabular'
 Bundle 'vcscommand.vim'
 Bundle 'Vimtodo'
+Bundle 'wombat256.vim'
 Bundle 'xterm-color-table.vim'
+
 
 " editing options
 filetype plugin indent on
-syntax on
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -26,6 +27,7 @@ set showmatch
 set nohlsearch
 set incsearch
 set number
+set laststatus=2
 set nobackup
 set noerrorbells
 set novisualbell
@@ -37,11 +39,10 @@ set wildmode=longest,list,full
 set wildmenu
 
 " color scheme
+syntax on
 set t_Co=256
-colorscheme dante
-
-" completions
-let g:SuperTabDefaultCompletionType="context"
+set background=dark
+colorscheme wombat256mod
 
 " custom bindings
 let mapleader=','
