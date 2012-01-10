@@ -47,6 +47,7 @@ alias irc="ssh -t -p 2328 jacobirc@codechunk.net screen -drUAS irc"
 alias lish="env TERM=xterm ssh jpeddicord@dallas376.linode.com"
 alias phonehome="ssh -D 9090 -p 8022 Peddicord@peddicord.us.to"
 alias stdsun="ssh peddicor@stdsun.cse.ohio-state.edu"
+alias stdlinux="ssh peddicor@stdlinux.cse.ohio-state.edu"
 alias stdlogin="ssh peddicor@stdlogin.cse.ohio-state.edu"
 # ls
 alias ls='ls -h --color=auto'
