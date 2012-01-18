@@ -28,6 +28,7 @@ set nohlsearch
 set incsearch
 set number
 set laststatus=2
+set ruler
 set nobackup
 set noerrorbells
 set novisualbell
