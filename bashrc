@@ -6,9 +6,6 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-# turn on 256 colors if not inside screen
-[[ "$TERM" == screen* ]] || export TERM='xterm-256color'
-
 # terminal title
 case "$TERM" in
 xterm*|rxvt*)
@@ -17,6 +14,9 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+# turn on 256 colors if not inside screen
+[[ "$TERM" == screen* ]] || export TERM='xterm-256color'
 
 # window size
 shopt -s checkwinsize
