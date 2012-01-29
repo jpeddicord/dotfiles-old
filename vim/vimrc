@@ -49,22 +49,11 @@ set t_Co=256
 set background=dark
 colorscheme wombat256mod
 
-" indent guides plugin
-"if exists(":IndentGuides")
-	let g:indent_guides_auto_colors=0
-	let g:indent_guides_start_level=2
-	let g:indent_guides_guide_size=1
-	hi IndentGuidesOdd  ctermbg=236
-	hi IndentGuidesEven ctermbg=235
-"endif
-
-" tabularize options
-if exists(":Tabularize")
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:\zs<CR>
-    vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+" show trailing whitespace (except insert mode)
+highlight ExtraWhitespace ctermbg=red guibg=red
+au BufEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
 " alt-arrow mappings
 map [1;3D :tabprevious<CR>
@@ -75,3 +64,18 @@ imap [1;3C <C-O>:tabnext<CR>
 " accidential aliases :)
 cnoreabbrev W w
 cnoreabbrev Q q
+
+" indent guides plugin
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors=0
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+hi IndentGuidesOdd  ctermbg=236
+hi IndentGuidesEven ctermbg=235
+
+" tabularize plugin
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
