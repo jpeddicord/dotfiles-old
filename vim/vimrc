@@ -51,7 +51,6 @@ colorscheme wombat256mod
 
 " show trailing whitespace (except insert mode)
 highlight ExtraWhitespace ctermbg=red guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
