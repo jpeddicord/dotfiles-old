@@ -22,20 +22,23 @@ set softtabstop=4
 set noexpandtab
 set autoindent
 set smartindent
-set backspace=2
+set backspace=indent,eol,start
+" search and display
 set showmatch
 set nohlsearch
 set incsearch
+" windowing
 set number
+set scrolloff=3
 set laststatus=2
 set ruler
+set title
+" misc
 set nobackup
 set noerrorbells
 set novisualbell
 set mouse=a
 set ttymouse=xterm2
-set title
-set scrolloff=3
 set wildmode=longest,list,full
 set wildmenu
 
