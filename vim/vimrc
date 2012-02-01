@@ -24,6 +24,7 @@ set noexpandtab
 set autoindent
 set smartindent
 set backspace=indent,eol,start
+set textwidth=0
 " search and display
 set showmatch
 set nohlsearch
