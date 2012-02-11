@@ -25,10 +25,12 @@ set autoindent
 set smartindent
 set backspace=indent,eol,start
 set textwidth=0
+set timeoutlen=500
 " search and display
 set showmatch
 set nohlsearch
 set incsearch
+set showcmd
 " windowing
 set number
 set scrolloff=3
@@ -55,11 +57,12 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
-" alt-arrow mappings
-map [1;3D :tabprevious<CR>
-imap [1;3D <C-O>:tabprevious<CR>
-map [1;3C :tabnext<CR>
-imap [1;3C <C-O>:tabnext<CR>
+" mappings
+let mapleader=','
+map l :tabnext<CR>
+imap l <C-O>:tabnext<CR>
+map h :tabprevious<CR>
+imap h <C-O>:tabprevious<CR>
 
 " accidential aliases :)
 cnoreabbrev W w
