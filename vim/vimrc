@@ -59,10 +59,10 @@ au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
 " mappings
 let mapleader=','
-map l :tabnext<CR>
-imap l <C-O>:tabnext<CR>
-map h :tabprevious<CR>
-imap h <C-O>:tabprevious<CR>
+map [1;3C :tabnext<CR>
+imap [1;3C <C-O>:tabnext<CR>
+map [1;3D :tabprevious<CR>
+imap [1;3D <C-O>:tabprevious<CR>
 
 " accidential aliases :)
 cnoreabbrev W w
