@@ -1,9 +1,24 @@
-ServerAliveInterval 200
-GSSAPIAuthentication no
-HashKnownHosts no
+Host irc
+	User jacobirc
 
-host *
-    controlmaster auto
-    controlpath ~/.ssh/ssh-%r@%h:%p
+Host cc irc
+	HostName codechunk.net
+	Port 2328
+	User jacob
 
+Host lish
+	HostName dallas376.linode.com
+	User jpeddicord
+
+Host stdlinux stdlogin stdsun
+	HostName %h.cse.ohio-state.edu
+	User peddicor
+
+
+Host *
+	ControlMaster auto
+	ControlPath ~/.ssh/ssh-%r@%h:%p
+	GSSAPIAuthentication no
+	HashKnownHosts no
+	ServerAliveInterval 200
 
