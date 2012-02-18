@@ -1,5 +1,6 @@
 ServerAliveInterval 200
 GSSAPIAuthentication no
+HashKnownHosts no
 
 host *
     controlmaster auto
