@@ -14,6 +14,11 @@ Host stdlinux stdlogin stdsun
 	HostName %h.cse.ohio-state.edu
 	User peddicor
 
+Host hedp-ext
+	HostName scarlet.mps.ohio-state.edu
+	Port 8022
+	LocalForward 8000 localhost:8000
+
 
 Host *
 	ControlMaster auto
