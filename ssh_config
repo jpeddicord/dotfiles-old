@@ -1,6 +1,9 @@
 Host irc
 	User jacobirc
 
+Host cc
+	LocalForward 9090 localhost:9090
+
 Host cc irc
 	HostName codechunk.net
 	Port 2328
