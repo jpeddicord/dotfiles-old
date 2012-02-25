@@ -82,3 +82,6 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
+" hack to make tmux recognize mouse input (LP: #916941)
+autocmd BufEnter * set ttymouse=xterm2
+
