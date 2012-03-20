@@ -84,6 +84,11 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
+" disable syntastic for c/c++; it's too slow to run all the time
+let g:syntastic_mode_map = {'mode': 'active',
+			              \ 'active_filetypes': [],
+			              \ 'passive_filetypes': ['c', 'cpp']}
+
 " hack to make tmux recognize mouse input (LP: #916941)
 autocmd BufEnter * set ttymouse=xterm2
 
