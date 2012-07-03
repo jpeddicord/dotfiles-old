@@ -57,9 +57,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias waf='$(pwd)/waf'
 
-### environment
-export DEBFULLNAME='Jacob Peddicord'
-export DEBEMAIL='jpeddicord@ubuntu.com'
-export EDITOR='vim'
-export VISUAL='vim'
+### load site-specific options
+[[ -f .bashrc.local ]] && source .bashrc.local
 
