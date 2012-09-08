@@ -90,6 +90,3 @@ let g:syntastic_mode_map = {'mode': 'active',
 			              \ 'active_filetypes': [],
 			              \ 'passive_filetypes': ['c', 'cpp']}
 
-" hack to make tmux recognize mouse input (LP: #916941)
-autocmd BufEnter * set ttymouse=xterm2
-
