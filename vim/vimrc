@@ -14,7 +14,6 @@ Bundle 'Tabular'
 Bundle 'vcscommand.vim'
 Bundle 'Vimtodo'
 Bundle 'wombat256.vim'
-Bundle 'xterm-color-table.vim'
 
 " editing options
 filetype plugin indent on

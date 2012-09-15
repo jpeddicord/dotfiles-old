@@ -13,7 +13,7 @@ Host lish
 	HostName dallas376.linode.com
 	User jpeddicord
 
-Host stdlinux stdlogin stdsun
+Host stdlinux
 	HostName %h.cse.ohio-state.edu
 	User peddicor
 
