@@ -6,6 +6,7 @@ call vundle#rc()
 
 " bundles
 Bundle 'a.vim'
+Bundle 'Gundo'
 Bundle 'Indent-Guides'
 Bundle 'JavaScript-Indent'
 Bundle 'surround.vim'
@@ -69,6 +70,10 @@ imap [1;3D <C-O>:tabprevious<CR>
 " accidential aliases :)
 cnoreabbrev W w
 cnoreabbrev Q q
+
+" gundo plugin
+let g:gundo_preview_bottom=1
+nmap <Leader>u :GundoToggle<CR>
 
 " indent guides plugin
 let g:indent_guides_enable_on_vim_startup=1
