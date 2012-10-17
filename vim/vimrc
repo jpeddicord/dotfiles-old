@@ -26,7 +26,7 @@ set autoindent
 set smartindent
 set backspace=indent,eol,start
 set textwidth=0
-set timeoutlen=500
+set timeoutlen=600
 " search and display
 set showmatch
 set nohlsearch
@@ -67,9 +67,13 @@ imap [1;3C <C-O>:tabnext<CR>
 map [1;3D :tabprevious<CR>
 imap [1;3D <C-O>:tabprevious<CR>
 
-" accidential aliases :)
+" accidential aliases
 cnoreabbrev W w
 cnoreabbrev Q q
+
+" indentation settings
+set cinoptions=:0,l1,b1,g0,i0,(0,U1,Ws,m1,j1,J1
+set cinkeys+=0=break
 
 " gundo plugin
 let g:gundo_preview_bottom=1
