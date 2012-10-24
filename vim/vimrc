@@ -23,11 +23,14 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set noexpandtab
-set autoindent
-set smartindent
 set backspace=indent,eol,start
 set textwidth=0
 set timeoutlen=600
+" indentation settings
+set autoindent
+set smartindent
+set cinoptions=:0,l1,b1,g0,i0,(1s,U1,Ws,m1,j1,J1
+set cinkeys+=0=break
 " search and display
 set showmatch
 set nohlsearch
@@ -49,6 +52,7 @@ set mouse=a
 set ttymouse=xterm2
 set wildmode=longest,list,full
 set wildmenu
+set shortmess+=I
 
 " color scheme
 syntax on
@@ -72,9 +76,6 @@ imap [1;3D <C-O>:tabprevious<CR>
 cnoreabbrev W w
 cnoreabbrev Q q
 
-" indentation settings
-set cinoptions=:0,l1,b1,g0,i0,(1s,U1,Ws,m1,j1,J1
-set cinkeys+=0=break
 
 " gundo plugin
 let g:gundo_preview_bottom=1
