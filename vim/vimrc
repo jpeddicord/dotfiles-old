@@ -15,6 +15,7 @@ Bundle 'Tabular'
 Bundle 'vcscommand.vim'
 Bundle 'Vimtodo'
 Bundle 'wombat256.vim'
+Bundle 'hynek/vim-python-pep8-indent'
 
 " editing options
 filetype plugin indent on
@@ -72,7 +73,7 @@ cnoreabbrev W w
 cnoreabbrev Q q
 
 " indentation settings
-set cinoptions=:0,l1,b1,g0,i0,(0,U1,Ws,m1,j1,J1
+set cinoptions=:0,l1,b1,g0,i0,(1s,U1,Ws,m1,j1,J1
 set cinkeys+=0=break
 
 " gundo plugin
