@@ -16,6 +16,7 @@ Bundle 'vcscommand.vim'
 Bundle 'Vimtodo'
 Bundle 'wombat256.vim'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'scrooloose/nerdtree'
 
 " editing options
 filetype plugin indent on
@@ -68,9 +69,13 @@ au InsertLeave * match ExtraWhiteSpace /\s\+$/
 " mappings
 let mapleader=','
 map <C-h> <C-w>h
+imap <C-h> <C-o><C-w>h
 map <C-j> <C-w>j
+imap <C-j> <C-o><C-w>j
 map <C-k> <C-w>k
+imap <C-k> <C-o><C-w>k
 map <C-l> <C-w>l
+imap <C-l> <C-o><C-w>l
 map <S-h> :tabprevious<CR>
 map <S-l> :tabnext<CR>
 map <S-j> :bnext<CR>
@@ -103,4 +108,7 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 let g:syntastic_mode_map = {'mode': 'active',
 			              \ 'active_filetypes': [],
 			              \ 'passive_filetypes': ['c', 'cpp']}
+
+" NERDTree
+map <Leader>t :NERDTree<CR>
 
