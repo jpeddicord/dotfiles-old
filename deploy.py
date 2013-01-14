@@ -12,6 +12,7 @@ LINKS = [
     # (source, name)
     ('vim', '.vim'),
     ('vim/vimrc', '.vimrc'),
+    ('vim/gvimrc', '.gvimrc'),
     ('bashrc', '.bashrc'),
     ('gitconfig', '.gitconfig'),
     ('profile', '.profile'),
@@ -41,4 +42,7 @@ for source, name in LINKS:
         os.remove(location)
 
     print "  Linking", source, "at", location
-    os.symlink(source, location)
+    try:
+        os.symlink(source, location)
+    except Exception as ex:
+        print "  Failed ({0})".format(ex)
