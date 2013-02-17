@@ -76,10 +76,11 @@ map <C-k> <C-w>k
 imap <C-k> <C-o><C-w>k
 map <C-l> <C-w>l
 imap <C-l> <C-o><C-w>l
-map <S-h> :tabprevious<CR>
-map <S-l> :tabnext<CR>
-map <S-j> :bnext<CR>
-map <S-k> :bprevious<CR>
+nmap <S-h> :tabprevious<CR>
+nmap <S-l> :tabnext<CR>
+nmap <S-j> :bnext<CR>
+nmap <S-k> :bprevious<CR>
+nmap <Leader>cd :cd %:p:h<CR>
 
 " accidential aliases
 cnoreabbrev W w
