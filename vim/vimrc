@@ -80,7 +80,7 @@ nmap <S-h> :tabprevious<CR>
 nmap <S-l> :tabnext<CR>
 nmap <S-j> :bnext<CR>
 nmap <S-k> :bprevious<CR>
-nmap <Leader>cd :cd %:p:h<CR>
+nmap <Leader>d :cd %:p:h<CR>:pwd<CR>
 
 " accidential aliases
 cnoreabbrev W w
