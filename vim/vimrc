@@ -8,6 +8,7 @@ call vundle#rc()
 Bundle 'a.vim'
 Bundle 'wombat256.vim'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'kien/ctrlp.vim'
 Bundle 'mivok/vimtodo'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'pangloss/vim-javascript'
@@ -43,7 +44,7 @@ set scrolloff=3
 set ruler
 set title
 set laststatus=2
-set statusline=\ %y\ %<%F%m%=%{&ff}\ %5l/%L\ %4v\ 0x%04B\ %*
+set statusline=\ %n\ %y\ %<%f%m\ %=%{&ff}\ %5l/%L\ %4v\ 0x%04B\ %*
 " misc
 set encoding=utf-8
 set directory=~/.vim/.swap,.,/var/tmp,/tmp
