@@ -34,7 +34,7 @@ set cinoptions=:0,l1,b1,g0,i0,(1s,U1,Ws,m1,j1,J1
 set cinkeys+=0=break
 " search and display
 set showmatch
-set nohlsearch
+set hlsearch
 set incsearch
 set showcmd
 set cursorline
@@ -45,6 +45,7 @@ set laststatus=2
 set ruler
 set title
 " misc
+set encoding=utf-8
 set directory=~/.vim/.swap,.,/var/tmp,/tmp
 set nobackup
 set noerrorbells
@@ -66,21 +67,31 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
-" mappings
+" set <Leader> to comma
 let mapleader=','
-map <C-h> <C-w>h
-imap <C-h> <C-o><C-w>h
-map <C-j> <C-w>j
-imap <C-j> <C-o><C-w>j
-map <C-k> <C-w>k
-imap <C-k> <C-o><C-w>k
-map <C-l> <C-w>l
-imap <C-l> <C-o><C-w>l
+
+" window movement mappings
+noremap <C-h> <C-w>h
+inoremap <C-h> <C-o><C-w>h
+noremap <C-j> <C-w>j
+inoremap <C-j> <C-o><C-w>j
+noremap <C-k> <C-w>k
+inoremap <C-k> <C-o><C-w>k
+noremap <C-l> <C-w>l
+inoremap <C-l> <C-o><C-w>l
 nmap <S-h> :tabprevious<CR>
 nmap <S-l> :tabnext<CR>
 nmap <S-j> :bnext<CR>
 nmap <S-k> :bprevious<CR>
+
+" custom leader commands
 nmap <Leader>d :cd %:p:h<CR>:pwd<CR>
+nmap <Leader>p :set paste!<CR>:set paste?<CR>
+nmap <Leader>/ :nohlsearch<CR>
+
+" vertical movements by screen line
+nnoremap j gj
+nnoremap k gk
 
 " accidential aliases
 cnoreabbrev W w
