@@ -40,9 +40,10 @@ set cursorline
 " windowing
 set number
 set scrolloff=3
-set laststatus=2
 set ruler
 set title
+set laststatus=2
+set statusline=\ %y\ %<%F%m%=%{&ff}\ %5l/%L\ %4v\ 0x%04B\ %*
 " misc
 set encoding=utf-8
 set directory=~/.vim/.swap,.,/var/tmp,/tmp
