@@ -6,17 +6,16 @@ call vundle#rc()
 
 " bundles
 Bundle 'a.vim'
-Bundle 'Gundo'
-Bundle 'Indent-Guides'
-Bundle 'JavaScript-Indent'
-Bundle 'surround.vim'
-Bundle 'Syntastic'
-Bundle 'Tabular'
-Bundle 'vcscommand.vim'
-Bundle 'Vimtodo'
 Bundle 'wombat256.vim'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'mivok/vimtodo'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'sjl/gundo.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 
 " editing options
 filetype plugin indent on
@@ -110,17 +109,16 @@ let g:indent_guides_guide_size=1
 hi IndentGuidesOdd  ctermbg=236
 hi IndentGuidesEven ctermbg=235
 
-" tabularize plugin
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
-
-" disable syntastic for c/c++; it's too slow to run all the time
-let g:syntastic_mode_map = {'mode': 'active',
-			              \ 'active_filetypes': [],
-			              \ 'passive_filetypes': ['c', 'cpp']}
+" javascript indent (also includes html)
+let g:html_indent_inctags = 'html,body,head,tbody'
+let g:html_indent_script1 = 'inc'
+let g:html_indent_style1 = 'inc'
 
 " NERDTree
 map <Leader>t :NERDTree<CR>
+
+" Syntastic plugin
+let g:syntastic_mode_map = {'mode': 'active',
+			\ 'active_filetypes': [],
+			\ 'passive_filetypes': ['c', 'cpp']}
 
