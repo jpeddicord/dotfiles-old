@@ -38,7 +38,7 @@ BLUE='\[\033[0;34m\]'
 NORMAL='\[\033[00m\]'
 
 # prompt
-PS1="${BLUE}\u${GREEN}@${BLUE}\h${BBLUE}: ${BGREEN}\w ${BRED}\$ ${NORMAL}"
+PS1="${BLUE}\u${GREEN}@${BLUE}\h${BBLUE}: ${BGREEN}\w ${BRED}\\$ ${NORMAL}"
 
 ### aliases
 # ssh
