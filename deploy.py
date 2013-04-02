@@ -33,13 +33,20 @@ for source, name in LINKS:
 
     # check if a link was already made
     if os.path.islink(location):
-        print "  Link already present, skipping"
-        continue
+
+        if os.readlink(location) == source:
+            print "  Link already present; skipping"
+            continue
+        else:
+            print "  Link present but pointed elsewhere; repairing"
+            os.remove(location)
 
     # or if something else was there
     elif os.path.exists(location):
-        print "  File exists, removing to link"
-        os.remove(location)
+        print "  File exists; removing to link"
+        renamed = location + "~"
+        os.rename(location, renamed)
+        print "  Old file backed up as", renamed
 
     print "  Linking", source, "at", location
     try:
