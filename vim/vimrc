@@ -30,6 +30,7 @@ set timeoutlen=600
 " indentation settings
 set autoindent
 set smartindent
+set copyindent
 set cinoptions=:0,l1,b1,g0,i0,(1s,U1,Ws,m1,j1,J1
 set cinkeys+=0=break
 " search and display
