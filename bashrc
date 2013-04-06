@@ -59,6 +59,9 @@ alias waf='$(pwd)/waf'
 alias virt='source env/bin/activate'
 alias vimupdate='vim +BundleInstall! +qall'
 
+### path
+CDPATH=.:~:~/dev
+
 ### load site-specific options
 [[ -f .bashrc.local ]] && source .bashrc.local
 

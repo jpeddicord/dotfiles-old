@@ -8,6 +8,7 @@ call vundle#rc()
 Bundle 'a.vim'
 Bundle 'wombat256.vim'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'jnwhiteh/vim-golang'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mivok/vimtodo'
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -53,10 +54,11 @@ set nobackup
 set noerrorbells
 set novisualbell
 set mouse=a
+set sessionoptions=buffers,curdir,folds,tabpages,winsize
+set shortmess+=I
 set ttymouse=xterm2
 set wildmode=longest,list,full
 set wildmenu
-set shortmess+=I
 
 " color scheme
 syntax on
