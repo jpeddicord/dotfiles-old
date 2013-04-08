@@ -102,6 +102,9 @@ cnoreabbrev W w
 cnoreabbrev Q q
 
 
+" golang auto-format
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
 " gundo plugin
 let g:gundo_preview_bottom=1
 nmap <Leader>u :GundoToggle<CR>
