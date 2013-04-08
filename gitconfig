@@ -3,3 +3,11 @@
 	email = jacob@peddicord.net
 [color]
 	ui = true
+[alias]
+	st = status -sb
+	ci = commit
+	br = branch
+	co = checkout
+	ready = rebase -i @{u}
+	lg = log --decorate --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	purr = pull --rebase
