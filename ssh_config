@@ -9,7 +9,7 @@ Host cc irc
 	User jacob
 
 Host lish
-	HostName dallas376.linode.com
+	HostName dallas607.linode.com
 	User jpeddicord
 
 Host cse stdlinux
