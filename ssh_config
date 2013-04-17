@@ -2,11 +2,11 @@ Host irc
 	User jacobirc
 
 Host cc
+	User jacob
 	LocalForward 9090 localhost:9090
 
 Host cc irc
 	HostName codechunk.net
-	User jacob
 
 Host lish
 	HostName dallas607.linode.com
@@ -15,13 +15,6 @@ Host lish
 Host cse stdlinux
 	HostName stdlinux.cse.ohio-state.edu
 	User peddicor
-
-Host hedp-ext
-	HostName scarlet.mps.ohio-state.edu
-	Port 8022
-	LocalForward 8001 localhost:8001
-	LocalForward 8081 scarlet.lab:81
-	LocalForward 8082 scarlet.lab:82
 
 
 Host *
