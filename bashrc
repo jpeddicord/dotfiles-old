@@ -41,17 +41,16 @@ NORMAL='\[\033[00m\]'
 PS1="${BLUE}\u${GREEN}@${BLUE}\h${BBLUE}: ${BGREEN}\w ${BRED}\\$ ${NORMAL}"
 
 ### aliases
-# ssh
-alias irc="ssh -t irc screen -drUAS irc"
-# ls
+# common shell things
+alias cls='printf "\033c"'
 alias ls='ls -h --color=auto'
 alias l='ls -l'
 alias la='ls -A'
 alias ll='ls -lA'
-# vim
 alias svim='sudo vim'
 alias svi='svim'
-# etc
+# misc specifics
+alias irc="ssh -t irc screen -drUAS irc"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
