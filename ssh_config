@@ -9,12 +9,8 @@ Host cc irc
 	HostName codechunk.net
 
 Host lish
-	HostName dallas607.linode.com
+	HostName lish-dallas.linode.com
 	User jpeddicord
-
-Host cse stdlinux
-	HostName stdlinux.cse.ohio-state.edu
-	User peddicor
 
 
 Host *
