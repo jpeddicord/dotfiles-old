@@ -47,14 +47,13 @@ alias ls='ls -h --color=auto'
 alias l='ls -l'
 alias la='ls -A'
 alias ll='ls -lA'
-alias svim='sudo vim'
+alias svim='sudo vim -u $HOME/.vimrc'
 alias svi='svim'
 # misc specifics
 alias irc="ssh -t irc screen -drUAS irc"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias waf='$(pwd)/waf'
 alias virt='source env/bin/activate'
 alias vimupdate='vim +BundleInstall! +qall'
 
