@@ -15,7 +15,6 @@ Host lish
 Host *
 	ControlMaster auto
 	ControlPath ~/.ssh/ssh-%r@%h:%p
-	GSSAPIAuthentication no
 	HashKnownHosts no
 	ServerAliveInterval 200
 
