@@ -2,3 +2,6 @@
 	path = vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
 	ignore = all
+[submodule "zprezto"]
+	path = zprezto
+	url = https://github.com/sorin-ionescu/prezto
