@@ -1,23 +1,6 @@
-" vundle
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" bundles
-Bundle 'a.vim'
-Bundle 'wombat256.vim'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mivok/vimtodo'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'pangloss/vim-javascript'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'sjl/gundo.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
+" pathogen
+runtime pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 
 " editing options
 filetype plugin indent on

@@ -1,7 +1,60 @@
-[submodule "vim/bundle/vundle"]
-	path = vim/bundle/vundle
-	url = https://github.com/gmarik/vundle.git
-	ignore = all
 [submodule "zprezto"]
 	path = zprezto
 	url = https://github.com/sorin-ionescu/prezto
+	ignore = dirty
+[submodule "vim/pathogen"]
+	path = vim/pathogen
+	url = https://github.com/tpope/vim-pathogen
+	ignore = dirty
+[submodule "vim/bundle/a.vim"]
+	path = vim/bundle/a.vim
+	url = https://github.com/vim-scripts/a.vim
+	ignore = dirty
+[submodule "vim/bundle/vim-python-pep8-indent"]
+	path = vim/bundle/vim-python-pep8-indent
+	url = https://github.com/hynek/vim-python-pep8-indent
+	ignore = dirty
+[submodule "vim/bundle/vim-golang"]
+	path = vim/bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang
+	ignore = dirty
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+	ignore = dirty
+[submodule "vim/bundle/vimtodo"]
+	path = vim/bundle/vimtodo
+	url = https://github.com/mivok/vimtodo
+	ignore = dirty
+[submodule "vim/bundle/vim-indent-guides"]
+	path = vim/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides
+	ignore = dirty
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+	ignore = dirty
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+	ignore = dirty
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
+	ignore = dirty
+[submodule "vim/bundle/gundo.vim"]
+	path = vim/bundle/gundo.vim
+	url = https://github.com/sjl/gundo.vim
+	ignore = dirty
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+	ignore = dirty
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+	ignore = dirty
+[submodule "vim/bundle/wombat256.vim"]
+	path = vim/bundle/wombat256.vim
+	url = https://github.com/vim-scripts/wombat256.vim
+	ignore = dirty
