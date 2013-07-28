@@ -46,7 +46,7 @@ set wildmenu
 syntax on
 set t_Co=256
 set background=dark
-colorscheme wombat256mod
+colorscheme solarized
 
 " show trailing whitespace (except insert mode)
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -90,14 +90,6 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 " gundo plugin
 let g:gundo_preview_bottom=1
 nmap <Leader>u :GundoToggle<CR>
-
-" indent guides plugin
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_auto_colors=0
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-hi IndentGuidesOdd  ctermbg=236
-hi IndentGuidesEven ctermbg=235
 
 " javascript indent (also includes html)
 let g:html_indent_inctags = 'html,body,head,tbody'
