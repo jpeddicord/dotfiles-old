@@ -10,18 +10,10 @@ zstyle ':prezto:load' pmodule \
   'history' 'history-substring-search' \
   'spectrum' 'utility' \
   'completion' 'prompt' \
-  'archive' 'dpkg' 'git' 'rsync'
+  'archive' 'dpkg' 'rsync'
 
 
-# titles
+# customization
 zstyle ':prezto:module:terminal' auto-title 'yes'
-
-# line editing
 zstyle ':prezto:module:editor' keymap 'emacs'
-
-# prompt
 zstyle ':prezto:module:prompt' theme 'nicoulaj'
-
-# git
-zstyle ':prezto:module:git:status:ignore' submodules 'all'
-
