@@ -19,9 +19,7 @@ LINKS = [
     ('zshrc', '.zshrc'),
     ('zprezto', '.zprezto'),
     ('zpreztorc', '.zpreztorc'),
-    ('bashrc', '.bashrc'),
     ('gitconfig', '.gitconfig'),
-    ('profile', '.profile'),
     ('ssh_config', '.ssh/config'),
     ('tmux.conf', '.tmux.conf'),
 ]
