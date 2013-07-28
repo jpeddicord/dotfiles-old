@@ -99,6 +99,9 @@ let g:html_indent_style1 = 'inc'
 " NERDTree
 map <Leader>t :NERDTree<CR>
 
+" Solarized
+call togglebg#map("<Leader>b")
+
 " Syntastic plugin
 let g:syntastic_mode_map = {'mode': 'active',
 			\ 'active_filetypes': [],
