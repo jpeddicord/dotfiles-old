@@ -8,6 +8,9 @@ export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
 
+# colors
+[[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
+
 # path
 typeset -gU cdpath fpath mailpath path
 path=(
