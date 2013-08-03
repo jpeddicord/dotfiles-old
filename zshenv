@@ -15,7 +15,7 @@ export PAGER='less'
 typeset -gU cdpath fpath mailpath path
 path=(
 	~/bin
-	~/.local/share/bin
+	~/.local/bin
 	$path
 )
 
