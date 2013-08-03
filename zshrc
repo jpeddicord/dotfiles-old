@@ -3,6 +3,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 	source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# don't share history
+unsetopt SHARE_HISTORY
+
 # aliases
 alias cls='printf "\033c"'
 alias grep='grep --color=auto'
