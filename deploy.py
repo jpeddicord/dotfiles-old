@@ -12,8 +12,8 @@ from subprocess import call
 LINKS = [
     # (source, name)
     ('vim', '.vim'),
-    ('vim/vimrc', '.vimrc'),
-    ('vim/gvimrc', '.gvimrc'),
+    ('vimrc', '.vimrc'),
+    ('gvimrc', '.gvimrc'),
     ('zshenv', '.zshenv'),
     ('zlogin', '.zlogin'),
     ('zshrc', '.zshrc'),
