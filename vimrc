@@ -1,3 +1,8 @@
+" windows path bootstrap
+if has('win32') || has('win64')
+	set runtimepath=$HOME/.vim,$VIMRUNTIME,$HOME/.vim/after
+endif
+
 " pathogen
 runtime pathogen/autoload/pathogen.vim
 execute pathogen#infect()
@@ -31,7 +36,7 @@ set laststatus=2
 set statusline=\ %n\ %y\ %<%f%m\ %=%{&ff}\ %5l/%L\ %4v\ 0x%04B\ %*
 " misc
 set encoding=utf-8
-set directory=~/.vim/.swap,.,/var/tmp,/tmp
+set directory=~/.vim/swap,.,/var/tmp,/tmp
 set nobackup
 set noerrorbells
 set novisualbell
@@ -100,7 +105,7 @@ let g:html_indent_style1 = 'inc'
 map <Leader>t :NERDTree<CR>
 
 " Solarized
-call togglebg#map("<Leader>b")
+call togglebg#map('<Leader>b')
 
 " Syntastic plugin
 let g:syntastic_mode_map = {'mode': 'active',
