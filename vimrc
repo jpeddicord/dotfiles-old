@@ -1,7 +1,13 @@
+set nocompatible
+
 " windows path bootstrap
 if has('win32') || has('win64')
 	set runtimepath=$HOME/.vim,$VIMRUNTIME,$HOME/.vim/after
 endif
+
+" restore runtimepath under sudo
+let s:origvim=expand("<sfile>:p:h").'/.vim'
+let &runtimepath=printf('%s,%s,%s/after', s:origvim, &runtimepath, s:origvim)
 
 " pathogen
 runtime pathogen/autoload/pathogen.vim
