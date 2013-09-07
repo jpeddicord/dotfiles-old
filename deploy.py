@@ -45,13 +45,7 @@ def make_links(links):
 
         # check if a link was already made
         if os.path.islink(location):
-
-            if os.readlink(location) == source:
-                print "  Link already present; skipping"
-                continue
-            else:
-                print "  Link present but pointed elsewhere; repairing"
-                os.remove(location)
+            os.remove(location)
 
         # or if something else was there
         elif os.path.exists(location):
@@ -63,6 +57,7 @@ def make_links(links):
         print "  Linking", source, "at", location
         try:
             os.symlink(source, location)
+            os.chmod(source, 0755)
         except Exception as ex:
             print "  Failed ({0})".format(ex)
 
