@@ -16,4 +16,3 @@ alias svim='sudo vim -u $HOME/.vimrc'
 alias svi='svim'
 alias tmux='tmux -2'
 alias virt='source env/bin/activate'
-alias irc="ssh -t irc screen -drUAS irc"
