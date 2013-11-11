@@ -8,8 +8,7 @@
 	ci = commit
 	br = branch
 	co = checkout
-	ready = rebase -i @{u}
-	lg = log --decorate --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	purr = pull --rebase
+	lg = log --graph --decorate --abbrev-commit --date=relative --all --pretty=format:'%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold blue)- %an%C(reset)%C(yellow)%d%C(reset)'
 [push]
 	default = simple
