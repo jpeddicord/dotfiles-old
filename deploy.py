@@ -23,7 +23,7 @@ LINKS = [
     ('gitconfig', '.gitconfig'),
     ('ssh_config', '.ssh/config'),
     ('tmux.conf', '.tmux.conf'),
-    ('Xdefaults', '.Xdefaults'),
+    ('Xresources', '.Xresources'),
 ]
 
 def setup():
