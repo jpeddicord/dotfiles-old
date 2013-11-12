@@ -1,5 +1,13 @@
-URxvt*scrollBar: false
-URxvt*font: xft:Inconsolata:pixelsize=16
+URxvt.depth: 32
+URxvt.font: xft:Inconsolata:pixelsize=15
+URxvt.letterSpace: -1
+URxvt.scrollBar: false
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: xdg-open
+URxvt.matcher.button: 1
 
 
 ! Solarized color scheme for the X Window System
