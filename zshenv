@@ -10,6 +10,7 @@ export PAGER='less'
 
 # colors
 [[ "$TERM" == "xterm" ]] && export TERM="xterm-256color"
+[[ "$TERM" == "rxvt-unicode" ]] && export TERM="rxvt-unicode-256color"
 
 # path
 typeset -gU cdpath fpath mailpath path
