@@ -8,7 +8,9 @@
 	ci = commit
 	br = branch
 	co = checkout
+	ap = add -p
+	diffc = diff --cached
 	purr = pull --rebase
-	lg = log --graph --decorate --abbrev-commit --date=relative --all --pretty=format:'%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold blue)- %an%C(reset)%C(yellow)%d%C(reset)'
+	lg = log --graph --decorate --abbrev-commit --date=relative --all --pretty=format:'%C(blue)%h%C(reset) - %C(cyan)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold blue)- %an%C(reset)%C(yellow)%d%C(reset)'
 [push]
 	default = simple
