@@ -21,7 +21,7 @@ LINKS = [
     ('zpreztorc', '.zpreztorc'),
     ('dir_colors', '.dir_colors'),
     ('gitconfig', '.gitconfig'),
-    ('ssh_config', '.ssh/config'),
+    ('ssh/config', '.ssh/config'),
     ('tmux.conf', '.tmux.conf'),
     ('Xresources', '.Xresources'),
 ]
@@ -30,6 +30,18 @@ def setup():
     print "Updating submodules..."
     call(['git', 'submodule', 'update', '--init', '--recursive'])
     print "Submodule update complete."
+
+def compile_ssh_config():
+    print "Building ~/.ssh/config..."
+    sources = ['~/Dropbox/.ssh_host_config', '~/.ssh/host_config', 'ssh/config.tail']
+    with open('ssh/config', 'w') as out:
+        for fname in sources:
+            fname = os.path.expanduser(fname)
+            if os.path.exists(fname):
+                with open(fname) as src:
+                    out.write(src.read())
+                    print "  " + fname
+    print "Created."
 
 def make_links(links):
     for source, name in links:
@@ -64,4 +76,5 @@ def make_links(links):
 
 if __name__ == '__main__':
     setup()
+    compile_ssh_config()
     make_links(LINKS)
