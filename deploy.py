@@ -21,9 +21,9 @@ LINKS = [
     ('zpreztorc', '.zpreztorc'),
     ('dir_colors', '.dir_colors'),
     ('gitconfig', '.gitconfig'),
-    ('ssh/config', '.ssh/config'),
     ('tmux.conf', '.tmux.conf'),
     ('Xresources', '.Xresources'),
+    ('ssh/config', '.ssh/config'),
 ]
 
 def setup():
