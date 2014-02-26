@@ -7,6 +7,11 @@ It will mess with your own dotfiles and use mine instead.
 import os
 from subprocess import call
 
+# directories to create/require
+DIRS = [
+    '.ssh',
+    '.i3',
+]
 
 # links will be installed in the order they are here
 LINKS = [
@@ -19,17 +24,27 @@ LINKS = [
     ('zshrc', '.zshrc'),
     ('zprezto', '.zprezto'),
     ('zpreztorc', '.zpreztorc'),
+    ('zfuncs', '.zfuncs'),
     ('dir_colors', '.dir_colors'),
     ('gitconfig', '.gitconfig'),
     ('tmux.conf', '.tmux.conf'),
     ('Xresources', '.Xresources'),
     ('ssh/config', '.ssh/config'),
+    ('i3/config', '.i3/config'),
 ]
 
 def setup():
     print "Updating submodules..."
     call(['git', 'submodule', 'update', '--init', '--recursive'])
     print "Submodule update complete."
+
+def require_dirs():
+    print "Ensuring required directories exist..."
+    for d in DIRS:
+        d = os.path.join(os.path.expanduser('~'), d)
+        if not os.path.isdir(d):
+            print "Creating directory", d
+            os.makedirs(d)
 
 def compile_ssh_config():
     print "Building ~/.ssh/config..."
@@ -76,5 +91,6 @@ def make_links(links):
 
 if __name__ == '__main__':
     setup()
+    require_dirs()
     compile_ssh_config()
     make_links(LINKS)

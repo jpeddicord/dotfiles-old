@@ -1,0 +1,27 @@
+# a theme hacked up from many.
+# by jacob peddicord (jmp.name)
+
+function prompt_hackup_precmd {
+	vcs_info
+}
+
+function prompt_hackup_setup() {
+	setopt LOCAL_OPTIONS
+	prompt_opts=(cr percent subst)
+	autoload -Uz add-zsh-hook
+	autoload -Uz vcs_info
+	add-zsh-hook precmd prompt_hackup_precmd
+
+	zstyle ':vcs_info:*' enable bzr git hg svn
+	zstyle ':vcs_info:*' check-for-changes true
+	zstyle ':vcs_info:*' unstagedstr '!'
+	zstyle ':vcs_info:*' stagedstr '+'
+	zstyle ':vcs_info:*' actionformats "%r:%b %u%c (%a)"
+	zstyle ':vcs_info:*' formats "%r:%b %u%c"
+
+	PROMPT="%K{0}%F{blue}%# ${SSH_TTY:+%n@%m }%F{yellow}%~%f %F{cyan}"'${vcs_info_msg_0_}'" %k
+%B%F{red}>%b %f"
+	RPROMPT="%F{white}[%*]%f"
+}
+
+prompt_hackup_setup "$@"
