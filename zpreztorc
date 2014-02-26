@@ -12,8 +12,12 @@ zstyle ':prezto:load' pmodule \
   'completion' 'prompt' \
   'archive' 'dpkg' 'rsync'
 
+# custom prompt
+autoload -U promptinit
+fpath=($HOME/.zfuncs $fpath)
+promptinit
 
 # customization
 zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':prezto:module:editor' keymap 'vi'
-zstyle ':prezto:module:prompt' theme 'nicoulaj'
+zstyle ':prezto:module:prompt' theme 'hackup'
