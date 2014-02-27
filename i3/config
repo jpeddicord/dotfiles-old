@@ -1,13 +1,7 @@
-set $mod Mod4
-
+# setup
 font xft:Inconsolata Medium 8
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-
+set $mod Mod4
 floating_modifier $mod
-
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+d exec dmenu_run
-bindsym $mod+z exec i3lock -c 2b2b2b -p default
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -78,6 +72,16 @@ bindsym $mod+Shift+0 move container to workspace 10
 # restart i3 inplace
 bindsym $mod+Shift+r restart
 
+# status bar
 bar {
     status_command i3status
 }
+
+# apps
+bindsym $mod+Return exec urxvt || i3-sensible-terminal
+bindsym $mod+d exec dmenu_run
+bindsym $mod+z exec i3lock -c 2b2b2b -p default
+
+# startup apps
+exec --no-startup-id xsetroot -solid "#2b2b2b"
+exec --no-startup-id /usr/libexec/gnome-settings-daemon || gnome-settings-daemon || true

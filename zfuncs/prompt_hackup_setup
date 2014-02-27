@@ -16,8 +16,8 @@ function prompt_hackup_setup() {
 	zstyle ':vcs_info:*' check-for-changes true
 	zstyle ':vcs_info:*' unstagedstr '!'
 	zstyle ':vcs_info:*' stagedstr '+'
-	zstyle ':vcs_info:*' actionformats "%r:%b %u%c (%a) "
-	zstyle ':vcs_info:*' formats "%r:%b %u%c "
+	zstyle ':vcs_info:*' actionformats "%b%u%c (%a) "
+	zstyle ':vcs_info:*' formats "%b%u%c "
 
 	PROMPT="%K{0}%F{blue}%# ${SSH_TTY:+%n@%m }%F{yellow}%~%f %F{cyan}"'${vcs_info_msg_0_}'"%k
 %B%F{red}>%b %f"
