@@ -26,3 +26,7 @@ if [[ ! -d "$TMPPREFIX" ]]; then
 	mkdir -p "$TMPPREFIX"
 fi
 
+# local settings
+if [[ -e ~/.zshenv.local ]]; then
+	source ~/.zshenv.local
+fi
