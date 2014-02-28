@@ -6,3 +6,5 @@
 	fi
 } &!
 
+# for SSH X forwarding
+[[ -z "$DISPLAY" ]] || xrdb -merge ~/.Xresources
