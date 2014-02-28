@@ -83,5 +83,6 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+z exec i3lock -c 2b2b2b -p default
 
 # startup apps
+exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id xsetroot -solid "#2b2b2b"
 exec --no-startup-id /usr/libexec/gnome-settings-daemon || gnome-settings-daemon || true

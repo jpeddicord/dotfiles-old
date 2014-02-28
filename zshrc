@@ -18,3 +18,7 @@ alias tmux='tmux -2'
 alias venv='source env/bin/activate'
 alias gopath='export GOPATH=`pwd`; path=("$GOPATH/bin" "$path[@]")'
 
+# local settings
+if [[ -e ~/.zshrc.local ]]; then
+	source ~/.zshrc.local
+fi
