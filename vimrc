@@ -13,6 +13,11 @@ let &runtimepath=printf('%s,%s,%s/after', s:origvim, &runtimepath, s:origvim)
 runtime pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+" only load neocomplete etc on +lua builds
+if has('lua')
+	execute pathogen#infect('bundle_lua/{}')
+endif
+
 " editing options
 filetype plugin indent on
 set tabstop=4

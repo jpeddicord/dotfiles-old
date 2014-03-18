@@ -62,3 +62,6 @@
 	path = gnome-terminal-colors-solarized
 	url = https://github.com/sigurdga/gnome-terminal-colors-solarized
 	ignore = dirty
+[submodule "vim/bundle_lua/neocomplete.vim"]
+	path = vim/bundle_lua/neocomplete.vim
+	url = https://github.com/Shougo/neocomplete.vim
