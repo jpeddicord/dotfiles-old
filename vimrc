@@ -100,6 +100,11 @@ cnoreabbrev W w
 cnoreabbrev Q q
 
 
+" completion engine
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+
 " golang auto-format
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
