@@ -19,7 +19,7 @@ URxvt.scrollTtyKeypress: true
 URxvt.internalBorder: 3
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: xdg-open
-URxvt.matcher.button: 1
+URxvt.matcher.button: S1
 
 
 ! Solarized color scheme for the X Window System
