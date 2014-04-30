@@ -6,17 +6,9 @@
 	path = vim/pathogen
 	url = https://github.com/tpope/vim-pathogen
 	ignore = dirty
-[submodule "vim/bundle/a.vim"]
-	path = vim/bundle/a.vim
-	url = https://github.com/vim-scripts/a.vim
-	ignore = dirty
 [submodule "vim/bundle/vim-python-pep8-indent"]
 	path = vim/bundle/vim-python-pep8-indent
 	url = https://github.com/hynek/vim-python-pep8-indent
-	ignore = dirty
-[submodule "vim/bundle/vim-golang"]
-	path = vim/bundle/vim-golang
-	url = https://github.com/jnwhiteh/vim-golang
 	ignore = dirty
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
@@ -29,10 +21,6 @@
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
-	ignore = dirty
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree
 	ignore = dirty
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
@@ -50,18 +38,19 @@
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
 	ignore = dirty
-[submodule "vim/bundle/wombat256.vim"]
-	path = vim/bundle/wombat256.vim
-	url = https://github.com/vim-scripts/wombat256.vim
-	ignore = dirty
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
+	ignore = dirty
+[submodule "vim/bundle/vim-gocode"]
+	path = vim/bundle/vim-gocode
+	url = https://github.com/Blackrush/vim-gocode
+	ignore = dirty
+[submodule "vim/bundle_lua/neocomplete.vim"]
+	path = vim/bundle_lua/neocomplete.vim
+	url = https://github.com/Shougo/neocomplete.vim
 	ignore = dirty
 [submodule "gnome-terminal-colors-solarized"]
 	path = gnome-terminal-colors-solarized
 	url = https://github.com/sigurdga/gnome-terminal-colors-solarized
 	ignore = dirty
-[submodule "vim/bundle_lua/neocomplete.vim"]
-	path = vim/bundle_lua/neocomplete.vim
-	url = https://github.com/Shougo/neocomplete.vim

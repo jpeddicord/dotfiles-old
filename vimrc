@@ -103,6 +103,7 @@ cnoreabbrev Q q
 " completion engine
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
+set completeopt=menuone
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 
 " golang auto-format
