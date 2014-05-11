@@ -39,12 +39,12 @@ set incsearch
 set showcmd
 set cursorline
 " windowing
+set hidden
 set number
 set scrolloff=3
 set ruler
 set title
 set laststatus=2
-set statusline=\ %n\ %y\ %<%f%m\ %=%{&ff}\ %5l/%L\ %4v\ 0x%04B\ %*
 " misc
 set encoding=utf-8
 set directory=~/.vim/swap,.,/var/tmp,/tmp
@@ -81,15 +81,18 @@ noremap <C-k> <C-w>k
 inoremap <C-k> <C-o><C-w>k
 noremap <C-l> <C-w>l
 inoremap <C-l> <C-o><C-w>l
-nmap <S-h> :tabprevious<CR>
-nmap <S-l> :tabnext<CR>
-nmap <S-j> :bnext<CR>
-nmap <S-k> :bprevious<CR>
+nnoremap <S-h> :tabprevious<CR>
+nnoremap <S-l> :tabnext<CR>
+nnoremap <S-j> :bnext<CR>
+nnoremap <S-k> :bprevious<CR>
 
 " custom leader commands
-nmap <Leader>d :cd %:p:h<CR>:pwd<CR>
-nmap <Leader>p :set paste!<CR>:set paste?<CR>
-nmap <Leader>/ :nohlsearch<CR>
+nnoremap <Leader>c :bdelete<CR>
+nnoremap <Leader>C :bdelete!<CR>
+nnoremap <Leader>e :enew<CR>
+nnoremap <Leader>d :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>p :set paste!<CR>:set paste?<CR>
+nnoremap <Leader>/ :nohlsearch<CR>
 
 " vertical movements by screen line
 nnoremap j gj
@@ -98,6 +101,13 @@ nnoremap k gk
 " accidential aliases
 cnoreabbrev W w
 cnoreabbrev Q q
+
+
+" airline statusline
+let g:airline_left_sep = ""
+let g:airline_right_sep = ""
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 
 " completion engine
