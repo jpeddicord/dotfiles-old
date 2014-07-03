@@ -50,10 +50,6 @@
 	path = vim/bundle_lua/neocomplete.vim
 	url = https://github.com/Shougo/neocomplete.vim
 	ignore = dirty
-[submodule "gnome-terminal-colors-solarized"]
-	path = gnome-terminal-colors-solarized
-	url = https://github.com/sigurdga/gnome-terminal-colors-solarized
-	ignore = dirty
 [submodule "vim/bundle/vim-coffee-script"]
 	path = vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
