@@ -19,5 +19,5 @@ promptinit
 
 # customization
 zstyle ':prezto:module:terminal' auto-title 'yes'
-zstyle ':prezto:module:editor' keymap 'vi'
+zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:prompt' theme 'hackup'
