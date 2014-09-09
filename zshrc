@@ -18,6 +18,10 @@ alias tmux='tmux -2'
 alias ssh-dumb='export TERM=xterm; ssh'
 alias venv='source env/bin/activate'
 alias gopath='export GOPATH=`pwd`; path=("$GOPATH/bin" "$path[@]")'
+alias pmi='sudo pacman -S'
+alias pmu='sudo pacman -Syu'
+alias pmr='sudo pacman -Rs'
+alias pms='sudo pacman -Ss'
 
 # local settings
 if [[ -e ~/.zshrc.local ]]; then
