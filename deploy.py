@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 """
 If you're not Jacob Peddicord, you probably don't want to run this.
 It will mess with your own dotfiles and use mine instead.
