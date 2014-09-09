@@ -1,10 +1,44 @@
-# prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-	source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# basics
+zmodload zsh/stat
+autoload -Uz zargs zmv
+setopt AUTO_CD
+setopt EXTENDED_GLOB
+unsetopt CLOBBER
+unsetopt HUP
 
-# don't share history
-unsetopt SHARE_HISTORY
+# vi mode
+bindkey -v
+bindkey -M vicmd "v" edit-command-line
+
+# history
+HISTFILE="$HOME/.zhistory"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+# TODO: zsh-users/zsh-history-substring-search
+
+# colors
+autoload -Uz colors
+colors
+
+# completions
+zmodload zsh/complist
+autoload -Uz compinit
+compinit
+setopt completealiases
+zstyle ':completion:*' menu select
+# TODO: zsh-users/zsh-completions
+
+# theme
+autoload -Uz promptinit
+fpath=($HOME/.zfuncs $fpath)
+promptinit
+prompt hackup
 
 # aliases
 alias cls='printf "\033c"'

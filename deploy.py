@@ -22,8 +22,6 @@ LINKS = [
     ('zshenv', '.zshenv'),
     ('zlogin', '.zlogin'),
     ('zshrc', '.zshrc'),
-    ('zprezto', '.zprezto'),
-    ('zpreztorc', '.zpreztorc'),
     ('zfuncs', '.zfuncs'),
     ('dir_colors', '.dir_colors'),
     ('gitconfig', '.gitconfig'),
