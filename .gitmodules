@@ -52,3 +52,6 @@
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
+[submodule "zsh-history-substring-search"]
+	path = zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search

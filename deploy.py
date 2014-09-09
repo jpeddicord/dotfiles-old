@@ -23,6 +23,7 @@ LINKS = [
     ('zlogin', '.zlogin'),
     ('zshrc', '.zshrc'),
     ('zfuncs', '.zfuncs'),
+    ('zsh-history-substring-search', '.zsh-history-substring-search'),
     ('dir_colors', '.dir_colors'),
     ('gitconfig', '.gitconfig'),
     ('tmux.conf', '.tmux.conf'),

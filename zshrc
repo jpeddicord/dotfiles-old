@@ -1,5 +1,5 @@
 # basics
-zmodload zsh/stat
+zmodload zsh/stat zsh/terminfo
 autoload -Uz zargs zmv
 setopt AUTO_CD
 setopt EXTENDED_GLOB
@@ -20,7 +20,15 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
-# TODO: zsh-users/zsh-history-substring-search
+
+# history search
+source ~/.zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # colors
 autoload -Uz colors
@@ -32,7 +40,6 @@ autoload -Uz compinit
 compinit
 setopt completealiases
 zstyle ':completion:*' menu select
-# TODO: zsh-users/zsh-completions
 
 # theme
 autoload -Uz promptinit
