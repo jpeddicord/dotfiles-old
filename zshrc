@@ -53,6 +53,7 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias l='ls -lh'
 alias ll='l -A'
+alias rm='rm -i'
 alias svim='sudo vim -u $HOME/.vimrc'
 alias svi='svim'
 alias tmux='tmux -2'
@@ -64,6 +65,8 @@ alias pmi='sudo pacman -S'
 alias pmu='sudo pacman -Syu'
 alias pmr='sudo pacman -Rs'
 alias pms='sudo pacman -Ss'
+alias sysc='sudo sysctl'
+alias jrnl='sudo journalctl'
 
 # local settings
 if [[ -e ~/.zshrc.local ]]; then
