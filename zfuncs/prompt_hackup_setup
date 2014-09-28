@@ -3,6 +3,7 @@
 
 function prompt_hackup_precmd {
 	vcs_info
+	print -Pn "\e]2;%n@%M\a"
 }
 
 function prompt_hackup_setup() {
