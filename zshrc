@@ -6,9 +6,18 @@ setopt EXTENDED_GLOB
 unsetopt CLOBBER
 unsetopt HUP
 
-# vi mode
-bindkey -v
-bindkey -M vicmd "v" edit-command-line
+# editor
+bindkey -e
+stty -ixoff -ixon
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey "\ee" edit-command-line
+bindkey "$terminfo[khome]" beginning-of-line
+bindkey "$terminfo[kend]" end-of-line
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+bindkey "\e[2~" quoted-insert
+bindkey "\e[3~" delete-char
 
 # history
 HISTFILE="$HOME/.zhistory"
@@ -25,10 +34,8 @@ setopt HIST_VERIFY
 source ~/.zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+bindkey "\e[A" history-substring-search-up
+bindkey "\e[B" history-substring-search-down
 
 # colors
 autoload -Uz colors
