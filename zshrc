@@ -74,7 +74,7 @@ alias pmi='sudo pacman -S'
 alias pmu='sudo pacman -Syu'
 alias pmr='sudo pacman -Rs'
 alias pms='sudo pacman -Ss'
-alias sysc='sudo sysctl'
+alias sctl='sudo systemctl'
 alias jrnl='sudo journalctl'
 
 # local settings
