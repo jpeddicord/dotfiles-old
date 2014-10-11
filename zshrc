@@ -33,6 +33,8 @@ bindkey -M vicmd 'j' history-substring-search-down
 # colors
 autoload -Uz colors
 colors
+eval `dircolors ~/.dir_colors`
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # completions
 zmodload zsh/complist
