@@ -35,15 +35,17 @@ LINKS = [
 def setup():
     print "Updating submodules..."
     call(['git', 'submodule', 'update', '--init', '--recursive'])
-    print "Submodule update complete."
+    print "Submodule update complete.\n"
 
-def require_dirs():
+def require_dirs(dirs):
     print "Ensuring required directories exist..."
-    for d in DIRS:
+    for d in dirs:
         d = os.path.join(os.path.expanduser('~'), d)
         if not os.path.isdir(d):
             print "Creating directory", d
             os.makedirs(d)
+
+    print "\n"
 
 def make_links(links):
     for source, name in links:
@@ -51,7 +53,7 @@ def make_links(links):
 
         # sanity check
         if not os.path.exists(source):
-            print "  Source file not found!"
+            print "Source file not found!"
             continue
 
         source = os.path.abspath(source)
@@ -63,20 +65,22 @@ def make_links(links):
 
         # or if something else was there
         elif os.path.exists(location):
-            print "  File exists; removing to link"
+            print "File exists; removing to link"
             renamed = location + "~"
             os.rename(location, renamed)
-            print "  Old file backed up as", renamed
+            print "Old file backed up as", renamed
 
-        print "  Linking", source, "at", location
+        print "Linking", source, "at", location
         try:
             os.symlink(source, location)
             os.chmod(source, 0755)
         except Exception as ex:
-            print "  Failed ({0})".format(ex)
+            print "Failed ({0})".format(ex)
+
+        print
 
 
 if __name__ == '__main__':
     setup()
-    require_dirs()
+    require_dirs(DIRS)
     make_links(LINKS)
