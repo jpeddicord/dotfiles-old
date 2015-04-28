@@ -45,18 +45,6 @@ def require_dirs():
             print "Creating directory", d
             os.makedirs(d)
 
-def compile_ssh_config():
-    print "Building ~/.ssh/config..."
-    sources = ['~/Dropbox/.ssh_host_config', '~/.ssh/host_config', 'ssh/config.tail']
-    with open('ssh/config', 'w') as out:
-        for fname in sources:
-            fname = os.path.expanduser(fname)
-            if os.path.exists(fname):
-                with open(fname) as src:
-                    out.write(src.read())
-                    print "  " + fname
-    print "Created."
-
 def make_links(links):
     for source, name in links:
         print "Installing", source
@@ -91,5 +79,4 @@ def make_links(links):
 if __name__ == '__main__':
     setup()
     require_dirs()
-    compile_ssh_config()
     make_links(LINKS)
