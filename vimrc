@@ -15,10 +15,9 @@ execute pathogen#infect()
 
 " editing options
 filetype plugin indent on
-set tabstop=4
 set shiftwidth=4
-set softtabstop=4
-set noexpandtab
+set expandtab
+set smarttab
 set backspace=indent,eol,start
 set textwidth=0
 set timeoutlen=600
@@ -108,11 +107,6 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 " gundo plugin
 let g:gundo_preview_bottom=1
 nmap <Leader>u :GundoToggle<CR>
-
-" javascript indent (also includes html)
-let g:html_indent_inctags = 'html,body,head,tbody'
-let g:html_indent_script1 = 'inc'
-let g:html_indent_style1 = 'inc'
 
 " NERDTree
 map <Leader>t :NERDTree<CR>
