@@ -13,11 +13,6 @@ let &runtimepath=printf('%s,%s,%s/after', s:origvim, &runtimepath, s:origvim)
 runtime pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
-" only load neocomplete etc on +lua builds
-if has('lua')
-	execute pathogen#infect('bundle_lua/{}')
-endif
-
 " editing options
 filetype plugin indent on
 set tabstop=4
@@ -55,8 +50,6 @@ set mouse=a
 set sessionoptions=buffers,curdir,folds,tabpages,winsize
 set shortmess+=I
 set ttymouse=xterm2
-set wildmode=longest,list,full
-set wildmenu
 
 " color scheme
 syntax on
@@ -108,13 +101,6 @@ let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-
-
-" completion engine
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-set completeopt=menuone
-inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 
 " golang auto-format
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
