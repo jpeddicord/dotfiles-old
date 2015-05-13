@@ -101,6 +101,11 @@ let g:airline_right_sep = ""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
+" indenthtml settings
+let g:html_indent_inctags = 'html,body,head,tbody'
+let g:html_indent_script1 = 'inc'
+let g:html_indent_style1 = 'inc'
+
 " golang auto-format
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
