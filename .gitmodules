@@ -18,10 +18,6 @@
 	path = vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
 	ignore = dirty
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic
-	ignore = dirty
 [submodule "vim/bundle/gundo.vim"]
 	path = vim/bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim
