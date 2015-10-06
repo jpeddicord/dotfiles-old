@@ -47,7 +47,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zmodload zsh/complist
 autoload -Uz compinit
 compinit
-setopt completealiases
 zstyle ':completion:*' menu select
 
 # theme
@@ -73,7 +72,8 @@ alias pm='sudo pacman'
 alias pmi='sudo pacman -S'
 alias pmu='sudo pacman -Syu'
 alias pmr='sudo pacman -Rs'
-alias pms='sudo pacman -Ss'
+alias pms='pacman -Ss'
+alias pmo='pacman -Qo'
 alias sctl='sudo systemctl'
 alias jrnl='sudo journalctl'
 
