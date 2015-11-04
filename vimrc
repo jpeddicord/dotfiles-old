@@ -106,21 +106,10 @@ let g:html_indent_inctags = 'html,body,head,tbody'
 let g:html_indent_script1 = 'inc'
 let g:html_indent_style1 = 'inc'
 
-" golang auto-format
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
-
 " gundo plugin
 let g:gundo_preview_bottom=1
 nmap <Leader>u :GundoToggle<CR>
 
-" NERDTree
-map <Leader>t :NERDTree<CR>
-
 " Solarized
 call togglebg#map('<Leader>b')
-
-" Syntastic plugin
-let g:syntastic_mode_map = {'mode': 'active',
-			\ 'active_filetypes': [],
-			\ 'passive_filetypes': ['c', 'cpp']}
 
