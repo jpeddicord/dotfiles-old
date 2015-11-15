@@ -8,7 +8,6 @@
     ~/.zfuncs:
         relink: true
         path: zfuncs/
-    ~/.zsh-history-substring-search: zsh-history-substring-search
 
     # shell environment & utilities
     ~/.dir_colors: dir_colors

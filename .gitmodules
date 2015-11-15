@@ -51,6 +51,6 @@
 	url = https://github.com/tpope/vim-pathogen
 	ignore = dirty
 [submodule "zsh-history-substring-search"]
-	path = zsh-history-substring-search
+	path = zfuncs/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
 	ignore = dirty

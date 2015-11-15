@@ -31,7 +31,7 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 
 # history search
-source ~/.zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zfuncs/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey "\e[A" history-substring-search-up
