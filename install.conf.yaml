@@ -5,7 +5,9 @@
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
     ~/.zlogin: zlogin
-    ~/.zfuncs: zfuncs/
+    ~/.zfuncs:
+        relink: true
+        path: zfuncs/
     ~/.zsh-history-substring-search: zsh-history-substring-search
 
     # shell environment & utilities
@@ -23,7 +25,9 @@
         path: i3/config
 
     # vim
-    ~/.vim: vim/
+    ~/.vim:
+        relink: true
+        path: vim/
     ~/.vimrc: vimrc
     ~/.gvimrc: gvimrc
 
