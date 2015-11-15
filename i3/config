@@ -1,5 +1,5 @@
 # setup
-font xft:Inconsolata Medium 9
+font xft:Source Code Pro 8
 set $mod Mod4
 floating_modifier $mod
 
