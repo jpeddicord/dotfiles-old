@@ -1,0 +1,31 @@
+- clean: ['~']
+
+- link:
+    # shell
+    ~/.zshrc: zshrc
+    ~/.zshenv: zshenv
+    ~/.zlogin: zlogin
+    ~/.zfuncs: zfuncs/
+    ~/.zsh-history-substring-search: zsh-history-substring-search
+
+    # shell environment & utilities
+    ~/.dir_colors: dir_colors
+    ~/.gitconfig: gitconfig
+    ~/.tmux.conf: tmux.conf
+    ~/.ssh/config:
+        create: true
+        path: ssh/config
+
+    # X applications
+    ~/.Xresources: Xresources
+    ~/.i3/config:
+        create: true
+        path: i3/config
+
+    # vim
+    ~/.vim: vim/
+    ~/.vimrc: vimrc
+    ~/.gvimrc: gvimrc
+
+- shell:
+    - git submodule update --init --recursive
