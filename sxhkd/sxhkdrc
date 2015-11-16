@@ -1,0 +1,81 @@
+# bspwm
+super + alt + shift + Escape
+	bspc quit
+
+
+# window modes
+super + {a,s,d,f}
+	bspc window -t {tiled,floating,pseudo_tiled,fullscreen}
+
+# window actions
+super + x
+	bspc window -g locked
+super + shift + q
+	bspc window -c
+
+# window focus
+super + {grave,Tab}
+	bspc {window,desktop} -f last
+super + {o,i}
+	bspc control --record-history off; \
+	bspc window {older,newer} -f; \
+	bspc control --record-history on
+
+# window movements
+super + {_,shift + }{h,j,k,l}
+	bspc window -{f,s} {left,down,up,right}
+super + {_,shift + }c
+	bspc window -f {next,prev}
+super + {comma,period}
+	bspc desktop -C {backward,forward}
+super + apostrophe
+	bspc window -s last
+super + m
+	bspc window -s biggest
+super + y
+	bspc window -w last.manual
+
+# preselect
+super + ctrl + {h,j,k,l}
+	bspc window -p {left,down,up,right}
+super + ctrl + {_,shift + }space
+	bspc {window -p cancel,desktop -c}
+super + ctrl + {1-9}
+	bspc window -r 0.{1-9}
+
+# resize
+super + alt + {h,j,k,l}
+	bspc window -e {left -10,down +10,up -10,right +10}
+super + alt + shift + {h,j,k,l}
+	bspc window -e {right -10,up +10,down -10,left +10}
+
+# focus desktops
+super + bracket{left,right}
+	bspc desktop -f {prev,next}
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,window -d} '^{1-9,10}'
+
+# desktop modes
+super + n
+	bspc desktop -l next
+
+# mouse
+~button1
+	bspc pointer -g focus
+super + button{1-3}
+	; bspc pointer -g {move,resize_corner,resize_side}
+super + @button{1-3}
+	bspc pointer -u
+
+# applications
+super + Return
+	urxvt
+super + space
+	dmenu_run
+
+
+# media
+XF86Audio{Raise,Lower}Volume
+	amixer -D pulse sset Master 2%{+,-}
+XF86AudioMute
+	amixer -D pulse set Master 1+ toggle

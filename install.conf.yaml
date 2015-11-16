@@ -19,9 +19,19 @@
 
     # X applications
     ~/.Xresources: Xresources
+    ~/.xprofile: xprofile
     ~/.i3/config:
         create: true
         path: i3/config
+    ~/.config/bspwm:
+        create: true
+        path: bspwm/
+    ~/.config/sxhkd:
+        create: true
+        path: sxhkd/
+    ~/.config/compton.conf:
+        create: true
+        path: compton.conf
 
     # vim
     ~/.vim:

@@ -1,0 +1,24 @@
+#! /bin/sh
+
+compton &
+sxhkd -f 100 &
+
+bspc config border_width        4
+bspc config window_gap         15
+
+bspc config split_ratio           0.6
+bspc config borderless_monocle    false
+bspc config gapless_monocle       false
+bspc config focus_by_distance     true
+bspc config focus_follows_pointer true
+bspc config auto_cancel           true
+
+if [ $(bspc query -M | wc -l) -eq "2" ]; then
+    bspc monitor ^1 -d I II III IV
+    bspc monitor ^2 -d V VI VII VIII
+else
+    bspc monitor -d I II III IV V VI VII VIII IX X
+fi
+
+[ -f ~/.config/bspwm/rules ] && source ~/.config/bspwm/rules
+

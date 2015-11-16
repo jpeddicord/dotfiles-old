@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# base resources
+xrdb -merge ~/.Xresources
+
+# wallpaper
+[ -x ~/.fehbg ] && ~/.fehbg
+
+# input options
+xset m 3/2 4
+
+# display power management
+xset s 600 600
+xset dpms 600 600 600
+
+# local settings
+[ -f ~/.xprofile.local ] && source ~/.xprofile.local
+
