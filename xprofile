@@ -4,7 +4,7 @@
 xrdb -merge ~/.Xresources
 
 # wallpaper
-[ -x ~/.fehbg ] && ~/.fehbg
+[ -f ~/.fehbg ] && . ~/.fehbg
 
 # input options
 xset m 3/2 4
@@ -14,5 +14,5 @@ xset s 600 600
 xset dpms 600 600 600
 
 # local settings
-[ -f ~/.xprofile.local ] && source ~/.xprofile.local
+[ -f ~/.xprofile.local ] && . ~/.xprofile.local
 

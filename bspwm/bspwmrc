@@ -20,5 +20,5 @@ else
     bspc monitor -d I II III IV V VI VII VIII IX X
 fi
 
-[ -f ~/.config/bspwm/rules ] && source ~/.config/bspwm/rules
+[ -f ~/.config/bspwm/rules ] && . ~/.config/bspwm/rules
 

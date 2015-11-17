@@ -10,6 +10,7 @@ useful packages
 
 * bspwm
 * sxhkd
+* compton
 * tmux
 * urxvt
 * vim
