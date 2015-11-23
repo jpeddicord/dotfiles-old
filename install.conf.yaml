@@ -1,5 +1,8 @@
 - clean: ['~']
 
+- shell:
+    - git submodule update --init --recursive
+
 - link:
     # shell
     ~/.zshrc: zshrc
@@ -17,9 +20,15 @@
         create: true
         path: ssh/config
 
-    # X applications
+    # X
     ~/.Xresources: Xresources
     ~/.xprofile: xprofile
+    ~/.local/share/fonts/source-code-pro:
+        create: true
+        path: fonts/source-code-pro/OTF
+    ~/.local/share/fonts/FontAwesome.otf: fonts/font-awesome/fonts/FontAwesome.otf
+
+    # applications
     ~/.i3/config:
         create: true
         path: i3/config
@@ -41,4 +50,4 @@
     ~/.gvimrc: gvimrc
 
 - shell:
-    - git submodule update --init --recursive
+    - fc-cache
