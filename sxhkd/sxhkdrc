@@ -33,7 +33,7 @@ super + apostrophe
 super + m
 	bspc window -s biggest
 super + y
-	bspc window -w last.manual
+	bspc window -w last.!automatic
 
 # preselect
 super + ctrl + {h,j,k,l}
