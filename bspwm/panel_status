@@ -1,0 +1,37 @@
+#!/bin/sh
+
+source $(dirname $0)/panel_config
+
+volume(){
+    # TODO
+    VOL=$(amixer get Master | grep Playback | tail -n 1 | awk -F'[]%[]' '/%/ {printf $2}')
+    echo "%{F$ALT_FG}$(printf '%b' "\uf028") $VOL%"
+}
+
+wifi_ssid(){
+    return
+    # TODO
+    NAME=$(iwconfig | grep 'ESSID:' | head -n 1 | awk '{print $4}' | sed 's/ESSID://g' | sed 's/"//g')
+    if [ "$NAME" == "off/any" ]; then
+        echo "%{F$ALERT_FG}$(printf '%b' "\ue048")%{F-} no conn"
+    else echo "%{F$ALT_FG}$(printf '%b' "\ue048")%{F-} $NAME"
+    fi
+}
+
+battery() {
+    return
+    # TODO
+    BATTERY="??"
+    echo "%{F$ALT_FG}$(printf '%b' "\uf240")%{F-} $BATTERY"
+}
+
+load_avg() {
+    AVGLOAD=$(cut -d " " -f 1-3 /proc/loadavg)
+    echo "%{F$ALT_FG}$(printf '%b' "\uf080")%{F-} $AVGLOAD"
+}
+
+
+while true; do
+    echo "S%{r}$(load_avg)  $(volume)  %{F$ICON_FG B$ALT_BG} $(printf '%b' "\uf073") %{F$ALT_FG}$(date +'%A, %b %d') %{F$ICON_FG B-} $(printf '%b' "\uf017")%{F-} $(date +'%H:%M') %{B- F-}"
+    sleep 2
+done

@@ -1,0 +1,70 @@
+#!/bin/sh
+
+NORMIFS=$IFS
+FIELDIFS=':'
+
+source $(dirname $0)/panel_config
+
+while read -r line ; do
+    case $line in
+        # status info
+        S*)
+            status_info="${line#?}"
+            ;;
+
+        # window titles
+        T*)
+            if [[ ${line#?} == "" ]]; then
+                title=""
+            else title="%{F$ALT_FG}%{F-} %{A:bspc window -t floating:}$(echo ${line#?} | sed 's^\(.\{80\}\).*^\1...^')%{A}"
+            fi
+            ;;
+
+        # active workspace/desktop
+        W*)
+            wm_info=""
+            IFS=$FIELDIFS
+            set -- ${line#?}
+            while [ $# -gt 0 ] ; do
+                item=$1
+                case $item in
+                    [OoFfUu]*)
+                        # desktop name
+                        name=${item#?}
+                        # generate an icon for the state
+                        case $item in
+                            O*)
+                                # focused occupied desktop
+                                desk="%{F$ACTIVE_FG B$ACTIVE_BG} $(printf '%b' "\uf111") "
+                                ;;
+                            F*)
+                                # focused free desktop
+                                desk="%{F$ACTIVE_FG B$ACTIVE_BG} $(printf '%b' "\uf111") "
+                                ;;
+                            U*)
+                                # focused urgent desktop
+                                desk="%{F$ALERT_FG B$ALERT_BG} $(printf '%b' "\uf111") "
+                                ;;
+                            o*)
+                                # occupied desktop
+                                desk="%{F$ALT_FG B$ALT_BG} $(printf '%b' "\uf192") "
+                                ;;
+                            f*)
+                                # free desktop
+                                desk="%{F$ALT_FG B$ALT_BG} $(printf '%b' "\uf1db") "
+                                ;;
+                            u*)
+                                # urgent desktop
+                                desk="%{F$ALERT_FG B$ALT_BG} $(printf '%b' "\uf192") "
+                                ;;
+                        esac
+                        wm_info="${wm_info}%{A:bspc desktop -f ${name}:}${desk}%{A}"
+                        ;;
+                esac
+                shift
+            done
+            IFS=$NORMIFS
+            ;;
+    esac
+    printf "%s\n" "%{l B$ALT_BG} $wm_info %{B-} $title $status_info"
+done

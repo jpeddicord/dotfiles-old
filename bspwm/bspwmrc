@@ -1,7 +1,9 @@
-#! /bin/sh
+#!/bin/sh
 
 compton &
 sxhkd -f 100 &
+~/.config/bspwm/panel &
+docky &
 
 bspc config border_width        4
 bspc config window_gap         15
