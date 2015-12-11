@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 PANEL_FIFO="$HOME/.config/bspwm/fifo"
 
@@ -26,7 +26,7 @@ xtitle -sf 'T%s' > "$PANEL_FIFO" &
 ~/.config/bspwm/panel_status > "$PANEL_FIFO" &
 
 ~/.config/bspwm/panel_parser < "$PANEL_FIFO" \
-    | lemonbar -p -g "$PANEL_GEOMETRY" \
+    | lemonbar -p -g "$PANEL_GEOMETRY" -a 20 \
       -f "$FONT" -f "$FONT_ICON" \
       -B "$DEFAULT_BG" -F "$DEFAULT_FG" \
     | while read line; do eval "$line"; done &

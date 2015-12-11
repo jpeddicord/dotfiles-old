@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-source $(dirname $0)/panel_config
+. $(dirname $0)/panel_config
 
 volume(){
     # TODO

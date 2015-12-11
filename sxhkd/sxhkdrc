@@ -1,6 +1,6 @@
 # bspwm
 super + alt + shift + Escape
-	bspc quit
+	pkill -x panel; bspc quit
 
 
 # window modes
