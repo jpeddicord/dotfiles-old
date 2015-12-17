@@ -1,12 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
 compton &
 sxhkd -f 100 &
-
-# run panel in its own session so that killing it doesn't axe the whole session
-setsid ~/.config/bspwm/panel &
-
-docky &
 
 bspc config border_width        4
 bspc config window_gap         15
@@ -26,4 +21,11 @@ else
 fi
 
 [ -f ~/.config/bspwm/rules ] && . ~/.config/bspwm/rules
+
+## extra apps
+
+# run panel in its own session so that killing it doesn't axe the whole session
+setsid ~/.config/bspwm/panel &
+
+plank &
 
