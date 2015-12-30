@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 . $(dirname $0)/panel_config
 
-set -- $(xrandr -q | grep $(bspc query -M -m focused) | awk '{split($3,mon,/\+/); split(mon[1],res,/x/); print res[1] " " res[2]}')
+set -- $(xrandr -q | grep $(bspc query -M -m focused) | sed 's/.* \([0-9]\+\)x\([0-9]\+\).*/\1 \2/')
 SWIDTH=$1
 SHEIGHT=$2
 
