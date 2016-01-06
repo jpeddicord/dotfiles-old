@@ -3,6 +3,9 @@
 # base resources
 xrdb -merge ~/.Xresources
 
+# cursor
+xsetroot -cursor_name left_ptr
+
 # wallpaper
 [ -f ~/.fehbg ] && . ~/.fehbg
 
