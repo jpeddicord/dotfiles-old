@@ -1,4 +1,8 @@
 #!/bin/bash
 
-bspc rule -a Plank manage=on border=off layer=above
+# dock is finicky
+bspc rule -a Plank manage=on border=off layer=above locked=on
 
+# floaters
+bspc rule -a Telegram state=floating
+bspc rule -a Mumble state=floating
