@@ -18,6 +18,7 @@ URxvt.scrollBar: false
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
+URxvt.urgentOnBell: true
 URxvt.internalBorder: 3
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: xdg-open

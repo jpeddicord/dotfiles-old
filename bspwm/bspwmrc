@@ -12,6 +12,7 @@ bspc config gapless_monocle       false
 bspc config focus_by_distance     true
 bspc config focus_follows_pointer false
 bspc config auto_cancel           true
+bspc config urgent_border_color   '#ff8700'
 
 if [ $(bspc query -M | wc -l) -eq "2" ]; then
     bspc monitor ^1 -d I II III IV

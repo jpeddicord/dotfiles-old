@@ -26,6 +26,9 @@ if [[ ! -d "$TMPPREFIX" ]]; then
 	mkdir -p "$TMPPREFIX"
 fi
 
+# sundry
+export SUDO_PROMPT="$(echo -ne '\a\e[0;91m')[sudo]$(echo '\e[0m') password for %u: "
+
 # local settings
 if [[ -e ~/.zshenv.local ]]; then
 	source ~/.zshenv.local
