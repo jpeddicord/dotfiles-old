@@ -27,10 +27,6 @@
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
 	ignore = dirty
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized
-	ignore = dirty
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
@@ -63,3 +59,6 @@
 	path = zfuncs/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
 	ignore = dirty
+[submodule "vim/bundle/apprentice"]
+	path = vim/bundle/apprentice
+	url = https://github.com/romainl/Apprentice

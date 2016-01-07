@@ -6,12 +6,17 @@ function prompt_hackup_precmd {
 	print -Pn "\e]2;%n@%M\a"
 }
 
+function prompt_hackup_preexec {
+	echo -ne "\e[0m"
+}
+
 function prompt_hackup_setup() {
 	setopt LOCAL_OPTIONS
 	prompt_opts=(cr percent subst)
 	autoload -Uz add-zsh-hook
 	autoload -Uz vcs_info
 	add-zsh-hook precmd prompt_hackup_precmd
+	add-zsh-hook preexec prompt_hackup_preexec
 
 	zstyle ':vcs_info:*' enable bzr git hg svn
 	zstyle ':vcs_info:*' check-for-changes true
@@ -20,9 +25,8 @@ function prompt_hackup_setup() {
 	zstyle ':vcs_info:*' actionformats "%b%u%c (%a) "
 	zstyle ':vcs_info:*' formats "%b%u%c "
 
-	PROMPT="%K{0}%F{blue}%# ${SSH_CLIENT:+%n@%m }%F{yellow}%~%f %F{cyan}"'${vcs_info_msg_0_}'"%k
-%B%F{red}>%b %f"
-	RPROMPT="%F{white}[%*]%f"
+	PROMPT="%K{8}%F{4}%# ${SSH_CLIENT:+%n@%m }%F{11}%~%f %F{6}"'${vcs_info_msg_0_}'"%k
+%F{9}%B%(0?,,%K{1})>%b%k %F{15}"
 }
 
 prompt_hackup_setup "$@"

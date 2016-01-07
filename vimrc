@@ -52,9 +52,9 @@ set ttymouse=xterm2
 
 " color scheme
 syntax on
-set t_Co=16
+set t_Co=256
 set background=dark
-colorscheme solarized
+colorscheme apprentice
 
 " show trailing whitespace (except insert mode)
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -109,7 +109,4 @@ let g:html_indent_style1 = 'inc'
 " gundo plugin
 let g:gundo_preview_bottom=1
 nmap <Leader>u :GundoToggle<CR>
-
-" Solarized
-call togglebg#map('<Leader>b')
 
