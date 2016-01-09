@@ -57,6 +57,9 @@ fpath=($HOME/.zfuncs $fpath)
 promptinit
 prompt hackup
 
+# z command
+source ~/.zfuncs/z/z.sh
+
 # aliases
 alias cls='printf "\033c"'
 alias grep='grep --color=auto'

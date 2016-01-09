@@ -62,3 +62,7 @@
 [submodule "vim/bundle/apprentice"]
 	path = vim/bundle/apprentice
 	url = https://github.com/romainl/Apprentice
+[submodule "zfuncs/z"]
+	path = zfuncs/z
+	url = https://github.com/rupa/z
+	ignore = dirty
