@@ -1,13 +1,13 @@
 set nocompatible
 
 " windows path bootstrap
-if has('win32') || has('win64')
+if has("win32") || has("win64")
 	set runtimepath=$HOME/.vim,$VIMRUNTIME,$HOME/.vim/after
 endif
 
 " restore runtimepath under sudo
-let s:origvim=expand("<sfile>:p:h").'/.vim'
-let &runtimepath=printf('%s,%s,%s/after', s:origvim, &runtimepath, s:origvim)
+let s:origvim=expand("<sfile>:p:h")."/.vim"
+let &runtimepath=printf("%s,%s,%s/after", s:origvim, &runtimepath, s:origvim)
 
 " pathogen
 runtime pathogen/autoload/pathogen.vim
@@ -61,8 +61,9 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
-" set <Leader> to comma
-let mapleader=','
+" leader keys
+let mapleader="\<Space>"
+let maplocalleader="\\"
 
 " window movement mappings
 noremap <C-h> <C-w>h
@@ -79,12 +80,14 @@ nnoremap <S-j> :bnext<CR>
 nnoremap <S-k> :bprevious<CR>
 
 " custom leader commands
-nnoremap <Leader>c :bdelete<CR>
-nnoremap <Leader>C :bdelete!<CR>
+nnoremap <Leader>w :bdelete<CR>
+nnoremap <Leader>W :bdelete!<CR>
+nnoremap <Leader>q :hide<CR>
 nnoremap <Leader>e :enew<CR>
 nnoremap <Leader>d :cd %:p:h<CR>:pwd<CR>
-nnoremap <Leader>p :set paste!<CR>:set paste?<CR>
+nnoremap <Leader>p :set paste!<CR>
 nnoremap <Leader>/ :nohlsearch<CR>
+nnoremap <Leader>o :CtrlP<CR>
 
 " vertical movements by screen line
 nnoremap j gj
@@ -99,12 +102,12 @@ cnoreabbrev Q q
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#formatter = "unique_tail_improved"
 
 " indenthtml settings
-let g:html_indent_inctags = 'html,body,head,tbody'
-let g:html_indent_script1 = 'inc'
-let g:html_indent_style1 = 'inc'
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 " gundo plugin
 let g:gundo_preview_bottom=1
