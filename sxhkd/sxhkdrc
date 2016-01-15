@@ -34,6 +34,8 @@ super + m
 	bspc window -s biggest
 super + y
 	bspc window -w last.!automatic
+super + shift + r
+	bspc desktop -R 90
 
 # preselect
 super + ctrl + {h,j,k,l}
