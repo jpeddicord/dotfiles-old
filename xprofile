@@ -12,7 +12,7 @@ xsetroot -cursor_name left_ptr
 # input options
 xset m 3/2 4
 
-# display power management
+# display power management (may be overridden by power manager)
 xset s 600 600
 xset dpms 600 600 600
 

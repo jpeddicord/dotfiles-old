@@ -28,4 +28,5 @@ fi
 setsid ~/.config/bspwm/panel &
 
 plank &
+xfce4-power-manager &
 
