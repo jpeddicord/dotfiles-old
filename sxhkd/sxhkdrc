@@ -1,6 +1,9 @@
 ## bspwm
 super + alt + shift + Escape
 	pkill -x panel; bspc quit
+# lock
+super + z
+	i3lock -c 08403f -i $HOME/.lockscreen.png
 
 
 ## window modes
