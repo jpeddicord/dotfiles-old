@@ -5,7 +5,7 @@ bspc rule -a Plank manage=on border=off layer=above locked=on
 
 # floaters
 bspc rule -a Keepassx2 state=floating
-bspc rule -a Mumble state=floating
+bspc rule -a Mumble state=floating private=on
 bspc rule -a Shutter state=floating
 bspc rule -a Steam state=floating
 bspc rule -a Telegram state=floating
