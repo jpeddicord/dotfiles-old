@@ -96,6 +96,9 @@ super + space
 
 # media
 XF86Audio{Raise,Lower}Volume
-	amixer -D pulse sset Master 2%{+,-}
+	amixer -D pulse sset Master 2%{+,-}; \
+	pkill -SIGUSR1 panel_status
 XF86AudioMute
-	amixer -D pulse set Master 1+ toggle
+	amixer -D pulse set Master 1+ toggle; \
+	pkill -SIGUSR1 panel_status
+

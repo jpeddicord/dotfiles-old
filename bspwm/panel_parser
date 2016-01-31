@@ -16,7 +16,7 @@ while read -r line ; do
         T*)
             if [[ ${line#?} == "" ]]; then
                 title=""
-            else title="%{F$ALT_FG}%{F-} %{A:bspc window -t floating:}$(echo ${line#?} | sed 's^\(.\{80\}\).*^\1...^')%{A}"
+            else title="%{F$ALT_FG}%{F-} $(echo ${line#?} | sed 's^\(.\{80\}\).*^\1...^')"
             fi
             ;;
 
