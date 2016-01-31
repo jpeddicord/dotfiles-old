@@ -43,9 +43,11 @@ clock() {
 # allow the other scripts to initialize before drawing
 sleep 1;
 
+exec 2>/dev/null
+
 # redraw on SIGUSR1
 sleeppid=
-trap '[[ $sleeppid ]] && kill -13 $sleeppid' SIGUSR1
+trap '[[ $sleeppid ]] && kill $sleeppid' SIGUSR1
 
 while true; do
     echo "S%{r}$(load_avg)$(volume)$(calendar)$(clock)%{F-}" # >&2
