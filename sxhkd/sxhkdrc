@@ -8,74 +8,71 @@ super + z
 
 ## window modes
 super + {a,s,d,f}
-	bspc window -t {tiled,floating,pseudo_tiled,fullscreen}
+	bspc node -t ~{tiled,floating,pseudo_tiled,fullscreen}
 
 ## window actions
 super + x
-	bspc window -g locked
+	bspc node -g locked
 super + shift + q
-	bspc window -c
+	bspc node -c
 
 ## window focus
 # last window/desktop
 super + {grave,Tab}
-	bspc {window,desktop} -f last
+	bspc {node,desktop} -f last
 # focus history
 super + {o,i}
 	bspc control --record-history off; \
-	bspc window {older,newer} -f; \
+	bspc node {older,newer} -f; \
 	bspc control --record-history on
 # cycle all windows
 super + {_,shift + }c
-	bspc window -f {next,prev}
+	bspc node -f {next,prev}
 
 ## window movements
 # directional
 super + {_,shift + }{h,j,k,l}
-	bspc window -{f,s} {left,down,up,right}
+	bspc node -{f,s} {west,south,north,east}
 # swap
 super + apostrophe
-	bspc window -s last
+	bspc node -s last
 # swap with biggest
 super + semicolon
-	bspc window -s biggest
+	bspc node -s biggest
 
 ## all window movements
 # rotate desktop
 super + r
-	bspc desktop -R 90
+	bspc node @focused:/ -R 90
 # cycle windows around
 super + {comma,period}
-	bspc desktop -C {backward,forward}
+	bspc node @focused:/ -C {backward,forward}
 # flip vertically/horizontally
 super + {v,b}
-	bspc desktop -F {vertical,horizontal}
+	bspc node @focused:/ -F {vertical,horizontal}
 # balance/reset sizes
 super + {w,e}
-	bspc desktop -{B,E}
+	bspc node @focused:/ -{B,E}
 
 ## preselects
-# select & cancel selection
+# select
 super + ctrl + {h,j,k,l}
-	dir={left,down,up,right}; \
-	cur=$(bspc query -T -w focused.!automatic | jshon -e splitDir -u 2>&-); \
-	[ "$dir" = "$cur" ] && dir=cancel; \
-	bspc window -p "$dir"
+	bspc node -p '~{west,south,north,east}'
 # move window into preselect
 super + ctrl + space
-	bspc window -w last.!automatic
+	bspc node -n last.!automatic
 
 ## resize
 super + alt + {h,j,k,l}
-	bspc window -e {left -10,down +10,up -10,right +10}
+	bspc node @{west,south,north,east} -r {-10,+10,-10,+10}
 super + alt + shift + {h,j,k,l}
-	bspc window -e {right -10,up +10,down -10,left +10}
+	bspc node @{east,north,south,west} -r {-10,+10,-10,+10}
 
 ## focus desktops
-super + bracket{left,right}
+super + bracket{west,east}
 	bspc desktop -f {prev,next}
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,window -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} '^{1-9,10}'
 
 ## desktop modes
 super + n
@@ -101,4 +98,11 @@ XF86Audio{Raise,Lower}Volume
 XF86AudioMute
 	amixer -D pulse set Master 1+ toggle; \
 	pkill -SIGUSR1 panel_wait
+
+# keyboard layouts
+super + F12
+	setxkbmap us -variant colemak
+super + F11
+	setxkbmap us
+
 
