@@ -8,7 +8,7 @@ super + z
 
 ## window modes
 super + {a,s,d,f}
-	bspc node -t ~{tiled,floating,pseudo_tiled,fullscreen}
+	bspc node -t '~{tiled,floating,pseudo_tiled,fullscreen}'
 
 ## window actions
 super + x
