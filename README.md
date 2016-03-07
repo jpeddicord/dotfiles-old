@@ -20,6 +20,7 @@ package | aur/arch
 [compton](https://github.com/chjj/compton) | compton-git
 [lemonbar (+ xft patch)](https://github.com/krypt-n/bar) | lemonbar-xft-git
 [docky](http://wiki.go-docky.com/) | docky (arch)
+[i3-gaps](https://github.com/Airblader/i3) | i3-gaps-git
 
 applications
 ------------

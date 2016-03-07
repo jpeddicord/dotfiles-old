@@ -14,6 +14,7 @@ path=(
 	~/bin
 	~/.local/bin
 	$path
+	~/.cargo/bin
 )
 
 # temp

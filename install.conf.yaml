@@ -31,9 +31,12 @@
         path: fonts/font-awesome/fonts/FontAwesome.otf
 
     # applications
-    ~/.i3/config:
+    ~/.config/i3:
         create: true
-        path: i3/config
+        path: i3/
+    ~/.config/i3status:
+        create: true
+        path: i3status/
     ~/.config/bspwm:
         create: true
         path: bspwm/
@@ -43,6 +46,11 @@
     ~/.config/compton.conf:
         create: true
         path: compton.conf
+
+    # custom scripts
+    ~/.local/bin/dmenu_custom:
+        create: true
+        path: bin/dmenu_custom
 
     # vim
     ~/.vim:
