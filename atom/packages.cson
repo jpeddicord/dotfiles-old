@@ -1,0 +1,15 @@
+packages: [
+  "atom-ternjs"
+  "autocomplete-paths"
+  "color-picker"
+  "editorconfig"
+  "language-rust"
+  "linter"
+  "linter-eslint"
+  "package-sync"
+  "pigments"
+  "project-manager"
+  "racer"
+  "react"
+  "vim-mode-plus"
+]

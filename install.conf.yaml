@@ -59,5 +59,17 @@
     ~/.vimrc: vimrc
     ~/.gvimrc: gvimrc
 
+    # atom
+    ~/.atom/config.cson:
+        create: true
+        path: atom/config.cson
+    ~/.atom/keymap.cson:
+        create: true
+        path: atom/keymap.cson
+    ~/.atom/packages.cson:
+        create: true
+        path: atom/packages.cson
+
+
 - shell:
     - fc-cache

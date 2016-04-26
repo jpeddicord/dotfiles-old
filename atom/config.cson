@@ -1,0 +1,42 @@
+"*":
+  "autocomplete-plus":
+    confirmCompletion: "tab"
+  autosave:
+    enabled: true
+  "bracket-matcher":
+    autocompleteSmartQuotes: false
+  core:
+    audioBeep: false
+    autoHideMenuBar: true
+    disabledPackages: [
+      "metrics"
+      "exception-reporting"
+    ]
+  editor:
+    fontFamily: "Source Code Pro"
+    fontSize: 13
+    invisibles: {}
+    lineHeight: 1.4
+    preferredLineLength: 99
+    scrollPastEnd: true
+    showIndentGuide: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    softWrapHangingIndent: 2
+    tabLength: 4
+    zoomFontWhenCtrlScrolling: false
+  linter:
+    showErrorInline: false
+    showErrorPanel: false
+  "one-dark-ui":
+    layoutMode: "Compact"
+  tabs:
+    usePreviewTabs: true
+  "tree-view":
+    hideIgnoredNames: true
+  "vim-mode-plus":
+    incrementalSearch: true
+    useClipboardAsDefaultRegister: true
+    useSmartcaseForSearch: true
+  welcome:
+    showOnStartup: false
