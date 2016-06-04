@@ -23,6 +23,9 @@
     # X
     ~/.Xresources: Xresources
     ~/.xprofile: xprofile
+    ~/.local/share/fonts/fira-code:
+        create: true
+        path: fonts/fira-code
     ~/.local/share/fonts/source-code-pro:
         create: true
         path: fonts/source-code-pro/OTF

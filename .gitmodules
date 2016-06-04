@@ -66,3 +66,6 @@
 	path = zfuncs/z
 	url = https://github.com/rupa/z
 	ignore = dirty
+[submodule "fonts/fira-code"]
+	path = fonts/fira-code
+	url = https://github.com/tonsky/FiraCode

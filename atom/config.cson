@@ -13,8 +13,7 @@
       "exception-reporting"
     ]
   editor:
-    fontFamily: "Source Code Pro"
-    fontSize: 13
+    fontFamily: "Fira Code"
     invisibles: {}
     lineHeight: 1.4
     preferredLineLength: 99
