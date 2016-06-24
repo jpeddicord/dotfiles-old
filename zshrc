@@ -60,6 +60,15 @@ prompt hackup
 # z command
 source ~/.zfuncs/z/z.sh
 
+# tmux shortcut
+t() {
+	if [ $# -eq 0 ]; then
+		tmux list-sessions
+	else
+		tmux attach-session -t $1 || tmux new-session -s $1
+	fi
+}
+
 # aliases
 alias cls='printf "\033c"'
 alias grep='grep --color=auto'
