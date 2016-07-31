@@ -54,7 +54,9 @@ set ttymouse=xterm2
 syntax on
 set t_Co=256
 set background=dark
-colorscheme apprentice
+let g:two_firewatch_italics=1
+let g:airline_theme='twofirewatch'
+colorscheme two-firewatch
 
 " show trailing whitespace (except insert mode)
 highlight ExtraWhitespace ctermbg=red guibg=red

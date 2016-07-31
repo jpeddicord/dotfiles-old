@@ -69,3 +69,6 @@
 [submodule "fonts/fira-code"]
 	path = fonts/fira-code
 	url = https://github.com/tonsky/FiraCode
+[submodule "vim/bundle/vim-two-firewatch"]
+	path = vim/bundle/vim-two-firewatch
+	url = https://github.com/rakr/vim-two-firewatch
