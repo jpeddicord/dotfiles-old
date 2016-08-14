@@ -14,6 +14,7 @@
 
     # shell environment & utilities
     ~/.dir_colors: dir_colors
+    ~/.fzf: fzf
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.ssh/config:

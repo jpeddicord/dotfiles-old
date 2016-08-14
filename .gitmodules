@@ -72,3 +72,7 @@
 [submodule "vim/bundle/vim-two-firewatch"]
 	path = vim/bundle/vim-two-firewatch
 	url = https://github.com/rakr/vim-two-firewatch
+[submodule "fzf"]
+	path = fzf
+	url = https://github.com/junegunn/fzf
+	ignore = dirty

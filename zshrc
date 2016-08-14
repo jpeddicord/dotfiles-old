@@ -57,6 +57,10 @@ fpath=($HOME/.zfuncs $fpath)
 promptinit
 prompt hackup
 
+# fzf
+source ~/.fzf/shell/completion.zsh 2> /dev/null
+source ~/.fzf/shell/key-bindings.zsh
+
 # z command
 source ~/.zfuncs/z/z.sh
 
