@@ -10,7 +10,7 @@
     ~/.zlogin: zlogin
     ~/.zfuncs:
         relink: true
-        path: zfuncs/
+        path: zfuncs
 
     # shell environment & utilities
     ~/.dir_colors: dir_colors
@@ -39,13 +39,13 @@
         path: i3/
     ~/.config/i3status:
         create: true
-        path: i3status/
+        path: i3status
     ~/.config/bspwm:
         create: true
-        path: bspwm/
+        path: bspwm
     ~/.config/sxhkd:
         create: true
-        path: sxhkd/
+        path: sxhkd
     ~/.config/compton.conf:
         create: true
         path: compton.conf
@@ -58,7 +58,7 @@
     # vim
     ~/.vim:
         relink: true
-        path: vim/
+        path: vim
     ~/.vimrc: vimrc
     ~/.gvimrc: gvimrc
 
@@ -75,4 +75,4 @@
 
 
 - shell:
-    - fc-cache
+    - fc-cache || true
