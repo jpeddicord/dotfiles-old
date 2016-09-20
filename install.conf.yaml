@@ -22,6 +22,7 @@
         path: ssh/config
 
     # X
+    ~/.imwheelrc: imwheelrc
     ~/.Xresources: Xresources
     ~/.xprofile: xprofile
     ~/.local/share/fonts/fira-code:
