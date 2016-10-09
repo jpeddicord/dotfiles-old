@@ -19,10 +19,6 @@
 	path = vim/bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim
 	ignore = dirty
-[submodule "vim/bundle/indenthtml"]
-	path = vim/bundle/indenthtml
-	url = https://github.com/vim-scripts/indenthtml.vim
-	ignore = dirty
 [submodule "vim/bundle/todo.txt-vim"]
 	path = vim/bundle/todo.txt-vim
 	url = https://github.com/freitass/todo.txt-vim
@@ -30,18 +26,6 @@
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
-	ignore = dirty
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
-	ignore = dirty
-[submodule "vim/bundle/vim-javascript"]
-	path = vim/bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript
-	ignore = dirty
-[submodule "vim/bundle/vim-python-pep8-indent"]
-	path = vim/bundle/vim-python-pep8-indent
-	url = https://github.com/hynek/vim-python-pep8-indent
 	ignore = dirty
 [submodule "vim/bundle/vim-sleuth"]
 	path = vim/bundle/vim-sleuth
