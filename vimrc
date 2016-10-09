@@ -53,6 +53,7 @@ set ttymouse=xterm2
 " color scheme
 syntax on
 set t_Co=256
+set termguicolors
 set background=dark
 let g:two_firewatch_italics=1
 let g:airline_theme='twofirewatch'
