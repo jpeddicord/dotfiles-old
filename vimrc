@@ -1,28 +1,35 @@
-set nocompatible
+" vim compat
+if !has('nvim')
+  " windows path bootstrap
+  if has("win32") || has("win64")
+    set runtimepath=$HOME/.vim,$VIMRUNTIME,$HOME/.vim/after
+  endif
 
-" windows path bootstrap
-if has("win32") || has("win64")
-	set runtimepath=$HOME/.vim,$VIMRUNTIME,$HOME/.vim/after
+  " restore runtimepath under sudo
+  let s:origvim=expand("<sfile>:p:h")."/.vim"
+  let &runtimepath=printf("%s,%s,%s/after", s:origvim, &runtimepath, s:origvim)
+
+  " options
+  set nocompatible
+  filetype plugin indent on
+  set autoindent
+  set backspace=indent,eol,start
+  set smarttab
+  set directory=~/.vim/swap,.,/var/tmp,/tmp
+  set encoding=utf-8
+  set laststatus=2
+  set mouse=a
+  set ttymouse=xterm2
+  set ttyfast
+  set sessionoptions=buffers,curdir,folds,tabpages,winsize
 endif
 
-" restore runtimepath under sudo
-let s:origvim=expand("<sfile>:p:h")."/.vim"
-let &runtimepath=printf("%s,%s,%s/after", s:origvim, &runtimepath, s:origvim)
-
-" pathogen
-runtime pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-
 " editing options
-filetype plugin indent on
 set shiftwidth=4
 set expandtab
-set smarttab
-set backspace=indent,eol,start
 set textwidth=0
 set timeoutlen=600
 " indentation settings
-set autoindent
 set copyindent
 set cinoptions=:0,l1,b1,g0,i0,(1s,U1,Ws,m1,j1,J1
 set cinkeys+=0=break
@@ -38,17 +45,15 @@ set number
 set scrolloff=3
 set ruler
 set title
-set laststatus=2
 " misc
-set encoding=utf-8
-set directory=~/.vim/swap,.,/var/tmp,/tmp
 set nobackup
 set noerrorbells
 set novisualbell
-set mouse=a
-set sessionoptions=buffers,curdir,folds,tabpages,winsize
 set shortmess+=I
-set ttymouse=xterm2
+
+" pathogen plugins
+runtime pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 
 " color scheme
 syntax on
@@ -95,6 +100,9 @@ nnoremap <Leader>o :CtrlP<CR>
 " vertical movements by screen line
 nnoremap j gj
 nnoremap k gk
+
+" save-as-root hack
+cnoremap w!! w !sudo tee > /dev/null %
 
 " accidential aliases
 cnoreabbrev W w

@@ -41,6 +41,7 @@
         path: vim
     ~/.vimrc: vimrc
     ~/.gvimrc: gvimrc
+    ~/.config/nvim: vim
 
 - shell:
     - fc-cache || true

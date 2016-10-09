@@ -80,11 +80,7 @@ alias ls='ls --color=auto'
 alias l='ls -lh'
 alias ll='l -A'
 alias rm='rm -i'
-alias svim='sudo vim -u $HOME/.vimrc'
-alias svi='svim'
 alias tmux='tmux -2'
-alias ssh-dumb='export TERM=xterm; ssh'
-alias venv='source env/bin/activate'
 alias gopath='export GOPATH=`pwd`; path=("$GOPATH/bin" "$path[@]")'
 alias pm='sudo pacman'
 alias pmi='sudo pacman -S'
@@ -94,6 +90,10 @@ alias pms='pacman -Ss'
 alias pmo='pacman -Qo'
 alias sctl='sudo systemctl'
 alias jrnl='sudo journalctl'
+if type nvim > /dev/null; then
+	alias vim='nvim'
+	alias vi='nvim'
+fi
 
 # local settings
 if [[ -e ~/.zshrc.local ]]; then
