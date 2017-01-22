@@ -102,7 +102,12 @@ nnoremap j gj
 nnoremap k gk
 
 " save-as-root hack
-cnoremap w!! w !sudo tee > /dev/null %
+" http://unix.stackexchange.com/a/251063/1664
+cnoremap w!! call SudoSaveFile()
+function! SudoSaveFile() abort
+  execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
+  let &modified = v:shell_error
+endfunction
 
 " accidential aliases
 cnoreabbrev W w
