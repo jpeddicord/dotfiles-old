@@ -11,10 +11,6 @@
 	url = https://github.com/adobe-fonts/source-code-pro
 	branch = release
 	ignore = dirty
-[submodule "vim/bundle/ctrlp.vim"]
-	path = vim/bundle/ctrlp.vim
-	url = https://github.com/ctrlpvim/ctrlp.vim
-	ignore = dirty
 [submodule "vim/bundle/gundo.vim"]
 	path = vim/bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim
