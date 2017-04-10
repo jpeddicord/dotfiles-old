@@ -95,7 +95,7 @@ nnoremap <Leader>e :enew<CR>
 nnoremap <Leader>d :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>p :set paste!<CR>
 nnoremap <Leader>/ :nohlsearch<CR>
-nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>o :Files<CR>
 
 " vertical movements by screen line
 nnoremap j gj
