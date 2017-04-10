@@ -30,7 +30,6 @@ fi
 
 # sundry
 export SUDO_PROMPT="$(echo -ne '\a\e[0;91m')[sudo]$(echo '\e[0m') password for %u: "
-export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # local settings
 if [[ -e ~/.zshenv.local ]]; then
