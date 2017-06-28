@@ -18,7 +18,6 @@ if !has('nvim')
   set directory=~/.vim/swap,.,/var/tmp,/tmp
   set encoding=utf-8
   set laststatus=2
-  set mouse=a
   set ttymouse=xterm2
   set ttyfast
   set sessionoptions=buffers,curdir,folds,tabpages,winsize
@@ -46,6 +45,7 @@ set scrolloff=3
 set ruler
 set title
 " misc
+set mouse=a
 set nobackup
 set noerrorbells
 set novisualbell
