@@ -12,11 +12,14 @@
         relink: true
         path: zfuncs
 
+    # tmux
+    ~/.tmux: tmux
+    ~/.tmux.conf: tmux.conf
+
     # shell environment & utilities
     ~/.dir_colors: dir_colors
     ~/.fzf: fzf
     ~/.gitconfig: gitconfig
-    ~/.tmux.conf: tmux.conf
     ~/.ssh/config:
         create: true
         path: ssh/config
