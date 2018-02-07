@@ -58,6 +58,9 @@ promptinit
 prompt hackup
 
 # fzf
+export FZF_DEFAULT_COMMAND='fd -t f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd -t d'
 source ~/.fzf/shell/completion.zsh 2> /dev/null
 source ~/.fzf/shell/key-bindings.zsh
 

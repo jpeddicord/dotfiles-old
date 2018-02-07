@@ -8,10 +8,10 @@ whee
 useful packages
 ===============
 
-* fzf
-* icdiff
-* ranger
-* ripgrep
+* [fd](https://github.com/sharkdp/fd)
+* [icdiff](https://github.com/jeffkaufman/icdiff)
+* [ranger](https://github.com/ranger/ranger)
+* [ripgrep](https://github.com/BurntSushi/ripgrep)
 * tmux
-* vim
+* neovim
 * zsh
