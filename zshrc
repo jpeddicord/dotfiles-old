@@ -39,9 +39,29 @@ bindkey "\e[B" history-substring-search-down
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=black'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=black'
 
-# colors
+# colors: very roughly "ayu" https://github.com/ayu-theme/ayu-colors
+# https://github.com/mintty/mintty/wiki/Tips#changing-colours
 autoload -Uz colors
 colors
+echo -ne '\e]10;#e6e1cf\a'    # foreground
+echo -ne '\e]11;#0f1419\a'    # background
+echo -ne '\e]12;#515c66\a'    # cursor
+echo -ne '\e]4;0;#000000\a'   # black
+echo -ne '\e]4;1;#ff3333\a'   # red
+echo -ne '\e]4;2;#86b300\a'   # green
+echo -ne '\e]4;3;#ffb454\a'   # yellow
+echo -ne '\e]4;4;#59c2ff\a'   # blue
+echo -ne '\e]4;5;#a37acc\a'   # magenta
+echo -ne '\e]4;6;#4cbf99\a'   # cyan
+echo -ne '\e]4;7;#e2e4e7\a'   # white (light grey really)
+echo -ne '\e]4;8;#1d242c\a'   # bold black (i.e. dark grey)
+echo -ne '\e]4;9;#f07178\a'   # bold red
+echo -ne '\e]4;10;#c2d94c\a'  # bold green
+echo -ne '\e]4;11;#ffd580\a'  # bold yellow
+echo -ne '\e]4;12;#73d0ff\a'  # bold blue
+echo -ne '\e]4;13;#d4bfff\a'  # bold magenta
+echo -ne '\e]4;14;#95e6cb\a'  # bold cyan
+echo -ne '\e]4;15;#ffffff\a'  # bold white
 eval `dircolors ~/.dir_colors`
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
@@ -51,11 +71,11 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 
-# theme
-autoload -Uz promptinit
+# prompt
 fpath=($HOME/.zfuncs $fpath)
+autoload -Uz promptinit
 promptinit
-prompt hackup
+prompt pure
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd -t f'
