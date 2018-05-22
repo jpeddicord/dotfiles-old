@@ -3,7 +3,7 @@ zmodload zsh/stat zsh/terminfo
 autoload -Uz zargs zmv
 setopt AUTO_CD
 setopt EXTENDED_GLOB
-unsetopt CLOBBER
+setopt CLOBBER
 unsetopt HUP
 
 # editor
