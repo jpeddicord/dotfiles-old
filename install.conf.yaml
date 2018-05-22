@@ -34,9 +34,6 @@
     ~/.local/share/fonts/source-code-pro:
         create: true
         path: fonts/source-code-pro/OTF
-    ~/.local/share/fonts/FontAwesome.otf:
-        create: true
-        path: fonts/font-awesome/fonts/FontAwesome.otf
 
     # vim
     ~/.vim:
