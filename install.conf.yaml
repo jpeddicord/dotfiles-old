@@ -5,29 +5,28 @@
 
 - link:
     # shell
-    ~/.zshrc: zshrc
-    ~/.zshenv: zshenv
-    ~/.zlogin: zlogin
+    ~/.zshrc:
+    ~/.zshenv:
+    ~/.zlogin:
     ~/.zfuncs:
         relink: true
-        path: zfuncs
 
     # tmux
-    ~/.tmux: tmux
-    ~/.tmux.conf: tmux.conf
+    ~/.tmux:
+    ~/.tmux.conf:
 
     # shell environment & utilities
-    ~/.dir_colors: dir_colors
-    ~/.fzf: fzf
-    ~/.gitconfig: gitconfig
+    ~/.dir_colors:
+    ~/.fzf:
+    ~/.gitconfig:
     ~/.ssh/config:
         create: true
         path: ssh/config
 
     # X
-    ~/.imwheelrc: imwheelrc
-    ~/.Xresources: Xresources
-    ~/.xprofile: xprofile
+    ~/.imwheelrc:
+    ~/.Xresources:
+    ~/.xprofile:
     ~/.local/share/fonts/fira-code:
         create: true
         path: fonts/fira-code
@@ -38,10 +37,11 @@
     # vim
     ~/.vim:
         relink: true
+    ~/.vimrc:
+    ~/.gvimrc:
+    ~/.config/nvim:
+        create: true
         path: vim
-    ~/.vimrc: vimrc
-    ~/.gvimrc: gvimrc
-    ~/.config/nvim: vim
 
 - shell:
     - fc-cache || true
