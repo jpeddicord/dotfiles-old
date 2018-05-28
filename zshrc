@@ -6,6 +6,11 @@ setopt EXTENDED_GLOB
 setopt CLOBBER
 unsetopt HUP
 
+# WSL gotchas
+if grep -qi Microsoft /proc/version; then
+	unsetopt BG_NICE
+fi
+
 # editor
 bindkey -e
 stty -ixoff -ixon
