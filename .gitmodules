@@ -65,4 +65,4 @@
 	ignore = dirty
 [submodule "zfuncs/pure"]
 	path = zfuncs/pure
-	url = https://github.com/sindresorhus/pure
+	url = https://github.com/jpeddicord/pure
