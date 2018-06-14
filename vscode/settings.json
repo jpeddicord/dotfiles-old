@@ -1,0 +1,92 @@
+{
+    // core
+    "debug.toolBarLocation": "docked",
+    "editor.autoIndent": true,
+    "editor.folding": false,
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": false,
+    "editor.fontSize": 13,
+    "editor.glyphMargin": true,
+    "editor.lineHeight": 18,
+    "editor.minimap.enabled": false,
+    "editor.multiCursorModifier": "alt",
+    "editor.renderIndentGuides": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [80, 100],
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "explorer.autoReveal": false,
+    "explorer.openEditors.visible": 0,
+    "extensions.autoUpdate": true,
+    "extensions.ignoreRecommendations": true,
+    "files.autoSave": "onFocusChange",
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/node_modules/**": true,
+        "**/build/**": true
+    },
+    "git.autofetch": true,
+    "git.confirmSync": true,
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/build": true
+    },
+    "telemetry.enableTelemetry": false,
+    "terminal.integrated.macOptionIsMeta": true,
+    "window.closeWhenEmpty": true,
+    "window.menuBarVisibility": "toggle",
+    "window.openFilesInNewWindow": "off",
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": true,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.tabCloseButton": "off",
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "welcomePage",
+    "workbench.statusBar.visible": true,
+    "workbench.statusBar.feedback.visible": false,
+    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.iconTheme": "ayu",
+
+    // terminal theme
+    "workbench.colorCustomizations": {
+        "terminal.background": "#1e2027",
+        "terminal.ansiCyan": "#008f99",
+        "terminal.ansiBrightMagenta": "#e44800"
+    },
+
+    // languages
+    "javascript.implicitProjectConfig.checkJs": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "rust-client.channel": "nightly",
+
+    // other extensions
+    "amVim.bindCtrlCommands": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.gitExplorer.files.layout": "auto",
+    "gitlens.historyExplorer.enabled": true,
+    "todohighlight.keywords": [
+        "TODO",
+        "FIXME",
+        "XXX",
+        "HACK"
+    ],
+    "todohighlight.defaultStyle": {
+        "backgroundColor": "#f47442",
+        "color": "#ffffff",
+        "overviewRulerColor": "#f47442"
+    },
+    "trailing-spaces.highlightCurrentLine": false,
+}
