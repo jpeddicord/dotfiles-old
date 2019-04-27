@@ -63,3 +63,7 @@
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 	ignore = dirty
+[submodule "zfuncs/spaceship-prompt"]
+	path = zfuncs/spaceship-prompt
+	url = https://github.com/denysdovhan/spaceship-prompt
+	ignore = dirty

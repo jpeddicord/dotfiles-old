@@ -61,6 +61,7 @@ zstyle ':completion:*' menu select
 fpath=($HOME/.zfuncs $fpath)
 autoload -Uz promptinit
 promptinit
+prompt spaceship
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd -t f'
