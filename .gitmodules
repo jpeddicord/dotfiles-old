@@ -63,6 +63,3 @@
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 	ignore = dirty
-[submodule "zfuncs/pure"]
-	path = zfuncs/pure
-	url = https://github.com/jpeddicord/pure
