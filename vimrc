@@ -51,10 +51,6 @@ set noerrorbells
 set novisualbell
 set shortmess+=I
 
-" pathogen plugins
-runtime pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-
 " color scheme
 syntax on
 set t_Co=256

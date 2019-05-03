@@ -3,35 +3,31 @@
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
 [submodule "vim/bundle/gundo.vim"]
-	path = vim/bundle/gundo.vim
+	path = vim/pack/default/start/gundo.vim
 	url = https://github.com/sjl/gundo.vim
 	ignore = dirty
 [submodule "vim/bundle/todo.txt-vim"]
-	path = vim/bundle/todo.txt-vim
+	path = vim/pack/default/start/todo.txt-vim
 	url = https://github.com/freitass/todo.txt-vim
 	ignore = dirty
 [submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
+	path = vim/pack/default/start/vim-airline
 	url = https://github.com/bling/vim-airline
 	ignore = dirty
 [submodule "vim/bundle/vim-sleuth"]
-	path = vim/bundle/vim-sleuth
+	path = vim/pack/default/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth
 	ignore = dirty
 [submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
+	path = vim/pack/default/start/vim-surround
 	url = https://github.com/tpope/vim-surround
-	ignore = dirty
-[submodule "vim/pathogen"]
-	path = vim/pathogen
-	url = https://github.com/tpope/vim-pathogen
 	ignore = dirty
 [submodule "zsh-history-substring-search"]
 	path = zfuncs/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
 	ignore = dirty
 [submodule "vim/bundle/apprentice"]
-	path = vim/bundle/apprentice
+	path = vim/pack/default/start/apprentice
 	url = https://github.com/romainl/Apprentice
 	ignore = dirty
 [submodule "zfuncs/z"]
@@ -43,7 +39,7 @@
 	url = https://github.com/tonsky/FiraCode
 	ignore = dirty
 [submodule "vim/bundle/vim-two-firewatch"]
-	path = vim/bundle/vim-two-firewatch
+	path = vim/pack/default/start/vim-two-firewatch
 	url = https://github.com/rakr/vim-two-firewatch
 	ignore = dirty
 [submodule "fzf"]
@@ -51,7 +47,7 @@
 	url = https://github.com/junegunn/fzf
 	ignore = dirty
 [submodule "vim/bundle/fzf.vim"]
-	path = vim/bundle/fzf.vim
+	path = vim/pack/default/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 	ignore = dirty
 [submodule "tmux/plugins/tpm"]
