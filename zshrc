@@ -7,7 +7,7 @@ setopt CLOBBER
 unsetopt HUP
 
 # WSL gotchas
-if grep -qi Microsoft /proc/version; then
+if grep -qi Microsoft /proc/version 2>/dev/null; then
 	unsetopt BG_NICE
 fi
 
