@@ -36,7 +36,7 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 
 # history search
-source ~/.zfuncs/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh/modules/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey "\e[A" history-substring-search-up
@@ -56,7 +56,7 @@ compinit
 zstyle ':completion:*' menu select
 
 # prompt
-fpath=($HOME/.zfuncs $fpath)
+fpath=($HOME/.zsh/funcs $fpath)
 autoload -Uz promptinit
 promptinit
 prompt spaceship
@@ -69,7 +69,7 @@ source ~/.fzf/shell/completion.zsh 2> /dev/null
 source ~/.fzf/shell/key-bindings.zsh
 
 # z command
-source ~/.zfuncs/z/z.sh
+source ~/.zsh/modules/z/z.sh
 
 # tmux shortcut
 t() {

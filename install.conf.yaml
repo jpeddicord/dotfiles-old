@@ -8,7 +8,7 @@
     ~/.zshrc:
     ~/.zshenv:
     ~/.zlogin:
-    ~/.zfuncs:
+    ~/.zsh:
         relink: true
 
     # tmux
