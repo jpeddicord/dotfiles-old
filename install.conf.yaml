@@ -16,7 +16,6 @@
     ~/.tmux.conf:
 
     # shell environment & utilities
-    ~/.dir_colors:
     ~/.fzf:
     ~/.gitconfig:
     ~/.ssh/config:

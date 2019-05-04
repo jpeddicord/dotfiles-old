@@ -1,26 +1,26 @@
 " vim compat
 if !has('nvim')
-  " windows path bootstrap
-  if has("win32") || has("win64")
-    set runtimepath=$HOME/.vim,$VIMRUNTIME,$HOME/.vim/after
-  endif
+    " windows path bootstrap
+    if has("win32") || has("win64")
+        set runtimepath=$HOME/.vim,$VIMRUNTIME,$HOME/.vim/after
+    endif
 
-  " restore runtimepath under sudo
-  let s:origvim=expand("<sfile>:p:h")."/.vim"
-  let &runtimepath=printf("%s,%s,%s/after", s:origvim, &runtimepath, s:origvim)
+    " restore runtimepath under sudo
+    let s:origvim=expand("<sfile>:p:h")."/.vim"
+    let &runtimepath=printf("%s,%s,%s/after", s:origvim, &runtimepath, s:origvim)
 
-  " options
-  set nocompatible
-  filetype plugin indent on
-  set autoindent
-  set backspace=indent,eol,start
-  set smarttab
-  set directory=~/.vim/swap,.,/var/tmp,/tmp
-  set encoding=utf-8
-  set laststatus=2
-  set ttymouse=xterm2
-  set ttyfast
-  set sessionoptions=buffers,curdir,folds,tabpages,winsize
+    " options
+    set nocompatible
+    filetype plugin indent on
+    set autoindent
+    set backspace=indent,eol,start
+    set smarttab
+    set directory=~/.vim/swap,.,/var/tmp,/tmp
+    set encoding=utf-8
+    set laststatus=2
+    set ttymouse=xterm2
+    set ttyfast
+    set sessionoptions=buffers,curdir,folds,tabpages,winsize
 endif
 
 " editing options
@@ -101,8 +101,8 @@ nnoremap k gk
 " http://unix.stackexchange.com/a/251063/1664
 cnoremap w!! call SudoSaveFile()
 function! SudoSaveFile() abort
-  execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
-  let &modified = v:shell_error
+    execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
+    let &modified = v:shell_error
 endfunction
 
 " accidential aliases

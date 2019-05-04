@@ -8,7 +8,7 @@ unsetopt HUP
 
 # WSL gotchas
 if grep -qi Microsoft /proc/version 2>/dev/null; then
-	unsetopt BG_NICE
+    unsetopt BG_NICE
 fi
 
 # editor
@@ -48,8 +48,6 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=black'
 # https://github.com/mintty/mintty/wiki/Tips#changing-colours
 autoload -Uz colors
 colors
-eval `dircolors ~/.dir_colors`
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # completions
 zmodload zsh/complist
@@ -75,29 +73,28 @@ source ~/.zfuncs/z/z.sh
 
 # tmux shortcut
 t() {
-	if [ $# -eq 0 ]; then
-		tmux list-sessions
-	else
-		tmux attach-session -t $1 || tmux new-session -s $1
-	fi
+    if [ $# -eq 0 ]; then
+        tmux list-sessions
+    else
+        tmux attach-session -t $1 || tmux new-session -s $1
+    fi
 }
 
 # aliases
 alias cls='printf "\033c"'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
-alias l='ls -lh'
-alias ll='l -A'
+alias x='exa --long --git'
 alias rm='rm -i'
 alias tmux='tmux -2'
 alias sctl='sudo systemctl'
 alias jrnl='sudo journalctl'
 if type nvim > /dev/null; then
-	alias vim='nvim'
-	alias vi='nvim'
+    alias vim='nvim'
+    alias vi='nvim'
 fi
 
 # local settings
 if [[ -e ~/.zshrc.local ]]; then
-	source ~/.zshrc.local
+    source ~/.zshrc.local
 fi
