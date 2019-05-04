@@ -94,6 +94,14 @@ if type nvim > /dev/null; then
     alias vi='nvim'
 fi
 
+# needed commands
+cmds=('exa' 'fd' 'ranger' 'rg')
+for cmd in $cmds; do
+    if ! (( $+commands[$cmd] )); then
+        echo "# Missing '$cmd'"
+    fi
+done
+
 # local settings
 if [[ -e ~/.zshrc.local ]]; then
     source ~/.zshrc.local
