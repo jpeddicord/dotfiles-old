@@ -5,6 +5,7 @@
 
 - link:
     # shell
+    ~/.config/fish: fish
     ~/.zshrc:
     ~/.zshenv:
     ~/.zlogin:
@@ -12,7 +13,6 @@
         relink: true
 
     # tmux
-    ~/.tmux:
     ~/.tmux.conf:
 
     # shell environment & utilities
