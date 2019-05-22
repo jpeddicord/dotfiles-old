@@ -50,10 +50,6 @@
 	path = vim/pack/default/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 	ignore = dirty
-[submodule "tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-	ignore = dirty
 [submodule "zfuncs/spaceship-prompt"]
 	path = zsh/modules/spaceship-prompt
 	url = https://github.com/denysdovhan/spaceship-prompt
