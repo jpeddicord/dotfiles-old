@@ -20,6 +20,7 @@ if !has('nvim')
     set laststatus=2
     set ttymouse=xterm2
     set ttyfast
+    set shell=sh
     set sessionoptions=buffers,curdir,folds,tabpages,winsize
 endif
 
