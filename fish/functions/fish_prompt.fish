@@ -17,8 +17,10 @@ function fish_prompt
     and echo (set_color red)"#"
 
     # directory
-    echo (set_color 129999)(prompt_pwd)(__fish_git_prompt)
-    
+    echo -n (set_color 129999)(prompt_pwd)
+    __fish_git_prompt
+    echo
+
     # command line
     if test $cmd_status -eq 0
         echo -n (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
