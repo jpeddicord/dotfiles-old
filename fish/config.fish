@@ -12,7 +12,7 @@ set -gx PAGER "less"
 set -gx PATH ~/bin ~/.local/bin $PATH ~/.cargo/bin ~/.fzf/bin
 
 # louder sudo prompt
-set -gx SUDO_PROMPT (set_color -b magenta white)"[sudo]"(set_color normal)" password for %u: \a"
+set -gx SUDO_PROMPT (set_color -b magenta white)"[sudo]"(set_color normal)" password for %u: "(echo -e '\a')
 
 # simple aliases
 alias l 'exa --git --long'
