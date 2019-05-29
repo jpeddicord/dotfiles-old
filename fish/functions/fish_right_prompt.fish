@@ -5,5 +5,6 @@ function fish_right_prompt
         else
             printf (set_color -d magenta)'%.2fs' (math $CMD_DURATION / 1000)
         end
+        set_color normal
     end
 end
