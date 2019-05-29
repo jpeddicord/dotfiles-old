@@ -14,14 +14,26 @@ function fish_prompt
 
     # root prefix
     test "$USER" = 'root'
-    and echo (set_color red)"#"
+    and echo -n (set_color red)'#'
 
     # directory
     echo -n (set_color 129999)(prompt_pwd)
-    __fish_git_prompt
-    echo
+
+    # git
+    echo -n (__fish_git_prompt)' '
+
+    # duration
+    if test "$CMD_DURATION" -gt 500
+        if test "$CMD_DURATION" -gt 60000
+            printf (set_color -d magenta)'%.0fm%.0fs' (math $CMD_DURATION / 1000 / 60) (math $CMD_DURATION / 1000 % 60)
+        else
+            printf (set_color -d magenta)'%.2fs' (math $CMD_DURATION / 1000)
+        end
+        set_color normal
+    end
 
     # command line
+    echo
     if test $cmd_status -eq 0
         echo -n (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
     else
