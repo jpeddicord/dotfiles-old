@@ -8,8 +8,13 @@ set -gx EDITOR "vim"
 set -gx VISUAL "vim"
 set -gx PAGER "less"
 
-# path
-set -gx PATH ~/bin ~/.local/bin $PATH ~/.cargo/bin ~/.fzf/bin
+# path additions
+# fish_user_paths doesn't work well with home directory paths
+for path in ~/.local/bin ~/.cargo/bin
+    if not contains $path $PATH
+        set -x PATH $path $PATH
+    end
+end
 
 # louder sudo prompt
 set -gx SUDO_PROMPT (set_color -b magenta white)"[sudo]"(set_color normal)" password for %u: "(echo -e '\a')
