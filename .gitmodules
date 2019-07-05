@@ -34,10 +34,6 @@
 	path = zsh/modules/z
 	url = https://github.com/rupa/z
 	ignore = dirty
-[submodule "fonts/fira-code"]
-	path = fonts/fira-code
-	url = https://github.com/tonsky/FiraCode
-	ignore = dirty
 [submodule "vim/bundle/vim-two-firewatch"]
 	path = vim/pack/default/start/vim-two-firewatch
 	url = https://github.com/rakr/vim-two-firewatch

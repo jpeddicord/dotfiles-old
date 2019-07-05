@@ -22,11 +22,6 @@
         create: true
         path: ssh/config
 
-    # X
-    ~/.local/share/fonts/fira-code:
-        create: true
-        path: fonts/fira-code
-
     # vim
     ~/.vim:
         relink: true
@@ -35,7 +30,4 @@
     ~/.config/nvim:
         create: true
         path: vim
-
-- shell:
-    - fc-cache || true
 
