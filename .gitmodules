@@ -50,3 +50,6 @@
 	path = zsh/modules/spaceship-prompt
 	url = https://github.com/denysdovhan/spaceship-prompt
 	ignore = dirty
+[submodule "modules/asdf"]
+	path = modules/asdf
+	url = https://github.com/asdf-vm/asdf.git

@@ -17,6 +17,7 @@
 
     # shell environment & utilities
     ~/.fzf: modules/fzf
+    ~/.asdf: modules/asdf
     ~/.gitconfig:
     ~/.ssh/config:
         create: true
