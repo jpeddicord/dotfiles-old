@@ -38,6 +38,7 @@
 	path = vim/pack/default/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 	ignore = dirty
-[submodule "modules/asdf"]
+[submodule "asdf"]
 	path = modules/asdf
 	url = https://github.com/asdf-vm/asdf.git
+	ignore = dirty
