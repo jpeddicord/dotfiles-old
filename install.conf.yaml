@@ -16,7 +16,7 @@
     ~/.tmux.conf:
 
     # shell environment & utilities
-    ~/.fzf:
+    ~/.fzf: modules/fzf
     ~/.gitconfig:
     ~/.ssh/config:
         create: true
