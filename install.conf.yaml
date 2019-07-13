@@ -6,22 +6,15 @@
 - link:
     # shell
     ~/.config/fish: fish
-    ~/.zshrc:
-    ~/.zshenv:
-    ~/.zlogin:
-    ~/.zsh:
-        relink: true
-
-    # tmux
-    ~/.tmux.conf:
 
     # shell environment & utilities
-    ~/.fzf: modules/fzf
     ~/.asdf: modules/asdf
+    ~/.fzf: modules/fzf
     ~/.gitconfig:
     ~/.ssh/config:
         create: true
         path: ssh/config
+    ~/.tmux.conf:
 
     # vim
     ~/.vim:

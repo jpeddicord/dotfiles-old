@@ -22,17 +22,9 @@
 	path = vim/pack/default/start/vim-surround
 	url = https://github.com/tpope/vim-surround
 	ignore = dirty
-[submodule "zsh-history-substring-search"]
-	path = zsh/modules/zsh-history-substring-search
-	url = https://github.com/zsh-users/zsh-history-substring-search
-	ignore = dirty
 [submodule "vim/bundle/apprentice"]
 	path = vim/pack/default/start/apprentice
 	url = https://github.com/romainl/Apprentice
-	ignore = dirty
-[submodule "zfuncs/z"]
-	path = zsh/modules/z
-	url = https://github.com/rupa/z
 	ignore = dirty
 [submodule "vim/bundle/vim-two-firewatch"]
 	path = vim/pack/default/start/vim-two-firewatch
@@ -45,10 +37,6 @@
 [submodule "vim/bundle/fzf.vim"]
 	path = vim/pack/default/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
-	ignore = dirty
-[submodule "zfuncs/spaceship-prompt"]
-	path = zsh/modules/spaceship-prompt
-	url = https://github.com/denysdovhan/spaceship-prompt
 	ignore = dirty
 [submodule "modules/asdf"]
 	path = modules/asdf
