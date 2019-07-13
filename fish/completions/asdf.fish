@@ -1,1 +1,1 @@
-../modules/asdf/completions/asdf.fish
+../../modules/asdf/completions/asdf.fish
