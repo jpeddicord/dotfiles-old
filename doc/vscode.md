@@ -19,6 +19,7 @@ Since VS Code doesn't really let you put settings in your dotfiles, some hand-ma
     "scm.inputFontFamily": "editor",
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
+    "window.titleBarStyle": "custom",
     "window.titleSeparator": " 🐲 ",
     "workbench.editor.scrollToSwitchTabs": true,
 
