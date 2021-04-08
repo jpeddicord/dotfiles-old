@@ -25,3 +25,5 @@
         create: true
         path: vim
 
+- shell:
+    - ./setup-spin

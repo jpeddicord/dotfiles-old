@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+[[ $SPIN ]] || exit 0
+
+sudo apt-get install -y fish fzf ripgrep
+sudo chsh -s /usr/bin/fish spin
+
+# splice in non-user portions of gitconfig if something's already there
+if [[ $(wc -l < ~/.gitconfig) == "3" ]]; then
+   tail -n +4 gitconfig >> ~/.gitconfig
+fi
