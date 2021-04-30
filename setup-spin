@@ -3,7 +3,7 @@ set -e
 
 [[ $SPIN ]] || exit 0
 
-sudo apt-get install -y fish fzf htop ripgrep
+sudo apt-get install -y fish fzf htop ripgrep unzip wget
 
 # splice in non-user portions of gitconfig if something's already there
 if [[ $(wc -l < ~/.gitconfig) == "3" ]]; then
@@ -12,3 +12,13 @@ fi
 
 # and hack in fish for interactive shells
 echo '[[ $- == *i* ]] && exec fish' >> ~/.zlogin
+
+# exa
+rm -rf tmp/exa
+mkdir -p tmp/exa
+pushd tmp/exa
+wget https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip -O exa.zip
+echo "25780ed5b4beb71295770baaa464759f60765b8246347694eeecebd0bc319e1c  exa.zip" | shasum -c -
+unzip exa.zip
+cp bin/exa ~/.local/bin
+popd
