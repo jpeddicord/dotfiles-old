@@ -3,6 +3,11 @@
 - shell:
     - git submodule update --init --recursive
 
+- create:
+    - ~/.config
+    - ~/.local/bin
+    - ~/.ssh
+
 - link:
     # shell
     ~/.config/fish: fish
@@ -11,19 +16,14 @@
     ~/.asdf: modules/asdf
     ~/.fzf: modules/fzf
     ~/.gitconfig:
-    ~/.ssh/config:
-        create: true
-        path: ssh/config
+    ~/.ssh/config: ssh_config
     ~/.tmux.conf:
 
     # vim
     ~/.vim:
-        relink: true
     ~/.vimrc:
     ~/.gvimrc:
-    ~/.config/nvim:
-        create: true
-        path: vim
+    ~/.config/nvim: vim
 
 - shell:
     - ./setup-spin
