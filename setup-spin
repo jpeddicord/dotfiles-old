@@ -3,4 +3,5 @@ set -e
 
 [[ $SPIN ]] || exit 0
 
+chmod +x ~/data/setup
 exec ~/data/setup
