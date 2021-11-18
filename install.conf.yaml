@@ -16,6 +16,7 @@
     ~/.asdf: modules/asdf
     ~/.fzf: modules/fzf
     ~/.gitconfig:
+        if: "[ ! $SPIN ]"
     ~/.ssh/config: ssh_config
     ~/.tmux.conf:
 
