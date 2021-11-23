@@ -9,22 +9,22 @@
   - ~/.ssh
 
 - link:
-  # shell
-  ~/.config/fish: fish
+    # shell
+    ~/.config/fish: fish
 
-  # shell environment & utilities
-  ~/.asdf: modules/asdf
-  ~/.fzf: modules/fzf
-  ~/.gitconfig:
-    if: "[ ! $SPIN ]"
-  ~/.ssh/config: ssh_config
-  ~/.tmux.conf:
+    # shell environment & utilities
+    ~/.asdf: modules/asdf
+    ~/.fzf: modules/fzf
+    ~/.gitconfig:
+      if: "[ ! $SPIN ]"
+    ~/.ssh/config: ssh_config
+    ~/.tmux.conf:
 
-  # vim
-  ~/.vim:
-  ~/.vimrc:
-  ~/.gvimrc:
-  ~/.config/nvim: vim
+    # vim
+    ~/.vim:
+    ~/.vimrc:
+    ~/.gvimrc:
+    ~/.config/nvim: vim
 
 - shell:
   - command: ./setup-spin
