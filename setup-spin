@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-[[ $SPIN ]] || exit 0
+type iso > /dev/null || exit 0
 
 iso cart insert default
 chmod +x ~/.data/cartridges/default/setup
