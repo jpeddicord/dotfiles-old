@@ -5,7 +5,7 @@ Since VS Code doesn't really let you put settings in your dotfiles, some hand-ma
 ```json
 {
     "breadcrumbs.enabled": false,
-    "editor.fontFamily": "'Cascadia Code', monospace",
+    "editor.fontFamily": "'JetBrains Mono', 'Cascadia Code', monospace",
     "editor.minimap.enabled": false,
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 99,
@@ -17,11 +17,11 @@ Since VS Code doesn't really let you put settings in your dotfiles, some hand-ma
     "explorer.confirmDelete": false,
     "files.autoSave": "onFocusChange",
     "scm.inputFontFamily": "editor",
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "window.titleBarStyle": "custom",
     "window.titleSeparator": " 🐲 ",
     "workbench.editor.scrollToSwitchTabs": true,
+    "workbench.colorTheme": "Solarized Dark",
 
     // extensions
     "amVim.bindCtrlCommands": false,
@@ -70,8 +70,5 @@ Since VS Code doesn't really let you put settings in your dotfiles, some hand-ma
 ## extensions
 
 - auiworks.amvim
-- beardedbear.beardedtheme
-- bungcip.better-toml
 - matklad.rust-analyzer
 - ms-vscode-remote.remote-wsl
-- teabyii.ayu
